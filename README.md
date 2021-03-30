@@ -1,2 +1,3 @@
-# adam-davis-codes
-My resume site
+## It's Me!
+
+This is my personal resume site.
