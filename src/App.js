@@ -1,7 +1,4 @@
-export const App = () => {
-   return <>
-      <div>
-         It's Adam!
-      </div>
-   </>;
-};
+import { UI } from './UI';
+
+export const App = () =>
+   <UI/>;
