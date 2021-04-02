@@ -13,10 +13,10 @@ export const Header = () => {
       <Row
          justify={'space-between'}
          style={{
-            paddingLeft: getResponsiveSpacing(viewport.size, 8, 24, 8),
-            paddingRight: getResponsiveSpacing(viewport.size, 8, 24, 8),
-            paddingTop: getResponsiveSpacing(viewport.size, 8, 32, 8),
-            width: '100%',
+            paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
+            paddingLeft: getResponsiveSpacing(viewport.size, 16, 80),
+            paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
+            paddingTop: getResponsiveSpacing(viewport.size, 8, 24),
          }}
       >
          <Column>
