@@ -145,7 +145,7 @@ export const Footer = () => {
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
             paddingLeft: getResponsiveSpacing(viewport.size, 16, 80),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
-            paddingTop: getResponsiveSpacing(viewport.size, 8, 24),
+            paddingTop: 32,
          }}
       >
          <Hidden mdUp={true}>
