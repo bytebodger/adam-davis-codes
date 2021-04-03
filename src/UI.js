@@ -8,6 +8,7 @@ import { Resume } from './routes/resume/Resume';
 import { Interests } from './routes/interests/Interests';
 import { Projects } from './routes/projects/Projects';
 import { Skills } from './routes/skills/Skills';
+import { Route, Redirect } from 'react-router-dom';
 
 export const UI = () => {
    const viewport = useViewport();
@@ -23,6 +24,9 @@ export const UI = () => {
          <Projects/>
          <Resume/>
          <Skills/>
+         <Route>
+            <Redirect to={'/home'}/>
+         </Route>
       </Row>
       <Footer/>
    </>;

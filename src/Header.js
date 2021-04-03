@@ -1,6 +1,6 @@
 import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
-import { Hidden, Dialog } from '@material-ui/core';
+import { Hidden, Dialog, Slide, makeStyles, AppBar, Toolbar, IconButton, Typography, List, ListItem, ListItemText, Divider } from '@material-ui/core';
 import { css3 } from '@toolz/css3/src/css3';
 import ReactRotatingText from 'react-rotating-text/lib/ReactRotatingText';
 import { useViewport } from '@toolz/use-viewport';
@@ -10,6 +10,17 @@ import { capitalize } from '@toolz/capitalize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars as hamburgerMenu } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
+import { Close } from '@material-ui/icons';
+import { allow } from '@toolz/allow-react';
+import { is } from './common/objects/is';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+   return <Slide
+      direction={'up'}
+      ref={ref}
+      {...props}
+   />;
+});
 
 export const Header = () => {
    const [linksOpen, setLinksOpen] = useState(false);
@@ -48,13 +59,73 @@ export const Header = () => {
       });
    };
    
+   const getMobileLinks = () => {
+      const goToLink = (route = '') => {
+         allow.aString(route, is.not.empty);
+         history.push(route);
+         setLinksOpen(false);
+      };
+      
+      return routes.map(route => {
+         const linkName = capitalize.firstLetter(route.replace('/', '')).toUpperCase();
+         return <React.Fragment key={'mobileLink-' + route}>
+            <ListItem
+               button={true}
+               onClick={() => goToLink(route)}
+            >
+               <ListItemText
+                  primary={linkName}
+                  style={{textAlign: css3.textAlign.center}}
+               />
+            </ListItem>
+            <Divider/>
+         </React.Fragment>;
+      });
+   };
+   
+   const getStyles = makeStyles(() => {
+      return {
+         appBar: {
+            backgroundColor: '#551a8b',
+            position: css3.position.relative,
+         },
+         title: {
+            flex: 1,
+            position: css3.position.relative,
+            right: 18,
+            textAlign: css3.textAlign.center,
+         },
+      };
+   });
+   
    return <>
       <Dialog
          fullScreen={true}
+         onClick={() => setLinksOpen(false)}
          onClose={() => setLinksOpen(false)}
          open={linksOpen}
+         TransitionComponent={Transition}
       >
-         foo!
+         <AppBar className={getStyles().appBar}>
+            <Toolbar>
+               <IconButton
+                  color={'inherit'}
+                  edge={'start'}
+                  onClick={() => setLinksOpen(false)}
+               >
+                  <Close/>
+               </IconButton>
+               <Typography
+                  className={getStyles().title}
+                  variant={'h6'}
+               >
+                  Where To?
+               </Typography>
+            </Toolbar>
+         </AppBar>
+         <List>
+            {getMobileLinks()}
+         </List>
       </Dialog>
       <Row
          justify={'space-between'}

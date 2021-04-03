@@ -210,6 +210,7 @@ export const Footer = () => {
                   & GitHub<br/>
                   & NPM<br/>
                   & AWS<br/>
+                  & Material UI<br/>
                   & My Own Two Hands
                </div>
             </div>
