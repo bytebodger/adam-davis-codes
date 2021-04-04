@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useRef } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
+import { Footer } from '../../Footer';
 
 export const Interests = () => {
    const nodeRef = useRef(null);
@@ -19,9 +20,13 @@ export const Interests = () => {
             <div
                key={'interests'}
                ref={nodeRef}
-               style={{position: css3.position.absolute}}
+               style={{
+                  position: css3.position.absolute,
+                  width: '100%',
+               }}
             >
                Interests
+               <Footer/>
             </div>
          </CSSTransition>
       </>;

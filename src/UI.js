@@ -1,5 +1,4 @@
 import { Header } from './Header';
-import { Footer } from './Footer';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { getResponsiveSpacing } from './common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
@@ -28,6 +27,5 @@ export const UI = () => {
             <Redirect to={'/home'}/>
          </Route>
       </Row>
-      <Footer/>
    </>;
 };
