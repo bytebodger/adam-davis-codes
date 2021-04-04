@@ -13,6 +13,8 @@ import React, { useState } from 'react';
 import { Close } from '@material-ui/icons';
 import { allow } from '@toolz/allow-react';
 import { is } from './common/objects/is';
+import { the } from './common/objects/the';
+import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
    return <Slide
@@ -26,7 +28,7 @@ export const Header = () => {
    const [linksOpen, setLinksOpen] = useState(false);
    const history = useHistory();
    const location = useLocation();
-   const viewport = useViewport();
+   const viewport = useViewport(materialUiBreakpoints);
    
    const routes = [
       '/home',
@@ -86,7 +88,7 @@ export const Header = () => {
    const getStyles = makeStyles(() => {
       return {
          appBar: {
-            backgroundColor: '#551a8b',
+            backgroundColor: the.color.purple,
             position: css3.position.relative,
          },
          title: {
@@ -138,7 +140,7 @@ export const Header = () => {
       >
          <Column>
             <div style={{
-               backgroundColor: '#eaba6b',
+               backgroundColor: the.color.beige,
                display: css3.dislay.inlineBlock,
                height: 16,
                marginBottom: 2,
@@ -180,6 +182,7 @@ export const Header = () => {
                   icon={hamburgerMenu}
                   onClick={() => setLinksOpen(true)}
                   style={{
+                     color: the.color.purple,
                      height: 25,
                      width: 25,
                   }}

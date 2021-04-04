@@ -6,14 +6,23 @@ import { css3 } from '@toolz/css3/src/css3';
 import { Hidden } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF as facebook, faTwitter as twitter, faLinkedinIn as linkedIn, faInstagram as instagram, faGithub as github, faDev as devTo, faYoutube as youtube, faNpm as npm } from '@fortawesome/free-brands-svg-icons';
+import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 
 export const Footer = () => {
-   const viewport = useViewport();
+   const viewport = useViewport(materialUiBreakpoints);
    const currentDate = new Date();
    const isMobile = ['xs', 'sm'].includes(viewport.size);
    
    const getFollowIcons = () => {
       const dimension = isMobile ? 25 : 19;
+      const leftStyle = {
+         height: dimension,
+         width: dimension,
+      };
+      const mainStyle = {
+         ...leftStyle,
+         marginLeft: 8,
+      };
       return <>
          <a
             href={'https://dev.to/bytebodger'}
@@ -23,10 +32,7 @@ export const Footer = () => {
          >
             <FontAwesomeIcon
                icon={devTo}
-               style={{
-                  height: dimension,
-                  width: dimension,
-               }}
+               style={leftStyle}
             />
          </a>
          <a
@@ -37,11 +43,7 @@ export const Footer = () => {
          >
             <FontAwesomeIcon
                icon={github}
-               style={{
-                  height: dimension,
-                  marginLeft: 8,
-                  width: dimension,
-               }}
+               style={mainStyle}
             />
          </a>
          <a
@@ -52,11 +54,7 @@ export const Footer = () => {
          >
             <FontAwesomeIcon
                icon={npm}
-               style={{
-                  height: dimension,
-                  marginLeft: 8,
-                  width: dimension,
-               }}
+               style={mainStyle}
             />
          </a>
          <a
@@ -67,11 +65,7 @@ export const Footer = () => {
          >
             <FontAwesomeIcon
                icon={facebook}
-               style={{
-                  height: dimension,
-                  marginLeft: 8,
-                  width: dimension,
-               }}
+               style={mainStyle}
             />
          </a>
          <a
@@ -82,11 +76,7 @@ export const Footer = () => {
          >
             <FontAwesomeIcon
                icon={twitter}
-               style={{
-                  height: dimension,
-                  marginLeft: 8,
-                  width: dimension,
-               }}
+               style={mainStyle}
             />
          </a>
          <a
@@ -97,11 +87,7 @@ export const Footer = () => {
          >
             <FontAwesomeIcon
                icon={linkedIn}
-               style={{
-                  height: dimension,
-                  marginLeft: 8,
-                  width: dimension,
-               }}
+               style={mainStyle}
             />
          </a>
          <a
@@ -112,11 +98,7 @@ export const Footer = () => {
          >
             <FontAwesomeIcon
                icon={instagram}
-               style={{
-                  height: dimension,
-                  marginLeft: 8,
-                  width: dimension,
-               }}
+               style={mainStyle}
             />
          </a>
          <a
@@ -127,11 +109,7 @@ export const Footer = () => {
          >
             <FontAwesomeIcon
                icon={youtube}
-               style={{
-                  height: dimension,
-                  marginLeft: 8,
-                  width: dimension,
-               }}
+               style={mainStyle}
             />
          </a>
       </>;
@@ -142,6 +120,7 @@ export const Footer = () => {
          justify={isMobile ? 'space-evenly' : 'space-between'}
          style={{
             fontWeight: css3.fontWeight._200,
+            minWidth: 300,
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
             paddingLeft: getResponsiveSpacing(viewport.size, 16, 80),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
@@ -149,11 +128,14 @@ export const Footer = () => {
          }}
       >
          <Hidden mdUp={true}>
-            <Column style={{
-               fontSize: '0.8em',
-               width: '100%',
-            }}>
-               <Row>
+            <Column
+               style={{
+                  fontSize: '0.8em',
+                  minWidth: 300,
+               }}
+               xs={12}
+            >
+               <Row style={{minWidth: 300}}>
                   <Column xs={6}>
                      <div style={{
                         fontSize: '1.2em',
@@ -183,7 +165,7 @@ export const Footer = () => {
                      </div>
                   </Column>
                </Row>
-               <Row>
+               <Row style={{minWidth: 300}}>
                   <Column xs={12}>
                      <div style={{
                         fontSize: '1.2em',

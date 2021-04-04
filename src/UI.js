@@ -8,24 +8,28 @@ import { Interests } from './routes/interests/Interests';
 import { Projects } from './routes/projects/Projects';
 import { Skills } from './routes/skills/Skills';
 import { Route, Redirect } from 'react-router-dom';
+import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 
 export const UI = () => {
-   const viewport = useViewport();
+   const viewport = useViewport(materialUiBreakpoints);
    
    return <>
-      <Header/>
-      <Row style={{
-         paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
-         paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
-      }}>
-         <Home/>
-         <Interests/>
-         <Projects/>
-         <Resume/>
-         <Skills/>
-         <Route>
-            <Redirect to={'/home'}/>
-         </Route>
-      </Row>
+      <div style={{minWidth: 300}}>
+         <Header/>
+         <Row style={{
+            minWidth: 300,
+            paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
+            paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
+         }}>
+            <Home/>
+            <Interests/>
+            <Projects/>
+            <Resume/>
+            <Skills/>
+            <Route>
+               <Redirect to={'/home'}/>
+            </Route>
+         </Row>
+      </div>
    </>;
 };
