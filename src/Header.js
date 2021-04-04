@@ -15,6 +15,7 @@ import { allow } from '@toolz/allow-react';
 import { is } from './common/objects/is';
 import { the } from './common/objects/the';
 import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
+import { titles } from './common/arrays/titles';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
    return <Slide
@@ -162,13 +163,7 @@ export const Header = () => {
                <Hidden smDown={true}>
                   {` `}
                </Hidden>
-               <ReactRotatingText items={[
-                  'React Acolyte',
-                  'JavaScript Ninja',
-                  'Full-Stack Developer',
-                  'Stack Overflow Pirate',
-                  'Senior Software Engineer',
-               ]}/>
+               <ReactRotatingText items={titles}/>
             </span>
          </Column>
          <Hidden smDown={true}>

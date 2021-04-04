@@ -13,6 +13,8 @@ import { the } from '../../common/objects/the';
 import { Hidden } from '@material-ui/core';
 import adam from '../../common/images/adam.jpg';
 import ReactRotatingText from 'react-rotating-text';
+import { titles } from '../../common/arrays/titles';
+import { FollowIcons } from '../../common/components/FollowIcons';
 
 export const Home = () => {
    const nodeRef = useRef(null);
@@ -82,20 +84,17 @@ export const Home = () => {
                                     width: '25%',
                                  }}/>
                                  <div style={{fontSize: '1.2em'}}>
-                                    <ReactRotatingText items={[
-                                       'React Acolyte',
-                                       'JavaScript Ninja',
-                                       'Full-Stack Developer',
-                                       'Stack Overflow Pirate',
-                                       'Senior Software Engineer',
-                                    ]}/>
+                                    <ReactRotatingText items={titles}/>
                                  </div>
                               </div>
                               <div style={{
                                  backgroundColor: the.color.white,
                                  height: 50,
+                                 textAlign: css3.textAlign.center,
                               }}>
-                              
+                                 <div style={{paddingTop: 12}}>
+                                    <FollowIcons dimension={25}/>
+                                 </div>
                               </div>
                            </div>
                         </Column>
