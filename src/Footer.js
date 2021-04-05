@@ -17,7 +17,7 @@ export const Footer = () => {
          justify={isMobile ? 'space-evenly' : 'space-between'}
          style={{
             fontWeight: css3.fontWeight._200,
-            minWidth: 300,
+            minWidth: 350,
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
             paddingLeft: getResponsiveSpacing(viewport.size, 16, 80),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
@@ -28,11 +28,11 @@ export const Footer = () => {
             <Column
                style={{
                   fontSize: '0.8em',
-                  minWidth: 300,
+                  minWidth: 350,
                }}
                xs={12}
             >
-               <Row style={{minWidth: 300}}>
+               <Row style={{minWidth: 350}}>
                   <Column xs={6}>
                      <div style={{
                         fontSize: '1.2em',
@@ -62,7 +62,7 @@ export const Footer = () => {
                      </div>
                   </Column>
                </Row>
-               <Row style={{minWidth: 300}}>
+               <Row style={{minWidth: 350}}>
                   <Column xs={12}>
                      <div style={{
                         fontSize: '1.2em',

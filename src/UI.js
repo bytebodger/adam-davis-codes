@@ -17,7 +17,7 @@ export const UI = () => {
       <div style={{minWidth: 300}}>
          <Header/>
          <Row style={{
-            minWidth: 300,
+            minWidth: 350,
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
          }}>
