@@ -97,12 +97,102 @@ export const Resume = () => {
                         </div>
                         {getTrailSpacer('left')}
                         <div style={styles.jobCard}>
-                           {getTimeframe('2012-2015', 'left')}
+                           {getTimeframe('2012 - 2015', 'left')}
                            <Row style={{paddingTop: 8}}>
                               {getTitleAndEmployer('IT Manager', 'EverBank', 'left')}
                               {getJobDescription('Leading a team of developers initially focused on the implementation of a new content management system, and eventually tasked with supporting all functions on the public-facing website', 'left')}
                            </Row>
-                           {getTechnologiesUsed('C#, MS-SQL, JavaScript, jQuery, Knockout, Siteforce, Node, HTML/CSS, TFS', 'left')}
+                           {getTechnologiesUsed('C#, MS-SQL, JavaScript, jQuery, Knockout, Sitecore, Node, HTML/CSS, TFS', 'left')}
+                        </div>
+                        {getTrailSpacer('right')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('2010 - 2012', 'right')}
+                           <Row style={{paddingTop: 8}}>
+                              {getJobDescription('Creating a US-based business for an international outsourcing firm specializing in application development, design/graphics, business analysis, staffing, and quality assurance testing', 'right')}
+                              {getTitleAndEmployer('Managing Partner', 'Insoft USA', 'right')}
+                           </Row>
+                           {getTechnologiesUsed('PHP, JavaScript, jQuery, C#, MS-SQL, MySQL, HTML/CSS', 'right')}
+                        </div>
+                        {getTrailSpacer('left')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('2007 - 2010', 'left')}
+                           <Row style={{paddingTop: 8}}>
+                              {getTitleAndEmployer('Director of Technology', 'MECLABS', 'left')}
+                              {getJobDescription('Building an IT department from scratch to support an $18M marketing company, including extensive budgeting and analysis of staffing and infrastructure', 'left')}
+                           </Row>
+                           {getTechnologiesUsed('PHP, MySQL, Google Analytics, JavaScript, jQuery, HTML/CSS', 'left')}
+                        </div>
+                        {getTrailSpacer('right')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('2004 - 2007', 'right')}
+                           <Row style={{paddingTop: 8}}>
+                              {getJobDescription('Leading the transition from delivering customized, ad hoc software to a SaaS model based on formalized release management, including the implementation of new source control tools and the reorganization of development resources', 'right')}
+                              {getTitleAndEmployer('Director of Application Delivery', 'Vurv Technology', 'right')}
+                           </Row>
+                           {getTechnologiesUsed('ColdFusion, MS-SQL, JavaScript, HTML/CSS', 'right')}
+                        </div>
+                        {getTrailSpacer('left')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('2001 - 2004', 'left')}
+                           <Row style={{paddingTop: 8}}>
+                              {getTitleAndEmployer('Application Developer', 'Nemours', 'left')}
+                              {getJobDescription('Developing custom applications to support the public website and internal/clinical objectives', 'left')}
+                           </Row>
+                           {getTechnologiesUsed('ColdFusion, PHP, MS-SQL, HTML/CSS', 'left')}
+                        </div>
+                        {getTrailSpacer('right')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('1997 - 2001', 'right')}
+                           <Row style={{paddingTop: 8}}>
+                              {getJobDescription('I built numerous websites for clients.  I created a web-based publicly-playable game for trading "shares" of athletes in real-time.  I built a boxing simulation.  I wrote automated currency-trading software.', 'right')}
+                              {getTitleAndEmployer('Owner', 'Self-Employed', 'right')}
+                           </Row>
+                           {getTechnologiesUsed('PHP, MySQL, HTML/CSS', 'right')}
+                        </div>
+                        {getTrailSpacer('left')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('1992 - 1997', 'left')}
+                           <Row style={{paddingTop: 8}}>
+                              {getTitleAndEmployer('Air Traffic Control Radar Technician', 'U.S. Air Force', 'left')}
+                              {getJobDescription('I was a certified electronic technician, maintaining most of the same radars used at civilian airports.', 'left')}
+                           </Row>
+                        </div>
+                     </Column>
+                  </Row>
+                  <Row
+                     justify={'space-evenly'}
+                     style={{marginTop: 48}}
+                  >
+                     <Column
+                        xs={12} sm={10} md={8} lg={7} xl={6}
+                        style={{
+                           paddingLeft: 8,
+                           paddingRight: 8,
+                        }}
+                     >
+                        <h1>Education</h1>
+                        <div style={styles.jobCard}>
+                           {getTimeframe('1985 - Present', 'left')}
+                           <Row style={{paddingTop: 8}}>
+                              {getTitleAndEmployer('Programming', 'Self-Taught', 'left')}
+                              {getJobDescription(`I've never taken a programming course of any sort.  I never went to school to learn anything related to application development.  Every technology I've used, every software skill I've acquired, every language I've used has been completely self-taught.`, 'left')}
+                           </Row>
+                        </div>
+                        {getTrailSpacer('right')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('1997', 'right')}
+                           <Row style={{paddingTop: 8}}>
+                              {getJobDescription('San Antonio, Texas', 'right')}
+                              {getTitleAndEmployer('Associates in Electronics', 'Community College of the Air Force', 'right')}
+                           </Row>
+                        </div>
+                        {getTrailSpacer('left')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('1990', 'left')}
+                           <Row style={{paddingTop: 8}}>
+                              {getTitleAndEmployer('Diploma', 'Creston High School', 'left')}
+                              {getJobDescription('Grand Rapids, Michigan (Nothing makes you feel older than realizing that your high school doesn\'t even exist anymore...)', 'left')}
+                           </Row>
                         </div>
                      </Column>
                   </Row>
@@ -139,15 +229,17 @@ export const Resume = () => {
             justify={'space-evenly'}
             style={{marginTop: 16}}
          >
-            <Column xs={11}>
+            <Column
+               xs={11}
+               style={{textAlign: direction}}
+            >
                <div style={{
                   fontWeight: css3.fontWeight._500,
-                  marginBottom: 4,
-                  textAlign: direction,
+                  marginBottom: 12,
                }}>
                   Technologies Used:
                </div>
-               <div style={{
+               <span style={{
                   border: '1px solid #cccccc',
                   borderRadius: 5,
                   fontSize: '0.9em',
@@ -155,7 +247,7 @@ export const Resume = () => {
                   textAlign: direction,
                }}>
                   {technologies}
-               </div>
+               </span>
             </Column>
          </Row>
       </>;
