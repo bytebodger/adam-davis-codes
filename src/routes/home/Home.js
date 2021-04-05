@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import React, { useRef } from 'react';
 import '../../common/css/fade.css';
@@ -15,6 +15,7 @@ import adam from '../../common/images/adam.jpg';
 import ReactRotatingText from 'react-rotating-text';
 import { titles } from '../../common/arrays/titles';
 import { FollowIcons } from '../../common/components/FollowIcons';
+import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 
 export const Home = () => {
    const nodeRef = useRef(null);
@@ -98,8 +99,51 @@ export const Home = () => {
                               </div>
                            </div>
                         </Column>
-                        <Column xs={6} md={4} lg={3} xl={2}>desc</Column>
-                        <Column md={2} lg={3} xl={4}/>
+                        <Column
+                           md={5} lg={4} xl={3}
+                           style={{
+                              height: 525,
+                              overflowY: css3.overflowY.auto,
+                              paddingLeft: getResponsiveSpacing(viewport.size, 8, 48),
+                              paddingRight: getResponsiveSpacing(viewport.size, 8, 48),
+                           }}
+                        >
+                           <h1>Greetings!</h1>
+                           <div style={{textAlign: css3.textAlign.justify}}>
+                              I wrote my first programs in 1985, in BASIC, on a Coleco Adam home computer... that had a <i>tape drive</i>. I've "evolved" through PHP, ColdFusion, SQL, Java, and C#. For the last
+                              decade or so, I've been been working my way through many "flavors" of JavaScript. I was heavily focused first on jQuery, then Angular, and now React.
+                           </div>
+                           <div style={{
+                              marginTop: 16,
+                              textAlign: css3.textAlign.justify,
+                           }}>
+                              Please know that I'm a <b>remote</b> worker. I'm more than happy to travel. And I'm quite personable in an office setting. But I'm a coder, and there's nothing in your office
+                              that's going to make me a more <i>efficient</i> coder. I don't need a breakroom with free snacks. I don't need impromptu "breakout sessions". I don't need a ping-pong table. I
+                              need to concentrate - on many thousands of lines of code.
+                           </div>
+                           <div style={{
+                              marginBottom: 16,
+                              marginTop: 16,
+                              textAlign: css3.textAlign.justify,
+                           }}>
+                              If you'd like <i>evidence</i> of what I can do, there's a good bit of that already online. You may want to browse over my <Link to={'/resume'}>Resume</Link>. But under{` `}
+                              <Link to={'/projects'}>Projects</Link> you'll find all of my{` `}
+                              <a href={'https://github.com/bytebodger'}>
+                                 GitHub repos
+                              </a>{` `}
+                              (including the code for this site), and all of my{` `}
+                              <a href={'https://www.npmjs.com/search?q=%40toolz'}>
+                                 NPM packages
+                              </a>{` `}
+                              and all of my{` `}
+                              <a href={'https://dev.to/bytebodger'}>
+                                 Dev.to articles
+                              </a>
+                              . You'll
+                              find more about me in those locations than you will in any traditional job interview.
+                           </div>
+                        </Column>
+                        <Column md={1} lg={2} xl={3}/>
                      </Row>
                   </Hidden>
                </div>
