@@ -62,7 +62,10 @@ export const Footer = () => {
                      </div>
                   </Column>
                </Row>
-               <Row style={{minWidth: 350}}>
+               <Row
+                  className={'hidden-print'}
+                  style={{minWidth: 350}}
+               >
                   <Column xs={12}>
                      <div style={{
                         fontSize: '1.2em',
@@ -80,7 +83,10 @@ export const Footer = () => {
                </Row>
             </Column>
          </Hidden>
-         <Column style={{width: isMobile ? '100%' : css3.width.auto}}>
+         <Column
+            className={'hidden-print'}
+            style={{width: isMobile ? '100%' : css3.width.auto}}
+         >
             <div style={{fontSize: '0.8em'}}>
                &copy; {currentDate.getFullYear()} by Adam Nathaniel Davis<br/>
                Lovingly created with JavaScript<br/>
@@ -120,10 +126,13 @@ export const Footer = () => {
                         me@adamdavis.codes
                      </div>
                   </Column>
-                  <Column style={{
-                     marginLeft: 16,
-                     textAlign: css3.textAlign.center,
-                  }}>
+                  <Column
+                     className={'hidden-print'}
+                     style={{
+                        marginLeft: 16,
+                        textAlign: css3.textAlign.center,
+                     }}
+                  >
                      <div style={{fontWeight: css3.fontWeight._600}}>
                         Follow
                      </div>

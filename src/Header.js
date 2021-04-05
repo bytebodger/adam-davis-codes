@@ -153,7 +153,10 @@ export const Header = () => {
                fontWeight: css3.fontWeight._600,
                paddingLeft: 8,
             }}>Adam Nathaniel Davis</span>
-            <span style={{fontSize: '1.2em'}}>:
+            <span
+               className={'hidden-print'}
+               style={{fontSize: '1.2em'}}
+            >:
                <Hidden mdUp={true}>
                   <br/>
                   <div style={{
@@ -168,12 +171,18 @@ export const Header = () => {
             </span>
          </Column>
          <Hidden smDown={true}>
-            <Column style={{paddingTop: 10}}>
+            <Column
+               className={'hidden-print'}
+               style={{paddingTop: 10}}
+            >
                {getLinks()}
             </Column>
          </Hidden>
          <Hidden mdUp={true}>
-            <Column style={{paddingTop: 2}}>
+            <Column
+               className={'hidden-print'}
+               style={{paddingTop: 2}}
+            >
                <FontAwesomeIcon
                   icon={hamburgerMenu}
                   onClick={() => setLinksOpen(true)}

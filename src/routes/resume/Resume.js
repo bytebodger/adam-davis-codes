@@ -24,10 +24,12 @@ export const Resume = () => {
          logGooglePageHit('Resume');
       const styles = {
          jobCard: {
+            border: '1px solid grey',
             backgroundColor: the.color.white,
             borderRadius: 10,
             boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
             padding: 16,
+            pageBreakInside: css3.pageBreakInside.avoid,
          },
       };
       return <>
@@ -183,7 +185,7 @@ export const Resume = () => {
                            {getTimeframe('1997', 'right')}
                            <Row style={{paddingTop: 8}}>
                               {getJobDescription('San Antonio, Texas', 'right')}
-                              {getTitleAndEmployer('Associates in Electronics', 'Community College of the Air Force', 'right')}
+                              {getTitleAndEmployer('Associate of Electronics', 'Community College of the Air Force', 'right')}
                            </Row>
                         </div>
                         {getTrailSpacer('left')}
