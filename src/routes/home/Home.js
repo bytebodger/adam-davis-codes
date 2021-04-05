@@ -18,6 +18,7 @@ import { FollowIcons } from '../../common/components/FollowIcons';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { Button } from '../../common/components/Button';
 import { useHistory } from 'react-router';
+import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 
 export const Home = () => {
    const history = useHistory();
@@ -73,6 +74,8 @@ export const Home = () => {
    
    const getCssTransition = match => {
       //console.log(match);
+      if (match !== null)
+         logGooglePageHit('Home');
       return <>
          <CSSTransition
             classNames={'fade'}
