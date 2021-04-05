@@ -74,7 +74,7 @@ export const Home = () => {
    
    const getCssTransition = match => {
       if (match !== null)
-         logGooglePageHit('Home');
+         logGooglePageHit('home');
       return <>
          <CSSTransition
             classNames={'fade'}

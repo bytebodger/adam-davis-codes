@@ -9,6 +9,7 @@ import { Projects } from './routes/projects/Projects';
 import { Skills } from './routes/skills/Skills';
 import { Route, Redirect } from 'react-router-dom';
 import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
+import { Email } from './routes/email/Email';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -21,6 +22,7 @@ export const UI = () => {
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
          }}>
+            <Email/>
             <Home/>
             <Interests/>
             <Projects/>

@@ -21,7 +21,7 @@ export const Resume = () => {
    
    const getCssTransition = match => {
       if (match !== null)
-         logGooglePageHit('Resume');
+         logGooglePageHit('resume');
       const styles = {
          jobCard: {
             border: '1px solid grey',
@@ -146,7 +146,7 @@ export const Resume = () => {
                         <div style={styles.jobCard}>
                            {getTimeframe('1997 - 2001', 'right')}
                            <Row style={{paddingTop: 8}}>
-                              {getJobDescription('I built numerous websites for clients.  I created a web-based publicly-playable game for trading "shares" of athletes in real-time.  I built a boxing simulation.  I wrote automated currency-trading software.', 'right')}
+                              {getJobDescription('I built numerous websites for clients.  I created a web-based, publicly-playable game for trading "shares" of athletes in real-time.  I built a boxing simulation.  I wrote automated currency-trading software.  I got my fingers into all sorts of exotically-flavored pies.', 'right')}
                               {getTitleAndEmployer('Owner', 'Self-Employed', 'right')}
                            </Row>
                            {getTechnologiesUsed('PHP, MySQL, HTML/CSS', 'right')}

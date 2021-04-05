@@ -11,7 +11,7 @@ export const Skills = () => {
    
    const getCssTransition = match => {
       if (match !== null)
-         logGooglePageHit('Skills');
+         logGooglePageHit('skills');
       return <>
          <CSSTransition
             classNames={'fade'}

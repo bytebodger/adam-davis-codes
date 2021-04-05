@@ -6,8 +6,10 @@ import { css3 } from '@toolz/css3/src/css3';
 import { Hidden } from '@material-ui/core';
 import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 import { FollowIcons } from './common/components/FollowIcons';
+import { useHistory } from 'react-router';
 
 export const Footer = () => {
+   const history = useHistory();
    const viewport = useViewport(materialUiBreakpoints);
    const currentDate = new Date();
    const isMobile = ['xs', 'sm'].includes(viewport.size);
@@ -47,7 +49,10 @@ export const Footer = () => {
                         +1-904-434-9210
                      </div>
                   </Column>
-                  <Column xs={6}>
+                  <Column
+                     xs={6}
+                     onClick={() => history.push('/email')}
+                  >
                      <div style={{
                         fontSize: '1.2em',
                         fontWeight: css3.fontWeight._600,
@@ -58,7 +63,7 @@ export const Footer = () => {
                         marginBottom: 20,
                         marginTop: 12,
                      }}>
-                        me@adamdavis.codes
+                        me@adamdavis{'\u2024'}codes
                      </div>
                   </Column>
                </Row>
@@ -114,16 +119,20 @@ export const Footer = () => {
                         +1-904-434-9210
                      </div>
                   </Column>
-                  <Column style={{
-                     marginLeft: 16,
-                     marginRight: 16,
-                     textAlign: css3.textAlign.center,
-                  }}>
+                  <Column
+                     onClick={() => history.push('/email')}
+                     style={{
+                        cursor: css3.cursor.pointer,
+                        marginLeft: 16,
+                        marginRight: 16,
+                        textAlign: css3.textAlign.center,
+                     }}
+                  >
                      <div style={{fontWeight: css3.fontWeight._600}}>
                         Write
                      </div>
                      <div style={{marginTop: 8}}>
-                        me@adamdavis.codes
+                        me@adamdavis{'\u2024'}codes
                      </div>
                   </Column>
                   <Column
