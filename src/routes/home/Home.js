@@ -61,7 +61,7 @@ export const Home = () => {
             (including the React code for this site), and all of my{` `}
             <a href={'https://www.npmjs.com/search?q=%40toolz'}>
                NPM packages
-            </a>{` `}
+            </a>,{` `}
             and all of my{` `}
             <a href={'https://dev.to/bytebodger'}>
                Dev.to articles
