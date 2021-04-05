@@ -4,11 +4,14 @@ import { useRef } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { Footer } from '../../Footer';
+import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 
 export const Projects = () => {
    const nodeRef = useRef(null);
    
    const getCssTransition = match => {
+      if (match !== null)
+         logGooglePageHit('Projects');
       return <>
          <CSSTransition
             classNames={'fade'}

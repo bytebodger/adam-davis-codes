@@ -44,7 +44,7 @@ export const Home = () => {
             marginTop: 16,
             textAlign: css3.textAlign.justify,
          }}>
-            Please know that I'm a <b>remote</b> worker. I'm more than happy to travel. And I'm quite personable in an office setting. But I'm a coder, and there's nothing in your office
+            I am a <b>remote</b> worker. I'm more than happy to travel. And I'm quite personable in an office setting. But I'm a coder, and there's nothing in your office
             that's going to make me a more <i>efficient</i> coder. I don't need a breakroom with free snacks. I don't need impromptu "breakout sessions". I don't need a ping-pong table. I
             need to concentrate - on many thousands of lines of code.
          </div>
@@ -73,7 +73,6 @@ export const Home = () => {
    };
    
    const getCssTransition = match => {
-      //console.log(match);
       if (match !== null)
          logGooglePageHit('Home');
       return <>
