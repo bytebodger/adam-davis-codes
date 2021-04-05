@@ -26,7 +26,10 @@ export const UI = () => {
             <Projects/>
             <Resume/>
             <Skills/>
-            <Route>
+            <Route
+               exact={true}
+               path={'/'}
+            >
                <Redirect to={'/home'}/>
             </Route>
          </Row>
