@@ -241,7 +241,7 @@ export const Resume = () => {
                }}>
                   Technologies Used:
                </div>
-               <span style={{
+               <div style={{
                   border: '1px solid #cccccc',
                   borderRadius: 5,
                   fontSize: '0.9em',
@@ -249,7 +249,7 @@ export const Resume = () => {
                   textAlign: direction,
                }}>
                   {technologies}
-               </span>
+               </div>
             </Column>
          </Row>
       </>;

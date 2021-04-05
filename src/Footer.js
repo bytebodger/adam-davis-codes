@@ -20,7 +20,7 @@ export const Footer = () => {
          style={{
             fontWeight: css3.fontWeight._200,
             minWidth: 350,
-            paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
+            paddingBottom: 96,
             paddingLeft: getResponsiveSpacing(viewport.size, 16, 80),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
             paddingTop: 32,
@@ -35,7 +35,10 @@ export const Footer = () => {
                xs={12}
             >
                <Row style={{minWidth: 350}}>
-                  <Column xs={6}>
+                  <Column
+                     xs={6}
+                     onClick={() => history.push('/phone')}
+                  >
                      <div style={{
                         fontSize: '1.2em',
                         fontWeight: css3.fontWeight._600,
@@ -108,10 +111,14 @@ export const Footer = () => {
          <Hidden smDown={true}>
             <Column>
                <Row style={{fontSize: '0.8em'}}>
-                  <Column style={{
-                     marginRight: 16,
-                     textAlign: css3.textAlign.center,
-                  }}>
+                  <Column
+                     onClick={() => history.push('/phone')}
+                     style={{
+                        cursor: css3.cursor.pointer,
+                        marginRight: 16,
+                        textAlign: css3.textAlign.center,
+                     }}
+                  >
                      <div style={{fontWeight: css3.fontWeight._600}}>
                         Call
                      </div>

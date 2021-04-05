@@ -36,8 +36,8 @@ export const Home = () => {
    const getMainText = () => {
       return <>
          <div style={{textAlign: css3.textAlign.justify}}>
-            I'm a lifelong coder. I wrote my first programs in 1985, when I was 12 years old, in BASIC, on a Coleco Adam home computer... that had a <i>tape drive</i>. I've "evolved" through PHP, ColdFusion,
-            SQL, Java, and C#. For the last decade or so, I've been been working my way through many "flavors" of JavaScript. I was heavily focused first on jQuery, then Angular, and
+            I wrote my first programs in 1985, when I was 12 years old, in BASIC, on a Coleco Adam home computer... that had a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
+            SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of JavaScript. I was heavily focused first on jQuery, then Angular, and
             now React.
          </div>
          <div style={{
@@ -58,7 +58,7 @@ export const Home = () => {
             <a href={'https://github.com/bytebodger'}>
                GitHub repos
             </a>{` `}
-            (including the React code for this site), and all of my{` `}
+            (including the React code for <i>this</i> site), and all of my{` `}
             <a href={'https://www.npmjs.com/search?q=%40toolz'}>
                NPM packages
             </a>,{` `}
@@ -66,8 +66,7 @@ export const Home = () => {
             <a href={'https://dev.to/bytebodger'}>
                Dev.to articles
             </a>
-            . You'll
-            find more about me in those locations than you will in any traditional job interview.
+            . You'll learn more about me in those locations than you will in any traditional job interview.
          </div>
       </>;
    };
@@ -167,7 +166,7 @@ export const Home = () => {
                               backgroundColor: 'rgba(255, 255, 255, 0.8)',
                               padding: 16,
                            }}>
-                              <h1 style={{marginTop: 0}}>Who Am I?</h1>
+                              <h1 style={{marginTop: 0}}>A Lifetime of Coding</h1>
                               {getMainText()}
                            </div>
                         </Column>
@@ -236,7 +235,7 @@ export const Home = () => {
                               paddingRight: getResponsiveSpacing(viewport.size, 8, 48),
                            }}
                         >
-                           <h1>Who Am I?</h1>
+                           <h1>A Lifetime of Coding</h1>
                            {getMainText()}
                         </Column>
                         <Column md={1} lg={2} xl={3}/>

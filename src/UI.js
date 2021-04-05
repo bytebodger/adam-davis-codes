@@ -10,6 +10,7 @@ import { Skills } from './routes/skills/Skills';
 import { Route, Redirect } from 'react-router-dom';
 import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 import { Email } from './routes/email/Email';
+import { Phone } from './routes/phone/Phone';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -25,6 +26,7 @@ export const UI = () => {
             <Email/>
             <Home/>
             <Interests/>
+            <Phone/>
             <Projects/>
             <Resume/>
             <Skills/>
