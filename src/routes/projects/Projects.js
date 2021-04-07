@@ -144,7 +144,10 @@ export const Projects = () => {
                key={npmPackage}
                style={{backgroundColor: index % 2 ? '#eeeeee' : 'white'}}
             >
-               <td style={{fontSize: '0.9em'}}>
+               <td style={{
+                  fontSize: '0.9em',
+                  fontWeight: css3.fontWeight._500,
+               }}>
                   <a
                      href={'https://npmjs.com/package/@toolz/' + npmPackage}
                      rel={'noopener noreferrer'}
