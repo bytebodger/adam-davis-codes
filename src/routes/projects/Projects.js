@@ -94,7 +94,7 @@ export const Projects = () => {
                            devMobile,
                            'The Dev.to blogs written by Adam Nathaniel Davis',
                         )}
-                        <div style={{height: 32}}/>
+                        <div style={{height: 48}}/>
                         {getProjectCard(
                            'NPM Packages',
                            <>
