@@ -20,6 +20,7 @@ export const UI = () => {
    useConstructor(() => {
       use.devToArticlesEndpoint.loadArticles();
       use.npmDownloadsEndpoint.loadDownloads();
+      use.githubReposEndpoint.loadRepos();
    });
    
    return <>

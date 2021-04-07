@@ -17,6 +17,8 @@ import npmDesktop from '../../common/images/npm-desktop.jpg';
 import npmMobile from '../../common/images/npm-mobile.jpg';
 import spotifyDesktop from '../../common/images/spotify-desktop.jpg';
 import spotifyMobile from '../../common/images/spotify-mobile.jpg';
+import githubDesktop from '../../common/images/github-desktop.jpg';
+import githubMobile from '../../common/images/github-mobile.jpg';
 import { use } from '../../common/objects/use';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
@@ -26,6 +28,7 @@ export const Projects = () => {
    const viewport = useViewport();
    const devTo = use.devToArticlesEndpoint;
    const npm = use.npmDownloadsEndpoint;
+   const github = use.githubReposEndpoint;
    
    const getArticleLinks = () => {
       return devTo.articles.map((article, index) => {
@@ -150,6 +153,19 @@ export const Projects = () => {
                            'A custom React application to extend Spotify\'s native functionality',
                            'left',
                            'https://spotifytoolz.com',
+                        )}
+                        <div style={{height: 48}}/>
+                        {getProjectCard(
+                           'GitHub',
+                           <>
+                              This is basically a superset of my NPM packages:
+                              {getRepoLinks()}
+                           </>,
+                           githubDesktop,
+                           githubMobile,
+                           'The GitHub repositories for Adam Nathaniel Davis',
+                           'right',
+                           'https://github.com/bytebodger?tab=repositories',
                         )}
                      </Column>
                   </Row>
@@ -344,6 +360,32 @@ export const Projects = () => {
             </Hidden>
          </div>
       </>;
+   };
+   
+   const getRepoLinks = () => {
+      return github.repos.map((repo, index) => {
+         return <div
+            key={repo.id}
+            style={{
+               backgroundColor: index % 2 ? '#eeeeee' : 'white',
+               fontSize: '0.9em',
+               paddingBottom: 4,
+               paddingTop: 4,
+            }}
+         >
+            <a
+               href={repo.html_url}
+               rel={'noreferrer'}
+               style={{
+                  fontWeight: css3.fontWeight._500,
+                  textDecoration: css3.textDecoration.none,
+               }}
+               target={'_blank'}
+            >
+               {repo.name}
+            </a>
+         </div>;
+      });
    };
    
    return <>
