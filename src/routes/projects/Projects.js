@@ -13,6 +13,8 @@ import { Column } from '@toolz/material-ui/dist/Column';
 import { Hidden } from '@material-ui/core';
 import devDesktop from '../../common/images/dev-desktop.jpg';
 import devMobile from '../../common/images/dev-mobile.jpg';
+import npmDesktop from '../../common/images/npm-desktop.jpg';
+import npmMobile from '../../common/images/npm-mobile.jpg';
 import { use } from '../../common/objects/use';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
@@ -21,6 +23,7 @@ export const Projects = () => {
    const nodeRef = useRef(null);
    const viewport = useViewport();
    const devTo = use.devToArticlesEndpoint;
+   const npm = use.npmDownloadsEndpoint;
    
    const getArticleLinks = () => {
       return devTo.articles.map(article => {
@@ -87,7 +90,40 @@ export const Projects = () => {
                            </>,
                            devDesktop,
                            devMobile,
-                           'The Dev.to blogs of Adam Nathaniel Davis',
+                           'The Dev.to blogs written by Adam Nathaniel Davis',
+                        )}
+                        <div style={{height: 32}}/>
+                        {getProjectCard(
+                           'NPM Packages',
+                           <>
+                              To-date, my NPM packages have been installed more than {npm.downloads} times:
+                              <br/>
+                              <table style={{width: '100%'}}>
+                                 <thead>
+                                    <tr>
+                                       <th style={{
+                                          textAlign: css3.textAlign.left,
+                                          width: '90%',
+                                       }}>
+                                          Package
+                                       </th>
+                                       <th style={{
+                                          minWidth: 50,
+                                          textAlign: css3.textAlign.right,
+                                          width: '10%',
+                                       }}>
+                                          Downloads
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {getNpmPackageLinks()}
+                                 </tbody>
+                              </table>
+                           </>,
+                           npmDesktop,
+                           npmMobile,
+                           'The NPM packages created by Adam Nathaniel Davis',
                         )}
                      </Column>
                   </Row>
@@ -96,6 +132,31 @@ export const Projects = () => {
             </div>
          </CSSTransition>
       </>;
+   };
+   
+   const getNpmPackageLinks = () => {
+      const rows = [];
+      Object.entries(npm.npmPackages).forEach((entry, index) => {
+         const [npmPackage, downloads] = entry;
+         rows.push(
+            <tr
+               key={npmPackage}
+               style={{backgroundColor: index % 2 ? 'lightgray' : 'white'}}
+            >
+               <td>
+                  <a
+                     href={'https://npmjs.com/package/@toolz/' + npmPackage}
+                     rel={'noopener noreferrer'}
+                     target={'_blank'}
+                  >
+                     @toolz/{npmPackage}
+                  </a>
+               </td>
+               <td style={{textAlign: css3.textAlign.right}}>{downloads}</td>
+            </tr>
+         );
+      });
+      return rows;
    };
    
    const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '') => {

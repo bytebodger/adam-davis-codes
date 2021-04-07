@@ -17,7 +17,10 @@ import { use } from './common/objects/use';
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
    
-   useConstructor(() => use.devToArticlesEndpoint.loadArticles());
+   useConstructor(() => {
+      use.devToArticlesEndpoint.loadArticles();
+      use.npmDownloadsEndpoint.loadDownloads();
+   });
    
    return <>
       <div style={{minWidth: 300}}>
