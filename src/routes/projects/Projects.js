@@ -15,6 +15,8 @@ import devDesktop from '../../common/images/dev-desktop.jpg';
 import devMobile from '../../common/images/dev-mobile.jpg';
 import npmDesktop from '../../common/images/npm-desktop.jpg';
 import npmMobile from '../../common/images/npm-mobile.jpg';
+import spotifyDesktop from '../../common/images/spotify-desktop.jpg';
+import spotifyMobile from '../../common/images/spotify-mobile.jpg';
 import { use } from '../../common/objects/use';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
@@ -87,18 +89,20 @@ export const Projects = () => {
                         {getProjectCard(
                            'Blogging',
                            <>
-                              I've currently written {devTo.articles.length} blog articles on Dev.to covering a broad range of my views on application development:
+                              I've currently written <b>{devTo.articles.length}</b> blog articles on Dev.to covering a broad range of my views on application development:
                               {getArticleLinks()}
                            </>,
                            devDesktop,
                            devMobile,
                            'The Dev.to blogs written by Adam Nathaniel Davis',
+                           'left',
+                           'https://dev.to/bytebodger',
                         )}
                         <div style={{height: 48}}/>
                         {getProjectCard(
                            'NPM Packages',
                            <>
-                              To-date, my NPM packages have been installed more than {npm.downloads} times:
+                              To-date, my NPM packages have been installed more than <b>{npm.downloads}</b> times:
                               <table>
                                  <thead>
                                     <tr style={{fontSize: '0.9em'}}>
@@ -125,6 +129,27 @@ export const Projects = () => {
                            npmDesktop,
                            npmMobile,
                            'The NPM packages created by Adam Nathaniel Davis',
+                           'right',
+                           'https://www.npmjs.com/search?q=%40toolz',
+                        )}
+                        <div style={{height: 48}}/>
+                        {getProjectCard(
+                           'Spotify Toolz',
+                           <>
+                              No, I didn't <i>write</i> any of the natify Spotify clients. Nor did I contribute to them in any way. But as a longtime subscriber to their service, I grew increasingly exasperated by several
+                              key "issues":
+                              <ul>
+                                 <li style={{marginBottom: 16}}>Spotify's "shuffle" feature is not random. Not even close. And there's no way inside their client to configure it to behave randomly.</li>
+                                 <li style={{marginBottom: 16}}>Spotify is attrocious at recommending new music. It frequently recommends the same tracks/artists repeatedly, even if you've done everything in your power to ignore those recommendations.</li>
+                                 <li>If you maintain large playlists in Spotify, it's surprisingly difficult to identify/avoid duplicate entries, because Spotify can have many copies of the same track that are not 100% identical.</li>
+                              </ul>
+                              Thankfully, Spotify has a fairly-robust API. So I built a publicly-accessible React application that will allow anyone to avoid the issues described above.
+                           </>,
+                           spotifyDesktop,
+                           spotifyMobile,
+                           'A custom React application to extend Spotify\'s native functionality',
+                           'left',
+                           'https://spotifytoolz.com',
                         )}
                      </Column>
                   </Row>
@@ -164,14 +189,19 @@ export const Projects = () => {
       return rows;
    };
    
-   const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '') => {
-      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty);
+   const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
+      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
       const styles = {
          card: {
             backgroundColor: the.color.white,
             boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
+            position: css3.position.relative,
          },
       };
+      if (offset === 'left')
+         styles.card.right = getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12);
+      else if (offset === 'right')
+         styles.card.left = getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12);
       return <>
          <div style={styles.card}>
             <Hidden mdUp={true}>
@@ -295,14 +325,20 @@ export const Projects = () => {
                         width: '41.66%',
                      }}
                   >
-                     <img
-                        alt={imageAltText}
-                        src={desktopImage}
-                        style={{
-                           height: '100%',
-                           width: '100%',
-                        }}
-                     />
+                     <a
+                        href={url}
+                        rel={'noopener noreferrer'}
+                        target={'_blank'}
+                     >
+                        <img
+                           alt={imageAltText}
+                           src={desktopImage}
+                           style={{
+                              height: '100%',
+                              width: '100%',
+                           }}
+                        />
+                     </a>
                   </Column>
                </Row>
             </Hidden>
