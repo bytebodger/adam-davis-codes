@@ -166,7 +166,7 @@ export const Home = () => {
                               backgroundColor: 'rgba(255, 255, 255, 0.8)',
                               padding: 16,
                            }}>
-                              <h1 style={{marginTop: 0}}>A Lifetime of Coding</h1>
+                              <h1 style={{marginTop: 0}}>A Coding Life</h1>
                               {getMainText()}
                            </div>
                         </Column>
@@ -235,7 +235,7 @@ export const Home = () => {
                               paddingRight: getResponsiveSpacing(viewport.size, 8, 48),
                            }}
                         >
-                           <h1>A Lifetime of Coding</h1>
+                           <h1>A Coding Life</h1>
                            {getMainText()}
                         </Column>
                         <Column md={1} lg={2} xl={3}/>

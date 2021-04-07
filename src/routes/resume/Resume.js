@@ -70,7 +70,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('JavaScript, React, Node, Express, REST, HTML/CSS, Electron, Jenkins, GitHub', 'left')}
                         </div>
-                        {getTrailSpacer('right')}
+                        {getTrailSpacer('left')}
                         <div style={styles.jobCard}>
                            {getTimeframe('2019', 'right')}
                            <Row style={{paddingTop: 8}}>
@@ -79,7 +79,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('PHP, JavaScript, React, jQuery, MySQL, PostgreSQL, REST, HTML/CSS, TFS', 'right')}
                         </div>
-                        {getTrailSpacer('left')}
+                        {getTrailSpacer('right')}
                         <div style={styles.jobCard}>
                            {getTimeframe('2017 - 2019', 'left')}
                            <Row style={{paddingTop: 8}}>
@@ -88,7 +88,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('Java, Oracle, JavaScript, Angular, React, jQuery, REST, HTML/CSS, Jenkins, Git', 'left')}
                         </div>
-                        {getTrailSpacer('right')}
+                        {getTrailSpacer('left')}
                         <div style={styles.jobCard}>
                            {getTimeframe('2015 - 2017', 'right')}
                            <Row style={{paddingTop: 8}}>
@@ -97,7 +97,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('ColdFusion, C#, JavaScript, jQuery, REST, MS-SQL, HTML/CSS, Perforce', 'right')}
                         </div>
-                        {getTrailSpacer('left')}
+                        {getTrailSpacer('right')}
                         <div style={styles.jobCard}>
                            {getTimeframe('2012 - 2015', 'left')}
                            <Row style={{paddingTop: 8}}>
@@ -106,7 +106,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('C#, MS-SQL, JavaScript, jQuery, Knockout, Sitecore, Node, HTML/CSS, TFS', 'left')}
                         </div>
-                        {getTrailSpacer('right')}
+                        {getTrailSpacer('left')}
                         <div style={styles.jobCard}>
                            {getTimeframe('2010 - 2012', 'right')}
                            <Row style={{paddingTop: 8}}>
@@ -115,7 +115,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('PHP, JavaScript, jQuery, C#, MS-SQL, MySQL, HTML/CSS', 'right')}
                         </div>
-                        {getTrailSpacer('left')}
+                        {getTrailSpacer('right')}
                         <div style={styles.jobCard}>
                            {getTimeframe('2007 - 2010', 'left')}
                            <Row style={{paddingTop: 8}}>
@@ -124,7 +124,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('PHP, MySQL, Google Analytics, JavaScript, jQuery, HTML/CSS', 'left')}
                         </div>
-                        {getTrailSpacer('right')}
+                        {getTrailSpacer('left')}
                         <div style={styles.jobCard}>
                            {getTimeframe('2004 - 2007', 'right')}
                            <Row style={{paddingTop: 8}}>
@@ -133,7 +133,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('ColdFusion, MS-SQL, JavaScript, HTML/CSS', 'right')}
                         </div>
-                        {getTrailSpacer('left')}
+                        {getTrailSpacer('right')}
                         <div style={styles.jobCard}>
                            {getTimeframe('2001 - 2004', 'left')}
                            <Row style={{paddingTop: 8}}>
@@ -142,7 +142,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('ColdFusion, PHP, MS-SQL, HTML/CSS', 'left')}
                         </div>
-                        {getTrailSpacer('right')}
+                        {getTrailSpacer('left')}
                         <div style={styles.jobCard}>
                            {getTimeframe('1997 - 2001', 'right')}
                            <Row style={{paddingTop: 8}}>
@@ -151,7 +151,7 @@ export const Resume = () => {
                            </Row>
                            {getTechnologiesUsed('PHP, MySQL, HTML/CSS', 'right')}
                         </div>
-                        {getTrailSpacer('left')}
+                        {getTrailSpacer('right')}
                         <div style={styles.jobCard}>
                            {getTimeframe('1992 - 1997', 'left')}
                            <Row style={{paddingTop: 8}}>
@@ -177,10 +177,10 @@ export const Resume = () => {
                            {getTimeframe('1985 - Present', 'left')}
                            <Row style={{paddingTop: 8}}>
                               {getTitleAndEmployer('Programming', 'Self-Taught', 'left')}
-                              {getJobDescription(`I've never taken a programming course of any sort.  I never went to school to learn anything related to application development.  Every technology I've used, every software skill I've acquired, every language I've used has been completely self-taught.`, 'left')}
+                              {getJobDescription(`I've never taken a programming course of any sort.  I never went to school to learn anything related to application development.  Every technology I've used, every software skill I've acquired, every language I've learned, has been completely self-taught.`, 'left')}
                            </Row>
                         </div>
-                        {getTrailSpacer('right')}
+                        {getTrailSpacer('left')}
                         <div style={styles.jobCard}>
                            {getTimeframe('1997', 'right')}
                            <Row style={{paddingTop: 8}}>
@@ -188,7 +188,7 @@ export const Resume = () => {
                               {getTitleAndEmployer('Associate of Electronics', 'Community College of the Air Force', 'right')}
                            </Row>
                         </div>
-                        {getTrailSpacer('left')}
+                        {getTrailSpacer('right')}
                         <div style={styles.jobCard}>
                            {getTimeframe('1990', 'left')}
                            <Row style={{paddingTop: 8}}>

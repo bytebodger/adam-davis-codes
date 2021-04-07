@@ -5,4 +5,9 @@ export const the = {
       sand: '#F4ECE6',
       white: '#ffffff',
    },
+   method: {
+      get: 'GET',
+      post: 'POST',
+      put: 'PUT',
+   },
 };

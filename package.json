@@ -17,6 +17,7 @@
     "@toolz/capitalize": "^1.0.0",
     "@toolz/css3": "^1.0.1",
     "@toolz/material-ui": "^1.0.14",
+    "@toolz/use-constructor": "^1.0.1",
     "@toolz/use-synchronous-state": "^1.0.6",
     "@toolz/use-viewport": "^1.0.1",
     "@types/react-router": "^5.1.13",

@@ -11,9 +11,13 @@ import { Route, Redirect } from 'react-router-dom';
 import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 import { Email } from './routes/email/Email';
 import { Phone } from './routes/phone/Phone';
+import { useConstructor } from '@toolz/use-constructor';
+import { use } from './common/objects/use';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
+   
+   useConstructor(() => use.devToArticlesEndpoint.getArticles());
    
    return <>
       <div style={{minWidth: 300}}>
