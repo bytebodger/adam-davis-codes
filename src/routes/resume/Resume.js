@@ -61,7 +61,7 @@ export const Resume = () => {
                            paddingRight: 8,
                         }}
                      >
-                        <h1>Experience</h1>
+                        <h1 style={{marginTop: isMobile ? 0 : 'initial'}}>Experience</h1>
                         <div style={styles.jobCard}>
                            {getTimeframe('2020 - Present', 'left')}
                            <Row style={{paddingTop: 8}}>
