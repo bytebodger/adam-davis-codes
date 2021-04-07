@@ -8,7 +8,6 @@ export const useGithubReposEndpoint = () => {
    
    const loadRepos = async () => {
       const response = await axios.call(the.method.get, 'https://api.github.com/users/bytebodger/repos');
-      console.log(response.data);
       if (response.status === 200)
          setRepos(response.data);
    };
