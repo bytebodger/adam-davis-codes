@@ -99,8 +99,7 @@ export const Projects = () => {
                            'NPM Packages',
                            <>
                               To-date, my NPM packages have been installed more than {npm.downloads} times:
-                              <br/>
-                              <table style={{width: '100%'}}>
+                              <table>
                                  <thead>
                                     <tr>
                                        <th style={{
@@ -145,10 +144,11 @@ export const Projects = () => {
                key={npmPackage}
                style={{backgroundColor: index % 2 ? '#eeeeee' : 'white'}}
             >
-               <td>
+               <td style={{fontSize: '0.9em'}}>
                   <a
                      href={'https://npmjs.com/package/@toolz/' + npmPackage}
                      rel={'noopener noreferrer'}
+                     style={{textDecoration: css3.textDecoration.none}}
                      target={'_blank'}
                   >
                      @toolz/{npmPackage}
@@ -253,6 +253,7 @@ export const Projects = () => {
                         flexDirection: 'column',
                         flexGrow: 1,
                         minHeight: 0,
+                        width: '58.33%',
                      }}
                   >
                      <div>
@@ -285,7 +286,11 @@ export const Projects = () => {
                   </Column>
                   <Column
                      xs={5}
-                     style={{height: 400}}
+                     style={{
+                        height: 400,
+                        maxWidth: '41.66%',
+                        width: '41.66%',
+                     }}
                   >
                      <img
                         alt={imageAltText}
