@@ -26,12 +26,14 @@ export const Projects = () => {
    const npm = use.npmDownloadsEndpoint;
    
    const getArticleLinks = () => {
-      return devTo.articles.map(article => {
+      return devTo.articles.map((article, index) => {
          return <div
             key={article.id}
             style={{
+               backgroundColor: index % 2 ? '#eeeeee' : 'white',
                fontSize: '0.9em',
-               paddingTop: 8,
+               paddingBottom: 4,
+               paddingTop: 4,
             }}
          >
             <a
@@ -141,7 +143,7 @@ export const Projects = () => {
          rows.push(
             <tr
                key={npmPackage}
-               style={{backgroundColor: index % 2 ? 'lightgray' : 'white'}}
+               style={{backgroundColor: index % 2 ? '#eeeeee' : 'white'}}
             >
                <td>
                   <a
