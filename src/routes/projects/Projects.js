@@ -101,7 +101,7 @@ export const Projects = () => {
                               To-date, my NPM packages have been installed more than {npm.downloads} times:
                               <table>
                                  <thead>
-                                    <tr>
+                                    <tr style={{fontSize: '0.9em'}}>
                                        <th style={{
                                           textAlign: css3.textAlign.left,
                                           width: '90%',
