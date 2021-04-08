@@ -36,7 +36,7 @@ export const Home = () => {
    const getMainText = () => {
       return <>
          <div style={{textAlign: css3.textAlign.justify}}>
-            I wrote my first programs in 1985, when I was 12 years old, in BASIC, on a Coleco Adam home computer... that had a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
+            I wrote my first program in 1984, when I was 11 years old, in BASIC, on a Coleco Adam home computer... that had a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
             SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of JavaScript. I was heavily focused first on jQuery, then Angular, and
             now React.
          </div>
