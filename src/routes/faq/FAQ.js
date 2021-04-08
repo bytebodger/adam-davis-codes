@@ -280,7 +280,7 @@ export const FAQ = () => {
                                  that have reached out <i>to me</i>. It's like having someone ask you out on a date, and then they say, "So... why did you want to date me?" HR departments and marketing types usually don't want
                                  to hear this, but the simple fact is that I probably couldn't care less <i>what</i> your company does and, at the point you're asking me this question, I probably have no idea whether or not I'm a good
                                  fit for your company. I don't much care if you're in Silicon Valley or sub-Saharan Africa. I don't care if your company makes piston rings or SaaS products. The splendiforous nature of your company's
-                                 product/industry/whatever has no little-to-no impact on my desire to actually write code for your company. What I care about is: How does your
+                                 product/industry/whatever has little-to-no impact on my desire to actually write code for your company. What I care about is: How does your
                                  current dev process work? How do you go about writing code? How do client needs/requests ultimately get communicated to the dev team? How are the devs in your company treated? What is it
                                  actually <i>like</i> to write code for your company? If I know <i>those</i> sorts of things, then I can more accurately
                                  answer whether I'm a good fit for your company and whether I'd even like to continue being considered for any potential role.
