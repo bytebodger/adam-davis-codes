@@ -35,8 +35,8 @@ export const Header = () => {
       '/home',
       '/resume',
       '/projects',
-      '/skills',
       '/interests',
+      '/faq',
    ];
    
    const getLinks = () => {

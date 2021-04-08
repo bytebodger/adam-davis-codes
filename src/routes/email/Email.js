@@ -10,10 +10,11 @@ import { useViewport } from '@toolz/use-viewport';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Footer } from '../../Footer';
+import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
 export const Email = () => {
    const nodeRef = useRef(null);
-   const viewport = useViewport();
+   const viewport = useViewport(materialUiBreakpoints);
    
    const getCssTransition = match => {
       if (match !== null)

@@ -12,11 +12,12 @@ import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacin
 import { useViewport } from '@toolz/use-viewport';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
+import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
 export const Resume = () => {
    const directions = ['left', 'right'];
    const nodeRef = useRef(null);
-   const viewport = useViewport();
+   const viewport = useViewport(materialUiBreakpoints);
    const isMobile = ['xs', 'sm'].includes(viewport.size);
    
    const getCssTransition = match => {

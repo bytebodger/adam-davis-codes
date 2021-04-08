@@ -22,10 +22,11 @@ import githubMobile from '../../common/images/github-mobile.jpg';
 import { use } from '../../common/objects/use';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
+import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
 export const Projects = () => {
    const nodeRef = useRef(null);
-   const viewport = useViewport();
+   const viewport = useViewport(materialUiBreakpoints);
    const devTo = use.devToArticlesEndpoint;
    const npm = use.npmDownloadsEndpoint;
    const github = use.githubReposEndpoint;

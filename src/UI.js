@@ -6,13 +6,13 @@ import { Home } from './routes/home/Home';
 import { Resume } from './routes/resume/Resume';
 import { Interests } from './routes/interests/Interests';
 import { Projects } from './routes/projects/Projects';
-import { Skills } from './routes/skills/Skills';
 import { Route, Redirect } from 'react-router-dom';
 import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 import { Email } from './routes/email/Email';
 import { Phone } from './routes/phone/Phone';
 import { useConstructor } from '@toolz/use-constructor';
 import { use } from './common/objects/use';
+import { FAQ } from './routes/faq/FAQ';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -32,12 +32,12 @@ export const UI = () => {
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
          }}>
             <Email/>
+            <FAQ/>
             <Home/>
             <Interests/>
             <Phone/>
             <Projects/>
             <Resume/>
-            <Skills/>
             <Route
                exact={true}
                path={'/'}

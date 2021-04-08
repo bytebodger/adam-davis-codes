@@ -21,10 +21,11 @@ import npxMobile from '../../common/images/npx-mobile.jpg';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
 import { Hidden } from '@material-ui/core';
+import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
 export const Interests = () => {
    const nodeRef = useRef(null);
-   const viewport = useViewport();
+   const viewport = useViewport(materialUiBreakpoints);
    
    const getCssTransition = match => {
       if (match !== null)
