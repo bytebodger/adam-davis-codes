@@ -84,6 +84,25 @@ export const FAQ = () => {
                                  fontSize: isMobile ? '0.9em' : '1em',
                                  marginTop: 0,
                               }}>
+                                 That's great that you have a personal-resume website, but I need for you to <i>send me</i> a copy of your resume.
+                              </h3>
+                              <div style={{
+                                 fontSize: isMobile ? '0.8em' : '0.9em',
+                                 textAlign: css3.textAlign.justify,
+                              }}>
+                                 If this entire website, overflowing with personal and professional details about myself, doesn't satisfy your requirement that I "send you a copy of my resume", then please remove me from any
+                                 further consideration for whatever role you might've wanted to offer me. Right now. And please, please, <i>please</i> don't ever call me again.
+                              </div>
+                           </Column>
+                        </div>
+                        <div style={{height: 48}}/>
+                        <div style={styles.card}>
+                           <Column xs={12}>
+                              <h3 style={{
+                                 color: the.color.purple,
+                                 fontSize: isMobile ? '0.9em' : '1em',
+                                 marginTop: 0,
+                              }}>
                                  Can you please add the months to the start/end dates of your employment entries on your resume?
                               </h3>
                               <div style={{
@@ -165,6 +184,27 @@ export const FAQ = () => {
                                  fontSize: isMobile ? '0.9em' : '1em',
                                  marginTop: 0,
                               }}>
+                                 I see that you live in Jacksonville, Florida, and you're interested in remote work. Well, I have a "remote" opportunity with a company right here in Jacksonville.
+                              </h3>
+                              <div style={{
+                                 fontSize: isMobile ? '0.8em' : '0.9em',
+                                 textAlign: css3.textAlign.justify,
+                              }}>
+                                 Before you get too far into your pitch... I'm probably not interested. You see, I've found through rather painful firsthand experience that, when you work "remotely", but you live in the same
+                                 city as your employer's offices, they tend to just <i>assume</i> that you'll be happy to be in their offices most of the time. I've seen this play out badly in multiple scenarios. In fact, in
+                                 one scenario, <i>the entire team was remote</i> but they still wanted me to come into the office every day - just because they knew that I lived in the same city. So to put this in a rather blunt
+                                 manner, when I talk to a company about a so-called "remote" opportunity, and then I realize that they're located right here in my hometown, quite frankly... I don't <i>trust</i> them.
+                              </div>
+                           </Column>
+                        </div>
+                        <div style={{height: 48}}/>
+                        <div style={styles.card}>
+                           <Column xs={12}>
+                              <h3 style={{
+                                 color: the.color.purple,
+                                 fontSize: isMobile ? '0.9em' : '1em',
+                                 marginTop: 0,
+                              }}>
                                  We'd like you to do this little coding exercise to be considered for the job.
                               </h3>
                               <div style={{
@@ -216,9 +256,9 @@ export const FAQ = () => {
                                  textAlign: css3.textAlign.justify,
                               }}>
                                  OK, I'm not saying that I <i>won't</i> do your tests. But I won't be doing them if I'm not already deeply intrigued by your company. And even if I am, there's a decent chance that I'll <i>fail</i> them.
-                                 Is that because I'm a crappy coder? A quarter-century of experience seems to indicate that I'm not. It's because most of those online coding tests are completely inable to test a coder's actual
-                                 skills. They create trivial tasks, with unnecessarily complicated instructions, with artificial time constraints. You see, the real problem is that your fancy online coding tests <i>aren't testing
-                                 what you think they're testing</i>.
+                                 Is that because I'm a crappy coder? Hardly. A quarter-century of experience seems to indicate that I'm not. It's because most of those online coding tests are completely unable to test a coder's actual
+                                 skills. They create trivial tasks, with unnecessarily-complicated instructions, with artificial time constraints. You see, the real problem is that your fancy online coding tests <i>aren't testing
+                                 what you think they're testing</i>. (P.S. I've actually blogged <i>extensively</i> about this exact subject.)
                               </div>
                            </Column>
                         </div>
@@ -230,7 +270,7 @@ export const FAQ = () => {
                                  fontSize: isMobile ? '0.9em' : '1em',
                                  marginTop: 0,
                               }}>
-                                 What makes you think you're a good fit for this company?
+                                 Why do you think you're a good fit for this company?
                               </h3>
                               <div style={{
                                  fontSize: isMobile ? '0.8em' : '0.9em',
@@ -238,10 +278,12 @@ export const FAQ = () => {
                               }}>
                                  I'm putting this here because this is asked sooooo frequently in interviews - and it's one of the dumbest questions that I ever hear in an interview. First of all, I'm usually talking to companies
                                  that have reached out <i>to me</i>. It's like having someone ask you out on a date, and then they say, "So... why did you want to date me?" HR departments and marketing types usually don't want
-                                 to hear this, but the simple fact is that I probably couldn't care less <i>what</i> your company does and, at the point you're asking me this question, I probably have no idea whether I'm a good
-                                 fit for your company or not. I don't much care if you're in Silicon Valley or sub-Saharan Africa. I don't care if your company makes bolts or SaaS products. What I care about is: How does your
-                                 current dev process work? How do you go about writing code? How do client needs/requests ultimately get communicated to the dev team? If I know <i>those</i> sorts of things, then I can more accurately
-                                 answer <i>whether</i> I'm a good fit for your company and <i>whether</i> I'd even like to continue being considered for any potential role.
+                                 to hear this, but the simple fact is that I probably couldn't care less <i>what</i> your company does and, at the point you're asking me this question, I probably have no idea whether or not I'm a good
+                                 fit for your company. I don't much care if you're in Silicon Valley or sub-Saharan Africa. I don't care if your company makes piston rings or SaaS products. The splendiforous nature of your company's
+                                 product/industry/whatever has no little-to-no impact on my desire to actually write code for your company. What I care about is: How does your
+                                 current dev process work? How do you go about writing code? How do client needs/requests ultimately get communicated to the dev team? How are the devs in your company treated? What is it
+                                 actually <i>like</i> to write code for your company? If I know <i>those</i> sorts of things, then I can more accurately
+                                 answer whether I'm a good fit for your company and whether I'd even like to continue being considered for any potential role.
                               </div>
                            </Column>
                         </div>

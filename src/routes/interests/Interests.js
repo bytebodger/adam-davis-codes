@@ -188,16 +188,25 @@ export const Interests = () => {
                <Row>
                   <Column
                      xs={12}
-                     style={{height: 200}}
+                     style={{
+                        height: 200,
+                        overflow: css3.overflow.hidden,
+                     }}
                   >
-                     <img
-                        alt={imageAltText}
-                        src={mobileImage}
-                        style={{
-                           height: '100%',
-                           width: '100%',
-                        }}
-                     />
+                     <a
+                        href={url}
+                        rel={'noopener noreferrer'}
+                        target={'_blank'}
+                     >
+                        <img
+                           alt={imageAltText}
+                           src={mobileImage}
+                           style={{
+                              height: css3.height.initial,
+                              width: '100%',
+                           }}
+                        />
+                     </a>
                   </Column>
                </Row>
             </Hidden>
@@ -244,28 +253,23 @@ export const Interests = () => {
                         {body}
                      </div>
                   </Column>
-                  <Column
-                     xs={5}
-                     style={{
-                        height: 400,
-                        maxWidth: '41.66%',
-                        width: '41.66%',
-                     }}
-                  >
-                     <a
-                        href={url}
-                        rel={'noopener noreferrer'}
-                        target={'_blank'}
-                     >
-                        <img
-                           alt={imageAltText}
-                           src={desktopImage}
-                           style={{
-                              height: '100%',
-                              width: '100%',
-                           }}
-                        />
-                     </a>
+                  <Column xs={5}>
+                     <div style={{overflow: css3.overflow.hidden}}>
+                        <a
+                           href={url}
+                           rel={'noopener noreferrer'}
+                           target={'_blank'}
+                        >
+                           <img
+                              alt={imageAltText}
+                              src={desktopImage}
+                              style={{
+                                 height: 400,
+                                 width: css3.width.initial,
+                              }}
+                           />
+                        </a>
+                     </div>
                   </Column>
                </Row>
             </Hidden>

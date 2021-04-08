@@ -140,14 +140,14 @@ export const Projects = () => {
                         {getProjectCard(
                            'Spotify Toolz',
                            <>
-                              No, I didn't <i>write</i> any of the natify Spotify clients. Nor did I contribute to them in any way. But as a longtime subscriber to their service, I grew increasingly exasperated by several
+                              No, I didn't <i>write</i> any of the native Spotify clients. Nor did I contribute to them in any way. But as a longtime subscriber to their service, I grew increasingly exasperated by several
                               key "issues":
                               <ul>
                                  <li style={{marginBottom: 16}}>Spotify's "shuffle" feature is not random. Not even close. And there's no way inside their client to configure it to behave randomly.</li>
                                  <li style={{marginBottom: 16}}>Spotify is attrocious at recommending new music. It frequently recommends the same tracks/artists repeatedly, even if you've done everything in your power to ignore those recommendations.</li>
                                  <li>If you maintain large playlists in Spotify, it's surprisingly difficult to identify/avoid duplicate entries, because Spotify can have many copies of the same track that are not 100% identical.</li>
                               </ul>
-                              Thankfully, Spotify has a fairly-robust API. So I built a publicly-accessible React application that will allow anyone to avoid the issues described above.
+                              Thankfully, Spotify has a fairly-robust API. So I built a publicly-accessible React application that will allow anyone to mitigate the issues described above.
                            </>,
                            spotifyDesktop,
                            spotifyMobile,
@@ -277,16 +277,25 @@ export const Projects = () => {
                <Row>
                   <Column
                      xs={12}
-                     style={{height: 200}}
+                     style={{
+                        height: 200,
+                        overflow: css3.overflow.hidden,
+                     }}
                   >
-                     <img
-                        alt={imageAltText}
-                        src={mobileImage}
-                        style={{
-                           height: '100%',
-                           width: '100%',
-                        }}
-                     />
+                     <a
+                        href={url}
+                        rel={'noopener noreferrer'}
+                        target={'_blank'}
+                     >
+                        <img
+                           alt={imageAltText}
+                           src={mobileImage}
+                           style={{
+                              height: css3.height.initial,
+                              width: '100%',
+                           }}
+                        />
+                     </a>
                   </Column>
                </Row>
             </Hidden>
@@ -334,28 +343,23 @@ export const Projects = () => {
                         {body}
                      </div>
                   </Column>
-                  <Column
-                     xs={5}
-                     style={{
-                        height: 400,
-                        maxWidth: '41.66%',
-                        width: '41.66%',
-                     }}
-                  >
-                     <a
-                        href={url}
-                        rel={'noopener noreferrer'}
-                        target={'_blank'}
-                     >
-                        <img
-                           alt={imageAltText}
-                           src={desktopImage}
-                           style={{
-                              height: '100%',
-                              width: '100%',
-                           }}
-                        />
-                     </a>
+                  <Column xs={5}>
+                     <div style={{overflow: css3.overflow.hidden}}>
+                        <a
+                           href={url}
+                           rel={'noopener noreferrer'}
+                           target={'_blank'}
+                        >
+                           <img
+                              alt={imageAltText}
+                              src={desktopImage}
+                              style={{
+                                 height: 400,
+                                 width: css3.width.initial,
+                              }}
+                           />
+                        </a>
+                     </div>
                   </Column>
                </Row>
             </Hidden>
