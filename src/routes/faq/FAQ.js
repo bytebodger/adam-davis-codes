@@ -28,7 +28,6 @@ export const FAQ = () => {
    const getCssTransition = match => {
       if (match !== null)
          logGooglePageHit('faq');
-      
       return <>
          <CSSTransition
             classNames={'fade'}
