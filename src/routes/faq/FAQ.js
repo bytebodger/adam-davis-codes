@@ -83,7 +83,7 @@ export const FAQ = () => {
                                  fontSize: isMobile ? '0.9em' : '1em',
                                  marginTop: 0,
                               }}>
-                                 That's great that you have a personal-resume website, but I need for you to <i>send me</i> a copy of your resume.
+                                 That's great that you have a resume website, but I need for you to <i>send me</i> a copy of your resume.
                               </h3>
                               <div style={{
                                  fontSize: isMobile ? '0.8em' : '0.9em',
