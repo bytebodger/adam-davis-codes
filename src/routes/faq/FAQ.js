@@ -102,7 +102,7 @@ export const FAQ = () => {
                                  fontSize: isMobile ? '0.9em' : '1em',
                                  marginTop: 0,
                               }}>
-                                 Can you please add the months to the start/end dates of your employment entries on your resume?
+                                 Can you add the months to the start/end dates of your employment entries on your resume?
                               </h3>
                               <div style={{
                                  fontSize: isMobile ? '0.8em' : '0.9em',
