@@ -69,7 +69,7 @@ export const Resume = () => {
                               {getTitleAndEmployer('Senior Software Engineer', 'SemanticBits', 'left')}
                               {getJobDescription('Technical lead on a team developing user interfaces for Medicare.gov and HealthCare.gov', 'left')}
                            </Row>
-                           {getTechnologiesUsed('JavaScript, React, Node, Express, REST, HTML/CSS, Electron, Jenkins, GitHub', 'left')}
+                           {getTechnologiesUsed('JavaScript, TypeScript, React, Node, Express, REST, HTML/CSS, Electron, Jenkins, GitHub', 'left')}
                         </div>
                         {getTrailSpacer('left')}
                         <div style={styles.jobCard}>
