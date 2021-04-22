@@ -64,7 +64,7 @@ export const Interests = () => {
                            'Blob Life',
                            <>
                               I paint (and make videos about the process)!<br/><br/>And... I babble about life, and YouTube-ing, and whatever else comes to my mind. I'm not nearly as soothing as Bob Ross. And I'm not half as talented as your
-                              friendly neighborhood busker. But I've never allowed a little problem like "lack of talent" get in my way before.
+                              friendly neighborhood busker. But I've never allowed a little problem like "lack of talent" to get in my way before.
                            </>,
                            blobLifeDesktop,
                            blobLifeMobile,
