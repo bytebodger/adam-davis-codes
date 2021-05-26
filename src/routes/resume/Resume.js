@@ -64,7 +64,16 @@ export const Resume = () => {
                      >
                         <h1 style={{marginTop: isMobile ? 0 : 'initial'}}>Experience</h1>
                         <div style={styles.jobCard}>
-                           {getTimeframe('2020 - Present', 'left')}
+                           {getTimeframe('2021 - Present', 'right')}
+                           <Row style={{paddingTop: 8}}>
+                              {getJobDescription('Working on case, matter, investigation, and project management SaaS solutions', 'right')}
+                              {getTitleAndEmployer('Senior Software Development Engineer', 'Filevine', 'right')}
+                           </Row>
+                           {getTechnologiesUsed('JavaScript, Svelte, Angular, C#, SQL, REST, HTML/CSS, GitHub', 'right')}
+                        </div>
+                        {getTrailSpacer('right')}
+                        <div style={styles.jobCard}>
+                           {getTimeframe('2020 - 2021', 'left')}
                            <Row style={{paddingTop: 8}}>
                               {getTitleAndEmployer('Senior Software Engineer', 'SemanticBits', 'left')}
                               {getJobDescription('Technical lead on a team developing user interfaces for Medicare.gov and HealthCare.gov', 'left')}
