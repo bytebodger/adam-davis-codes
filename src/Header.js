@@ -157,7 +157,7 @@ export const Header = () => {
                className={'hidden-print'}
                style={{fontSize: '1.2em'}}
             >:
-               <Hidden smUp={true}>
+               <Hidden mdUp={true}>
                   <br/>
                   <div style={{
                      display: css3.dislay.inlineBlock,
@@ -178,7 +178,7 @@ export const Header = () => {
                {getLinks()}
             </Column>
          </Hidden>
-         <Hidden smUp={true}>
+         <Hidden mdUp={true}>
             <Column
                className={'hidden-print'}
                style={{paddingTop: 2}}
