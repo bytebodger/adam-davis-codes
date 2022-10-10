@@ -151,10 +151,8 @@ export const Projects = () => {
                               <a
                                  href={'https://spotifytoolz.com'}
                                  target={'_blank'}
-                              >
-                                 a publicly-accessible React application
-                              </a>
-                              that will allow anyone to mitigate the issues described above.
+                              > a publicly-accessible React application
+                              </a> that will allow anyone to mitigate the issues described above.
                            </>,
                            spotifyDesktop,
                            spotifyMobile,
