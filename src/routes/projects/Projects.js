@@ -30,7 +30,7 @@ export const Projects = () => {
    const devTo = use.devToArticlesEndpoint;
    const npm = use.npmDownloadsEndpoint;
    const github = use.githubReposEndpoint;
-   
+
    const getArticleLinks = () => {
       return devTo.articles.map((article, index) => {
          return <div
@@ -56,7 +56,7 @@ export const Projects = () => {
          </div>;
       });
    };
-   
+
    const getCssTransition = match => {
       if (match !== null)
          logGooglePageHit('projects');
@@ -147,7 +147,14 @@ export const Projects = () => {
                                  <li style={{marginBottom: 16}}>Spotify is attrocious at recommending new music. It frequently recommends the same tracks/artists repeatedly, even if you've done everything in your power to ignore those recommendations.</li>
                                  <li>If you maintain large playlists in Spotify, it's surprisingly difficult to identify/avoid duplicate entries, because Spotify can have many copies of the same track that are not 100% identical.</li>
                               </ul>
-                              Thankfully, Spotify has a fairly-robust API. So I built a publicly-accessible React application that will allow anyone to mitigate the issues described above.
+                              Thankfully, Spotify has a fairly-robust API. So I built
+                              <a
+                                 href={'https://spotifytoolz.com'}
+                                 target={'_blank'}
+                              >
+                                 a publicly-accessible React application
+                              </a>
+                              that will allow anyone to mitigate the issues described above.
                            </>,
                            spotifyDesktop,
                            spotifyMobile,
@@ -176,7 +183,7 @@ export const Projects = () => {
          </CSSTransition>
       </>;
    };
-   
+
    const getNpmPackageLinks = () => {
       const rows = [];
       Object.entries(npm.npmPackages).forEach((entry, index) => {
@@ -205,7 +212,7 @@ export const Projects = () => {
       });
       return rows;
    };
-   
+
    const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
       allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
       const styles = {
@@ -366,7 +373,7 @@ export const Projects = () => {
          </div>
       </>;
    };
-   
+
    const getRepoLinks = () => {
       return github.repos.map((repo, index) => {
          return <div
@@ -392,7 +399,7 @@ export const Projects = () => {
          </div>;
       });
    };
-   
+
    return <>
       <Route
          children={({match}) => getCssTransition(match)}
