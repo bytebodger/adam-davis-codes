@@ -1,6 +1,6 @@
 import { Route, Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import React, { useRef } from 'react';
+import React, { useRef, memo, useMemo } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { useViewport } from '@toolz/use-viewport';
@@ -20,57 +20,54 @@ import { Button } from '../../common/components/Button';
 import { useHistory } from 'react-router';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 
-export const Home = () => {
+export const Home = memo(() => {
    const history = useHistory();
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
-   const isMobile = ['xs', 'sm'].includes(viewport.size);
-   
-   const getBackgroundImageWidth = () => {
-      if (isMobile)
-         return '100%';
-      const half = Math.round(viewport.width * 0.4);
-      return half > 400 ? half : 400;
-   };
-   
+
    const getMainText = () => {
       return <>
-         <div style={{textAlign: css3.textAlign.justify}}>
+         <div style={style.mainText.div1}>
             I wrote my first program in 1984, when I was 11 years old, in BASIC, on a Coleco Adam home computer... that had a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
             SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of JavaScript. I was heavily focused first on jQuery, then Angular, and
             now React.
          </div>
-         <div style={{
-            marginTop: 16,
-            textAlign: css3.textAlign.justify,
-         }}>
+         <div style={style.mainText.div2}>
             I am a <b>remote</b> worker. I'm more than happy to travel. And I'm quite personable in an office setting. But I'm a coder, and there's nothing in your office
             that's going to make me a more <i>efficient</i> coder. I don't need a breakroom with free snacks. I don't need impromptu "breakout sessions". I don't need a ping-pong table. I
             need to concentrate - on many thousands of lines of code.
          </div>
-         <div style={{
-            marginBottom: 16,
-            marginTop: 16,
-            textAlign: css3.textAlign.justify,
-         }}>
+         <div style={style.mainText.div3}>
             If you'd like <i>evidence</i> of what I can do, there's a good bit of that already online. You may want to browse over my <Link to={'/resume'}>Resume</Link>. But under{` `}
             <Link to={'/projects'}>Projects</Link> you'll find all of my{` `}
-            <a href={'https://github.com/bytebodger'}>
+            <a
+               href={'https://github.com/bytebodger'}
+               rel={'noreferrer'}
+               target={'_blank'}
+            >
                GitHub repos
             </a>{` `}
             (including the React code for <i>this</i> site), and all of my{` `}
-            <a href={'https://www.npmjs.com/search?q=%40toolz'}>
+            <a
+               href={'https://www.npmjs.com/search?q=%40toolz'}
+               rel={'noreferrer'}
+               target={'_blank'}
+            >
                NPM packages
             </a>,{` `}
             and all of my{` `}
-            <a href={'https://dev.to/bytebodger'}>
+            <a
+               href={'https://dev.to/bytebodger'}
+               rel={'noreferrer'}
+               target={'_blank'}
+            >
                Dev.to articles
             </a>
             . You'll learn more about me in those locations than you will in any traditional job interview.
          </div>
       </>;
    };
-   
+
    const getCssTransition = match => {
       if (match !== null)
          logGooglePageHit('home');
@@ -85,71 +82,39 @@ export const Home = () => {
             <div
                key={'home'}
                ref={nodeRef}
-               style={{
-                  position: css3.position.absolute,
-                  width: '100%',
-               }}
+               style={style.transition.containerDivs}
             >
-               <div style={{
-                  position: css3.position.absolute,
-                  width: '100%',
-               }}>
+               <div style={style.transition.containerDivs}>
                   <Hidden mdUp={true}>
                      <Row>
                         <Column
                            xs={12}
-                           style={{padding: 16}}
+                           style={style.transition.column1}
                         >
-                           <div style={{boxShadow: 'rgba(0, 0, 0, 0.50) -11.31px 11.31px 17px 0px'}}>
-                              <div style={{
-                                 backgroundColor: the.color.sand,
-                                 height: 355,
-                                 textAlign: css3.textAlign.center,
-                              }}>
+                           <div style={style.transition.div1}>
+                              <div style={style.transition.div2}>
                                  <img
                                     alt={'Adam Nathaniel Davis'}
                                     src={adam}
-                                    style={{
-                                       borderRadius: 60,
-                                       height: 120,
-                                       marginTop: 20,
-                                       width: 120,
-                                    }}
+                                    style={style.transition.img1}
                                  />
-                                 <div style={{
-                                    fontSize: '1.4em',
-                                    fontWeight: css3.fontWeight._600,
-                                    marginTop: 20,
-                                 }}>
+                                 <div style={style.transition.div3}>
                                     Adam Nathaniel Davis
                                  </div>
-                                 <div style={{
-                                    backgroundColor: the.color.purple,
-                                    height: 2,
-                                    marginBottom: 20,
-                                    marginLeft: 'auto',
-                                    marginRight: 'auto',
-                                    marginTop: 20,
-                                    width: '25%',
-                                 }}/>
-                                 <div style={{marginTop: 30}}>
+                                 <div style={style.transition.div4}/>
+                                 <div style={style.transition.div5}>
                                     <Button onClick={() => history.push('/resume')}>
                                        Resume
                                     </Button>
                                     <Button
                                        onClick={() => history.push('/projects')}
-                                       style={{marginLeft: 20}}
+                                       style={style.transition.button}
                                     >
                                        Projects
                                     </Button>
                                  </div>
-                                 <div style={{
-                                    backgroundColor: the.color.white,
-                                    boxShadow: 'rgba(0, 0, 0, 0.50) -11.31px 11.31px 17px 0px',
-                                    height: 40,
-                                    marginTop: 40,
-                                 }}>
-                                    <div style={{paddingTop: 7}}>
+                                 <div style={style.transition.div6}>
+                                    <div style={style.transition.div7}>
                                        <FollowIcons dimension={25}/>
                                     </div>
                                  </div>
@@ -160,67 +125,39 @@ export const Home = () => {
                      <Row>
                         <Column
                            xs={12}
-                           style={{padding: '0px 16px 16px 16px'}}
+                           style={style.transition.column2}
                         >
-                           <div style={{
-                              backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                              padding: 16,
-                           }}>
-                              <h1 style={{marginTop: 0}}>A Coding Life</h1>
+                           <div style={style.transition.div8}>
+                              <h1 style={style.transition.h1}>A Coding Life</h1>
                               {getMainText()}
                            </div>
                         </Column>
                      </Row>
-                     <div style={{backgroundColor: the.color.white}}>
+                     <div style={style.transition.div9}>
                         <Footer/>
                      </div>
                   </Hidden>
                   <Hidden smDown={true}>
-                     <Row style={{paddingTop: 150}}>
+                     <Row style={style.transition.row}>
                         <Column md={2} lg={3} xl={4}/>
                         <Column xs={6} md={4} lg={3} xl={2}>
-                           <div style={{boxShadow: 'rgba(0, 0, 0, 0.50) -11.31px 11.31px 17px 0px'}}>
-                              <div style={{
-                                 backgroundColor: the.color.sand,
-                                 height: 475,
-                                 textAlign: css3.textAlign.center,
-                              }}>
+                           <div style={style.transition.div1}>
+                              <div style={style.transition.div10}>
                                  <img
                                     alt={'Adam Nathaniel Davis'}
                                     src={adam}
-                                    style={{
-                                       borderRadius: 102,
-                                       height: 204,
-                                       marginTop: 40,
-                                       width: 204,
-                                    }}
+                                    style={style.transition.img2}
                                  />
-                                 <div style={{
-                                    fontSize: '1.4em',
-                                    fontWeight: css3.fontWeight._600,
-                                    marginTop: 40,
-                                 }}>
+                                 <div style={style.transition.div11}>
                                     Adam Nathaniel Davis
                                  </div>
-                                 <div style={{
-                                    backgroundColor: the.color.purple,
-                                    height: 2,
-                                    marginBottom: 40,
-                                    marginLeft: 'auto',
-                                    marginRight: 'auto',
-                                    marginTop: 40,
-                                    width: '25%',
-                                 }}/>
-                                 <div style={{fontSize: '1.2em'}}>
+                                 <div style={style.transition.div12}/>
+                                 <div style={style.transition.div13}>
                                     <ReactRotatingText items={titles}/>
                                  </div>
                               </div>
-                              <div style={{
-                                 backgroundColor: the.color.white,
-                                 height: 50,
-                                 textAlign: css3.textAlign.center,
-                              }}>
-                                 <div style={{paddingTop: 12}}>
+                              <div style={style.transition.div14}>
+                                 <div style={style.transition.div15}>
                                     <FollowIcons dimension={25}/>
                                  </div>
                               </div>
@@ -228,12 +165,7 @@ export const Home = () => {
                         </Column>
                         <Column
                            md={5} lg={4} xl={3}
-                           style={{
-                              height: 525,
-                              overflowY: css3.overflowY.auto,
-                              paddingLeft: getResponsiveSpacing(viewport.size, 8, 48),
-                              paddingRight: getResponsiveSpacing(viewport.size, 8, 48),
-                           }}
+                           style={style.transition.column3}
                         >
                            <h1>A Coding Life</h1>
                            {getMainText()}
@@ -243,13 +175,9 @@ export const Home = () => {
                   </Hidden>
                </div>
                <Hidden mdUp={true}>
-                  <div style={{height: 250}}/>
+                  <div style={style.transition.spacerDiv}/>
                </Hidden>
-               <div style={{
-                  backgroundImage: `url(${codeImage})`,
-                  minHeight: isMobile ? 1250 : 850,
-                  width: getBackgroundImageWidth(),
-               }}/>
+               <div style={style.transition.imageDiv}/>
                <Hidden smDown={true}>
                   <Footer/>
                </Hidden>
@@ -257,7 +185,153 @@ export const Home = () => {
          </CSSTransition>
       </>;
    };
-   
+
+   const style = useMemo(() => {
+      const isMobile = ['xs', 'sm'].includes(viewport.size);
+
+      const getBackgroundImageWidth = () => {
+         if (isMobile)
+            return '100%';
+         const half = Math.round(viewport.width * 0.4);
+         return half > 400 ? half : 400;
+      };
+
+      return {
+         mainText: {
+            div1: {
+               textAlign: css3.textAlign.justify,
+            },
+            div2: {
+               marginTop: 16,
+               textAlign: css3.textAlign.justify,
+            },
+            div3: {
+               marginBottom: 16,
+               marginTop: 16,
+               textAlign: css3.textAlign.justify,
+            },
+         },
+         transition: {
+            button: {
+               marginLeft: 20,
+            },
+            column1: {
+               padding: 16,
+            },
+            column2: {
+               padding: '0px 16px 16px 16px',
+            },
+            column3: {
+               height: 525,
+               overflowY: css3.overflowY.auto,
+               paddingLeft: getResponsiveSpacing(viewport.size, 8, 48),
+               paddingRight: getResponsiveSpacing(viewport.size, 8, 48),
+            },
+            containerDivs: {
+               position: css3.position.absolute,
+               width: '100%',
+            },
+            div1: {
+               boxShadow: 'rgba(0, 0, 0, 0.50) -11.31px 11.31px 17px 0px',
+            },
+            div2: {
+               backgroundColor: the.color.sand,
+               height: 355,
+               textAlign: css3.textAlign.center,
+            },
+            div3: {
+               fontSize: '1.4em',
+               fontWeight: css3.fontWeight._600,
+               marginTop: 20,
+            },
+            div4: {
+               backgroundColor: the.color.purple,
+               height: 2,
+               marginBottom: 20,
+               marginLeft: 'auto',
+               marginRight: 'auto',
+               marginTop: 20,
+               width: '25%',
+            },
+            div5: {
+               marginTop: 30,
+            },
+            div6: {
+               backgroundColor: the.color.white,
+               boxShadow: 'rgba(0, 0, 0, 0.50) -11.31px 11.31px 17px 0px',
+               height: 40,
+               marginTop: 40,
+            },
+            div7: {
+               paddingTop: 7,
+            },
+            div8: {
+               backgroundColor: 'rgba(255, 255, 255, 0.8)',
+               padding: 16,
+            },
+            div9: {
+               backgroundColor: the.color.white,
+            },
+            div10: {
+               backgroundColor: the.color.sand,
+               height: 475,
+               textAlign: css3.textAlign.center,
+            },
+            div11: {
+               fontSize: '1.4em',
+               fontWeight: css3.fontWeight._600,
+               marginTop: 40,
+            },
+            div12: {
+               backgroundColor: the.color.purple,
+               height: 2,
+               marginBottom: 40,
+               marginLeft: 'auto',
+               marginRight: 'auto',
+               marginTop: 40,
+               width: '25%',
+            },
+            div13: {
+               fontSize: '1.2em',
+            },
+            div14: {
+               backgroundColor: the.color.white,
+               height: 50,
+               textAlign: css3.textAlign.center,
+            },
+            div15: {
+               paddingTop: 12,
+            },
+            h1: {
+               marginTop: 0,
+            },
+            imageDiv: {
+               backgroundImage: `url(${codeImage})`,
+               minHeight: isMobile ? 1250 : 850,
+               width: getBackgroundImageWidth(),
+            },
+            img1: {
+               borderRadius: 60,
+               height: 120,
+               marginTop: 20,
+               width: 120,
+            },
+            img2: {
+               borderRadius: 102,
+               height: 204,
+               marginTop: 40,
+               width: 204,
+            },
+            row: {
+               paddingTop: 150,
+            },
+            spacerDiv: {
+               height: 250,
+            },
+         },
+      };
+   }, [viewport.size, viewport.width]);
+
    return <>
       <Route
          children={({match}) => getCssTransition(match)}
@@ -265,4 +339,4 @@ export const Home = () => {
          path={'/home'}
       />
    </>;
-};
+});

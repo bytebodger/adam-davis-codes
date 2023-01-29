@@ -150,6 +150,7 @@ export const Projects = () => {
                               Thankfully, Spotify has a fairly-robust API. So I built
                               <a
                                  href={'https://spotifytoolz.com'}
+                                 rel={'noreferrer'}
                                  target={'_blank'}
                               > a publicly-accessible React application
                               </a> that will allow anyone to mitigate the issues described above.

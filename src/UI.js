@@ -13,16 +13,17 @@ import { Phone } from './routes/phone/Phone';
 import { useConstructor } from '@toolz/use-constructor';
 import { use } from './common/objects/use';
 import { FAQ } from './routes/faq/FAQ';
+import { memo } from 'react';
 
-export const UI = () => {
+export const UI = memo(() => {
    const viewport = useViewport(materialUiBreakpoints);
-   
+
    useConstructor(() => {
       use.devToArticlesEndpoint.loadArticles();
       use.npmDownloadsEndpoint.loadDownloads();
       use.githubReposEndpoint.loadRepos();
    });
-   
+
    return <>
       <div style={{minWidth: 300}}>
          <Header/>
@@ -47,4 +48,4 @@ export const UI = () => {
          </Row>
       </div>
    </>;
-};
+});

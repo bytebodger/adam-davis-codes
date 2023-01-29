@@ -9,7 +9,7 @@ import { useLocation, useHistory } from 'react-router';
 import { capitalize } from '@toolz/capitalize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars as hamburgerMenu } from '@fortawesome/free-solid-svg-icons';
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Close } from '@material-ui/icons';
 import { allow } from '@toolz/allow-react';
 import { is } from './common/objects/is';
@@ -25,12 +25,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
    />;
 });
 
-export const Header = () => {
+export const Header = memo(() => {
    const [linksOpen, setLinksOpen] = useState(false);
    const history = useHistory();
    const location = useLocation();
    const viewport = useViewport(materialUiBreakpoints);
-   
+
    const routes = [
       '/home',
       '/resume',
@@ -38,7 +38,7 @@ export const Header = () => {
       '/interests',
       '/faq',
    ];
-   
+
    const getLinks = () => {
       return routes.map((route, index) => {
          const linkName = capitalize.firstLetter(route.replace('/', ''));
@@ -61,14 +61,14 @@ export const Header = () => {
          </div>;
       });
    };
-   
+
    const getMobileLinks = () => {
       const goToLink = (route = '') => {
          allow.aString(route, is.not.empty);
          history.push(route);
          setLinksOpen(false);
       };
-      
+
       return routes.map(route => {
          const linkName = capitalize.firstLetter(route.replace('/', '')).toUpperCase();
          return <React.Fragment key={'mobileLink-' + route}>
@@ -85,7 +85,7 @@ export const Header = () => {
          </React.Fragment>;
       });
    };
-   
+
    const getStyles = makeStyles(() => {
       return {
          appBar: {
@@ -100,7 +100,7 @@ export const Header = () => {
          },
       };
    });
-   
+
    return <>
       <Dialog
          fullScreen={true}
@@ -196,4 +196,4 @@ export const Header = () => {
          </Hidden>
       </Row>
    </>;
-};
+});

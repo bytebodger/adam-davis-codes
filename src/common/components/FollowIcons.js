@@ -1,8 +1,9 @@
 import * as PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDev as devTo, faGithub as github, faNpm as npm, faFacebookF as facebook, faTwitter as twitter, faLinkedinIn as linkedIn, faInstagram as instagram, faYoutube as youtube } from '@fortawesome/free-brands-svg-icons';
+import { memo } from 'react';
 
-export const FollowIcons = props => {
+export const FollowIcons = memo(props => {
    const leftStyle = {
       height: props.dimension,
       width: props.dimension,
@@ -101,7 +102,7 @@ export const FollowIcons = props => {
          />
       </a>
    </>;
-};
+});
 
 FollowIcons.propTypes = {
    dimension: PropTypes.number,

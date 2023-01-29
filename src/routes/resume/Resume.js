@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { useRef } from 'react';
+import { useRef, memo } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { Footer } from '../../Footer';
@@ -14,12 +14,12 @@ import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
-export const Resume = () => {
+export const Resume = memo(() => {
    const directions = ['left', 'right'];
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
    const isMobile = ['xs', 'sm'].includes(viewport.size);
-   
+
    const getCssTransition = match => {
       if (match !== null)
          logGooglePageHit('resume');
@@ -206,7 +206,7 @@ export const Resume = () => {
          </CSSTransition>
       </>;
    };
-   
+
    const getJobDescription = (description = '', direction = '') => {
       allow.aString(description, is.not.empty).oneOf(direction, directions);
       return <>
@@ -225,7 +225,7 @@ export const Resume = () => {
          </Column>
       </>;
    };
-   
+
    const getTechnologiesUsed = (technologies = '', direction = '') => {
       allow.aString(technologies, is.not.empty).oneOf(direction, directions);
       return <>
@@ -256,7 +256,7 @@ export const Resume = () => {
          </Row>
       </>;
    };
-   
+
    const getTimeframe = (timeframe = '', direction = '') => {
       allow.aString(timeframe, is.not.empty).oneOf(direction, directions);
       return <>
@@ -273,7 +273,7 @@ export const Resume = () => {
          </Row>
       </>;
    };
-   
+
    const getTitleAndEmployer = (title = '', employer = '', direction = '') => {
       allow.aString(title, is.not.empty).aString(employer, is.not.empty).oneOf(direction, directions);
       return <>
@@ -298,7 +298,7 @@ export const Resume = () => {
          </Column>
       </>;
    };
-   
+
    const getTrailSpacer = (direction = '') => {
       allow.oneOf(direction, directions);
       return <>
@@ -317,7 +317,7 @@ export const Resume = () => {
          </Row>
       </>;
    };
-   
+
    return <>
       <Route
          children={({match}) => getCssTransition(match)}
@@ -325,4 +325,4 @@ export const Resume = () => {
          path={'/resume'}
       />
    </>;
-};
+});

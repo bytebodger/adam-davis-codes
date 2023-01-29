@@ -7,8 +7,9 @@ import { Hidden } from '@material-ui/core';
 import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 import { FollowIcons } from './common/components/FollowIcons';
 import { useHistory } from 'react-router';
+import { memo } from 'react';
 
-export const Footer = () => {
+export const Footer = memo(() => {
    const history = useHistory();
    const viewport = useViewport(materialUiBreakpoints);
    const currentDate = new Date();
@@ -161,4 +162,4 @@ export const Footer = () => {
          </Hidden>
       </Row>
    </>;
-};
+});

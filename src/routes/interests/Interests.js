@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { useRef } from 'react';
+import { useRef, memo, useMemo } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { Footer } from '../../Footer';
@@ -23,10 +23,10 @@ import { is } from '../../common/objects/is';
 import { Hidden } from '@material-ui/core';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
-export const Interests = () => {
+export const Interests = memo(() => {
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
-   
+
    const getCssTransition = match => {
       if (match !== null)
          logGooglePageHit('interests');
@@ -41,25 +41,15 @@ export const Interests = () => {
             <div
                key={'interests'}
                ref={nodeRef}
-               style={{
-                  position: css3.position.absolute,
-                  width: '100%',
-               }}
+               style={style.transition.div1}
             >
-               <div style={{
-                  backgroundColor: the.color.sand,
-                  paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-                  paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-               }}>
+               <div style={style.transition.div2}>
                   <Row justify={'space-evenly'}>
                      <Column
                         xs={12} sm={10} md={8} lg={7} xl={6}
-                        style={{
-                           paddingLeft: 8,
-                           paddingRight: 8,
-                        }}
+                        style={style.transition.column}
                      >
-                        <h1 style={{marginTop: 0}}>Interests</h1>
+                        <h1 style={style.transition.h1}>Interests</h1>
                         {getProjectCard(
                            'Blob Life',
                            <>
@@ -72,7 +62,7 @@ export const Interests = () => {
                            'left',
                            'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag',
                         )}
-                        <div style={{height: 48}}/>
+                        <div style={style.transition.div3}/>
                         {getProjectCard(
                            'Writing Voyage',
                            <>
@@ -84,7 +74,7 @@ export const Interests = () => {
                            'right',
                            'https://writing.voyage',
                         )}
-                        <div style={{height: 48}}/>
+                        <div style={style.transition.div3}/>
                         {getProjectCard(
                            'Excilior',
                            <>
@@ -96,7 +86,7 @@ export const Interests = () => {
                            'left',
                            'https://www.worldanvil.com/w/excilior',
                         )}
-                        <div style={{height: 48}}/>
+                        <div style={style.transition.div3}/>
                         {getProjectCard(
                            'New Play Exchange',
                            <>
@@ -116,62 +106,30 @@ export const Interests = () => {
          </CSSTransition>
       </>;
    };
-   
+
    const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
       allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
-      const styles = {
-         card: {
-            backgroundColor: the.color.white,
-            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
-            fontSize: '1.2em',
-            position: css3.position.relative,
-         },
-      };
-      if (offset === 'left')
-         styles.card.right = getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12);
-      else if (offset === 'right')
-         styles.card.left = getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12);
+      let outerDivStyle;
+      if (offset === 'left') {
+         outerDivStyle = style.card.outerDivLeft;
+      } else if (offset === 'right') {
+         outerDivStyle = style.card.outerDivRight;
+      }
       return <>
-         <div style={styles.card}>
+         <div style={outerDivStyle}>
             <Hidden mdUp={true}>
-               <Row style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 260,
-               }}>
+               <Row style={style.card.row1}>
                   <Column
                      xs={12}
-                     style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        flexGrow: 1,
-                        minHeight: 0,
-                     }}
+                     style={style.card.column1}
                   >
                      <div>
-                        <div style={{
-                           backgroundColor: the.color.beige,
-                           display: css3.dislay.inlineBlock,
-                           height: 27,
-                           width: 10,
-                        }}/>
-                        <h3 style={{
-                           color: the.color.purple,
-                           display: css3.dislay.inlineBlock,
-                           fontSize: '0.9em',
-                           marginLeft: 8,
-                           marginTop: 8,
-                        }}>
+                        <div style={style.card.div1}/>
+                        <h3 style={style.card.h31}>
                            {title}
                         </h3>
                      </div>
-                     <div style={{
-                        flexGrow: 1,
-                        minHeight: 0,
-                        overflowY: css3.overflowY.auto,
-                        paddingLeft: 8,
-                        paddingRight: 8,
-                     }}>
+                     <div style={style.card.div2}>
                         {body}
                      </div>
                   </Column>
@@ -179,19 +137,13 @@ export const Interests = () => {
                <Row>
                   <Column
                      xs={12}
-                     style={{
-                        backgroundColor: the.color.white,
-                        height: 16,
-                     }}
+                     style={style.card.column2}
                   />
                </Row>
                <Row>
                   <Column
                      xs={12}
-                     style={{
-                        height: 200,
-                        overflow: css3.overflow.hidden,
-                     }}
+                     style={style.card.column3}
                   >
                      <a
                         href={url}
@@ -201,60 +153,30 @@ export const Interests = () => {
                         <img
                            alt={imageAltText}
                            src={mobileImage}
-                           style={{
-                              height: css3.height.initial,
-                              width: '100%',
-                           }}
+                           style={style.card.img1}
                         />
                      </a>
                   </Column>
                </Row>
             </Hidden>
             <Hidden smDown={true}>
-               <Row style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 400,
-               }}>
+               <Row style={style.card.row2}>
                   <Column
                      xs={7}
-                     style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        flexGrow: 1,
-                        minHeight: 0,
-                        width: '58.33%',
-                     }}
+                     style={style.card.column4}
                   >
                      <div>
-                        <div style={{
-                           backgroundColor: the.color.beige,
-                           display: css3.dislay.inlineBlock,
-                           height: 32,
-                           width: 10,
-                        }}/>
-                        <h3 style={{
-                           color: the.color.purple,
-                           display: css3.dislay.inlineBlock,
-                           marginLeft: 8,
-                           marginTop: 8,
-                        }}>
+                        <div style={style.card.div3}/>
+                        <h3 style={style.card.h32}>
                            {title}
                         </h3>
                      </div>
-                     <div style={{
-                        flexGrow: 1,
-                        minHeight: 0,
-                        overflowY: css3.overflowY.auto,
-                        paddingBottom: 8,
-                        paddingLeft: 8,
-                        paddingRight: 8,
-                     }}>
+                     <div style={style.card.div4}>
                         {body}
                      </div>
                   </Column>
                   <Column xs={5}>
-                     <div style={{overflow: css3.overflow.hidden}}>
+                     <div style={style.card.div5}>
                         <a
                            href={url}
                            rel={'noopener noreferrer'}
@@ -263,10 +185,7 @@ export const Interests = () => {
                            <img
                               alt={imageAltText}
                               src={desktopImage}
-                              style={{
-                                 height: 400,
-                                 width: css3.width.initial,
-                              }}
+                              style={style.card.img2}
                            />
                         </a>
                      </div>
@@ -276,7 +195,131 @@ export const Interests = () => {
          </div>
       </>;
    };
-   
+
+   const style = useMemo(() => {
+      return {
+         card: {
+            column1: {
+               display: 'flex',
+               flexDirection: 'column',
+               flexGrow: 1,
+               minHeight: 0,
+            },
+            column2: {
+               backgroundColor: the.color.white,
+               height: 16,
+            },
+            column3: {
+               height: 200,
+               overflow: css3.overflow.hidden,
+            },
+            column4: {
+               display: 'flex',
+               flexDirection: 'column',
+               flexGrow: 1,
+               minHeight: 0,
+               width: '58.33%',
+            },
+            div1: {
+               backgroundColor: the.color.beige,
+               display: css3.dislay.inlineBlock,
+               height: 27,
+               width: 10,
+            },
+            div2: {
+               flexGrow: 1,
+               minHeight: 0,
+               overflowY: css3.overflowY.auto,
+               paddingLeft: 8,
+               paddingRight: 8,
+            },
+            div3: {
+               backgroundColor: the.color.beige,
+               display: css3.dislay.inlineBlock,
+               height: 32,
+               width: 10,
+            },
+            div4: {
+               flexGrow: 1,
+               minHeight: 0,
+               overflowY: css3.overflowY.auto,
+               paddingBottom: 8,
+               paddingLeft: 8,
+               paddingRight: 8,
+            },
+            div5: {
+               overflow: css3.overflow.hidden,
+            },
+            h31: {
+               color: the.color.purple,
+               display: css3.dislay.inlineBlock,
+               fontSize: '0.9em',
+               marginLeft: 8,
+               marginTop: 8,
+            },
+            h32: {
+               color: the.color.purple,
+               display: css3.dislay.inlineBlock,
+               marginLeft: 8,
+               marginTop: 8,
+            },
+            img1: {
+               height: css3.height.initial,
+               width: '100%',
+            },
+            img2: {
+               height: 400,
+               width: css3.width.initial,
+            },
+            outerDivLeft: {
+               backgroundColor: the.color.white,
+               boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
+               fontSize: '1.2em',
+               left: getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12),
+               position: css3.position.relative,
+            },
+            outerDivRight: {
+               backgroundColor: the.color.white,
+               boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
+               fontSize: '1.2em',
+               position: css3.position.relative,
+               right: getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12),
+            },
+            row1: {
+               display: 'flex',
+               flexDirection: 'column',
+               height: 260,
+            },
+            row2: {
+               display: 'flex',
+               flexDirection: 'column',
+               height: 400,
+            },
+         },
+         transition: {
+            column: {
+               paddingLeft: 8,
+               paddingRight: 8,
+            },
+            div1: {
+               position: css3.position.absolute,
+               width: '100%',
+            },
+            div2: {
+               backgroundColor: the.color.sand,
+               paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+               paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+            },
+            div3: {
+               height: 48,
+            },
+            h1: {
+               marginTop: 0,
+            },
+         },
+      };
+   }, [viewport.size]);
+
    return <>
       <Route
          children={({match}) => getCssTransition(match)}
@@ -284,4 +327,4 @@ export const Interests = () => {
          path={'/interests'}
       />
    </>;
-};
+});
