@@ -6,7 +6,7 @@ export const useNpmDownloadsEndpoint = () => {
    const [downloads, setDownloads] = useState(0);
    const [npmPackages, setNpmPackages] = useState(the.npm.packages);
    const axios = useAxios();
-   
+
    const loadDownloads = () => {
       Object.keys(npmPackages).forEach(npmPackage => {
          axios.call(
@@ -24,7 +24,7 @@ export const useNpmDownloadsEndpoint = () => {
          });
       });
    };
-   
+
    return {
       downloads,
       loadDownloads,

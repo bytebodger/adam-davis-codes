@@ -13,9 +13,9 @@ import { Phone } from './routes/phone/Phone';
 import { useConstructor } from '@toolz/use-constructor';
 import { use } from './common/objects/use';
 import { FAQ } from './routes/faq/FAQ';
-import { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 
-export const UI = memo(() => {
+export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
 
    useConstructor(() => {
@@ -57,4 +57,4 @@ export const UI = memo(() => {
          </Row>
       </div>
    </>;
-});
+};

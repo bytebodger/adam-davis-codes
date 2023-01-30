@@ -1,9 +1,8 @@
 import { UI } from './UI';
 import { useSharedHooks } from './common/hooks/useSharedHooks';
-import { memo } from 'react';
 
-export const App = memo(() => {
+export const App = () => {
    useSharedHooks();
 
    return <UI/>;
-});
+};
