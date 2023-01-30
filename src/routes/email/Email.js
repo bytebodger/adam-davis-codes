@@ -38,7 +38,7 @@ export const Email = memo(() => {
                         xs={12} sm={10} md={8} lg={7} xl={6}
                         style={style.outerColumn}
                      >
-                        <h1 style={style.h1}>me@adamdavis{'\u2024'}codes</h1>
+                        <h1 style={style.textAlignCenter}>me@adamdavis{'\u2024'}codes</h1>
                         <div style={style.innerDiv}>
                            <Row>
                               <Column xs={12}>
@@ -70,9 +70,6 @@ export const Email = memo(() => {
 
    const style = useMemo(() => {
       return {
-         h1: {
-            textAlign: css3.textAlign.center,
-         },
          h3: {
             color: the.color.purple,
             margin: 0,
@@ -102,6 +99,9 @@ export const Email = memo(() => {
             backgroundColor: the.color.sand,
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
             paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+         },
+         textAlignCenter: {
+            textAlign: css3.textAlign.center,
          },
       };
    }, [viewport.size]);

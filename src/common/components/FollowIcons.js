@@ -1,17 +1,23 @@
 import * as PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDev as devTo, faGithub as github, faNpm as npm, faFacebookF as facebook, faTwitter as twitter, faLinkedinIn as linkedIn, faInstagram as instagram, faYoutube as youtube } from '@fortawesome/free-brands-svg-icons';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 export const FollowIcons = memo(props => {
-   const leftStyle = {
-      height: props.dimension,
-      width: props.dimension,
-   };
-   const mainStyle = {
-      ...leftStyle,
-      marginLeft: 8,
-   };
+   const style = useMemo(() => {
+      return {
+         left: {
+            height: props.dimension,
+            width: props.dimension,
+         },
+         main: {
+            height: props.dimension,
+            marginLeft: 8,
+            width: props.dimension,
+         },
+      };
+   }, [props.dimension]);
+
    return <>
       <a
          href={'https://dev.to/bytebodger'}
@@ -21,7 +27,7 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={devTo}
-            style={leftStyle}
+            style={style.left}
          />
       </a>
       <a
@@ -32,7 +38,7 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={github}
-            style={mainStyle}
+            style={style.main}
          />
       </a>
       <a
@@ -43,7 +49,7 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={npm}
-            style={mainStyle}
+            style={style.main}
          />
       </a>
       <a
@@ -54,7 +60,7 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={facebook}
-            style={mainStyle}
+            style={style.main}
          />
       </a>
       <a
@@ -65,7 +71,7 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={twitter}
-            style={mainStyle}
+            style={style.main}
          />
       </a>
       <a
@@ -76,7 +82,7 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={linkedIn}
-            style={mainStyle}
+            style={style.main}
          />
       </a>
       <a
@@ -87,7 +93,7 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={instagram}
-            style={mainStyle}
+            style={style.main}
          />
       </a>
       <a
@@ -98,7 +104,7 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={youtube}
-            style={mainStyle}
+            style={style.main}
          />
       </a>
    </>;

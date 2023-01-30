@@ -49,7 +49,7 @@ export const Interests = memo(() => {
                         xs={12} sm={10} md={8} lg={7} xl={6}
                         style={style.transition.column}
                      >
-                        <h1 style={style.transition.h1}>Interests</h1>
+                        <h1 style={style.marginTop0}>Interests</h1>
                         {getProjectCard(
                            'Blob Life',
                            <>
@@ -62,7 +62,7 @@ export const Interests = memo(() => {
                            'left',
                            'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag',
                         )}
-                        <div style={style.transition.div3}/>
+                        <div style={style.height48}/>
                         {getProjectCard(
                            'Writing Voyage',
                            <>
@@ -74,7 +74,7 @@ export const Interests = memo(() => {
                            'right',
                            'https://writing.voyage',
                         )}
-                        <div style={style.transition.div3}/>
+                        <div style={style.height48}/>
                         {getProjectCard(
                            'Excilior',
                            <>
@@ -86,7 +86,7 @@ export const Interests = memo(() => {
                            'left',
                            'https://www.worldanvil.com/w/excilior',
                         )}
-                        <div style={style.transition.div3}/>
+                        <div style={style.height48}/>
                         {getProjectCard(
                            'New Play Exchange',
                            <>
@@ -109,12 +109,7 @@ export const Interests = memo(() => {
 
    const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
       allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
-      let outerDivStyle;
-      if (offset === 'left') {
-         outerDivStyle = style.card.outerDivLeft;
-      } else if (offset === 'right') {
-         outerDivStyle = style.card.outerDivRight;
-      }
+      const outerDivStyle = offset === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
       return <>
          <div style={outerDivStyle}>
             <Hidden mdUp={true}>
@@ -176,7 +171,7 @@ export const Interests = memo(() => {
                      </div>
                   </Column>
                   <Column xs={5}>
-                     <div style={style.card.div5}>
+                     <div style={style.overflowHidden}>
                         <a
                            href={url}
                            rel={'noopener noreferrer'}
@@ -200,8 +195,8 @@ export const Interests = memo(() => {
       return {
          card: {
             column1: {
-               display: 'flex',
-               flexDirection: 'column',
+               display: css3.dislay.flex,
+               flexDirection: css3.flexDirection.column,
                flexGrow: 1,
                minHeight: 0,
             },
@@ -214,8 +209,8 @@ export const Interests = memo(() => {
                overflow: css3.overflow.hidden,
             },
             column4: {
-               display: 'flex',
-               flexDirection: 'column',
+               display: css3.dislay.flex,
+               flexDirection: css3.flexDirection.column,
                flexGrow: 1,
                minHeight: 0,
                width: '58.33%',
@@ -246,9 +241,6 @@ export const Interests = memo(() => {
                paddingBottom: 8,
                paddingLeft: 8,
                paddingRight: 8,
-            },
-            div5: {
-               overflow: css3.overflow.hidden,
             },
             h31: {
                color: the.color.purple,
@@ -286,15 +278,24 @@ export const Interests = memo(() => {
                right: getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12),
             },
             row1: {
-               display: 'flex',
-               flexDirection: 'column',
+               display: css3.dislay.flex,
+               flexDirection: css3.flexDirection.column,
                height: 260,
             },
             row2: {
-               display: 'flex',
-               flexDirection: 'column',
+               display: css3.dislay.flex,
+               flexDirection: css3.flexDirection.column,
                height: 400,
             },
+         },
+         height48: {
+            height: 48,
+         },
+         marginTop0: {
+            marginTop: 0,
+         },
+         overflowHidden: {
+            overflow: css3.overflow.hidden,
          },
          transition: {
             column: {
@@ -309,12 +310,6 @@ export const Interests = memo(() => {
                backgroundColor: the.color.sand,
                paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
                paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-            },
-            div3: {
-               height: 48,
-            },
-            h1: {
-               marginTop: 0,
             },
          },
       };

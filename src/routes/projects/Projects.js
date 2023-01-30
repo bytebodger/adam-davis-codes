@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { Footer } from '../../Footer';
@@ -33,22 +33,15 @@ export const Projects = () => {
 
    const getArticleLinks = () => {
       return devTo.articles.map((article, index) => {
+         const divStyle = index % 2 ? style.article.divLight : style.article.divDark;
          return <div
             key={article.id}
-            style={{
-               backgroundColor: index % 2 ? '#eeeeee' : 'white',
-               fontSize: '0.9em',
-               paddingBottom: 4,
-               paddingTop: 4,
-            }}
+            style={divStyle}
          >
             <a
                href={article.canonical_url}
                rel={'noreferrer'}
-               style={{
-                  fontWeight: css3.fontWeight._500,
-                  textDecoration: css3.textDecoration.none,
-               }}
+               style={style.article.a}
                target={'_blank'}
             >
                [{article.readable_publish_date}] {article.title}
@@ -71,25 +64,15 @@ export const Projects = () => {
             <div
                key={'projects'}
                ref={nodeRef}
-               style={{
-                  position: css3.position.absolute,
-                  width: '100%',
-               }}
+               style={style.transition.div1}
             >
-               <div style={{
-                  backgroundColor: the.color.sand,
-                  paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-                  paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-               }}>
+               <div style={style.transition.div2}>
                   <Row justify={'space-evenly'}>
                      <Column
                         xs={12} sm={10} md={8} lg={7} xl={6}
-                        style={{
-                           paddingLeft: 8,
-                           paddingRight: 8,
-                        }}
+                        style={style.transition.column}
                      >
-                        <h1 style={{marginTop: 0}}>Projects</h1>
+                        <h1 style={style.marginTop0}>Projects</h1>
                         {getProjectCard(
                            'Blogging',
                            <>
@@ -102,25 +85,18 @@ export const Projects = () => {
                            'left',
                            'https://dev.to/bytebodger',
                         )}
-                        <div style={{height: 48}}/>
+                        <div style={style.height48}/>
                         {getProjectCard(
                            'NPM Packages',
                            <>
                               To-date, my NPM packages have been installed more than <b>{npm.downloads}</b> times:
                               <table>
                                  <thead>
-                                    <tr style={{fontSize: '0.9em'}}>
-                                       <th style={{
-                                          textAlign: css3.textAlign.left,
-                                          width: '90%',
-                                       }}>
+                                    <tr style={style.fontSize0_9em}>
+                                       <th style={style.transition.th1}>
                                           Package
                                        </th>
-                                       <th style={{
-                                          minWidth: 50,
-                                          textAlign: css3.textAlign.right,
-                                          width: '10%',
-                                       }}>
+                                       <th style={style.transition.th2}>
                                           Downloads
                                        </th>
                                     </tr>
@@ -136,16 +112,17 @@ export const Projects = () => {
                            'right',
                            'https://www.npmjs.com/search?q=%40toolz',
                         )}
-                        <div style={{height: 48}}/>
+                        <div style={style.height48}/>
                         {getProjectCard(
                            'Spotify Toolz',
                            <>
                               No, I didn't <i>write</i> any of the native Spotify clients. Nor did I contribute to them in any way. But as a longtime subscriber to their service, I grew increasingly exasperated by several
                               key "issues":
                               <ul>
-                                 <li style={{marginBottom: 16}}>Spotify's "shuffle" feature is not random. Not even close. And there's no way inside their client to configure it to behave randomly.</li>
-                                 <li style={{marginBottom: 16}}>Spotify is attrocious at recommending new music. It frequently recommends the same tracks/artists repeatedly, even if you've done everything in your power to ignore those recommendations.</li>
-                                 <li>If you maintain large playlists in Spotify, it's surprisingly difficult to identify/avoid duplicate entries, because Spotify can have many copies of the same track that are not 100% identical.</li>
+                                 <li style={style.marginBottom16}>Spotify's "shuffle" feature is not random. Not even close. And there's no way inside their client to configure it to behave randomly.</li>
+                                 <li style={style.marginBottom16}>Spotify is attrocious at recommending new music. It frequently recommends the same tracks/artists repeatedly, even if you've done everything in your power to ignore those recommendations.</li>
+                                 <li>If you maintain large playlists in Spotify, it's surprisingly difficult to identify/avoid duplicate entries, because Spotify can have many copies of the same track that are not 100% identical - but they're still essentially the <i>same</i> track.
+                                 </li>
                               </ul>
                               Thankfully, Spotify has a fairly-robust API. So I built
                               <a
@@ -161,7 +138,7 @@ export const Projects = () => {
                            'left',
                            'https://spotifytoolz.com',
                         )}
-                        <div style={{height: 48}}/>
+                        <div style={style.height48}/>
                         {getProjectCard(
                            'GitHub',
                            <>
@@ -187,25 +164,23 @@ export const Projects = () => {
       const rows = [];
       Object.entries(npm.npmPackages).forEach((entry, index) => {
          const [npmPackage, downloads] = entry;
+         const trStyle = index % 2 ? style.backgroundColorWhite : style.backgroundColorGrey;
          rows.push(
             <tr
                key={npmPackage}
-               style={{backgroundColor: index % 2 ? '#eeeeee' : 'white'}}
+               style={trStyle}
             >
-               <td style={{
-                  fontSize: '0.9em',
-                  fontWeight: css3.fontWeight._500,
-               }}>
+               <td style={style.npm.td1}>
                   <a
-                     href={'https://npmjs.com/package/@toolz/' + npmPackage}
-                     rel={'noopener noreferrer'}
-                     style={{textDecoration: css3.textDecoration.none}}
+                     href={`https://npmjs.com/package/@toolz/${npmPackage}`}
+                     rel={'noreferrer'}
+                     style={style.textDecorationNone}
                      target={'_blank'}
                   >
                      @toolz/{npmPackage}
                   </a>
                </td>
-               <td style={{textAlign: css3.textAlign.right}}>{downloads}</td>
+               <td style={style.textAlignRight}>{downloads}</td>
             </tr>
          );
       });
@@ -214,59 +189,22 @@ export const Projects = () => {
 
    const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
       allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
-      const styles = {
-         card: {
-            backgroundColor: the.color.white,
-            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
-            position: css3.position.relative,
-         },
-      };
-      if (offset === 'left')
-         styles.card.right = getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12);
-      else if (offset === 'right')
-         styles.card.left = getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12);
+      const outerDivStyle = offset === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
       return <>
-         <div style={styles.card}>
+         <div style={outerDivStyle}>
             <Hidden mdUp={true}>
-               <Row style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 260,
-               }}>
+               <Row style={style.card.row1}>
                   <Column
                      xs={12}
-                     style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        flexGrow: 1,
-                        minHeight: 0,
-                     }}
+                     style={style.card.column1}
                   >
                      <div>
-                        <div style={{
-                           backgroundColor: the.color.beige,
-                           display: css3.dislay.inlineBlock,
-                           height: 24,
-                           width: 10,
-                        }}/>
-                        <h3 style={{
-                           color: the.color.purple,
-                           display: css3.dislay.inlineBlock,
-                           fontSize: '0.9em',
-                           marginLeft: 8,
-                           marginTop: 8,
-                        }}>
+                        <div style={style.card.div1}/>
+                        <h3 style={style.card.h31}>
                            {title}
                         </h3>
                      </div>
-                     <div style={{
-                        flexGrow: 1,
-                        fontSize: '0.8em',
-                        minHeight: 0,
-                        overflowY: css3.overflowY.auto,
-                        paddingLeft: 8,
-                        paddingRight: 8,
-                     }}>
+                     <div style={style.card.div2}>
                         {body}
                      </div>
                   </Column>
@@ -274,95 +212,55 @@ export const Projects = () => {
                <Row>
                   <Column
                      xs={12}
-                     style={{
-                        backgroundColor: the.color.white,
-                        height: 16,
-                     }}
+                     style={style.card.column2}
                   />
                </Row>
                <Row>
                   <Column
                      xs={12}
-                     style={{
-                        height: 200,
-                        overflow: css3.overflow.hidden,
-                     }}
+                     style={style.card.column3}
                   >
                      <a
                         href={url}
-                        rel={'noopener noreferrer'}
+                        rel={'noreferrer'}
                         target={'_blank'}
                      >
                         <img
                            alt={imageAltText}
                            src={mobileImage}
-                           style={{
-                              height: css3.height.initial,
-                              width: '100%',
-                           }}
+                           style={style.card.img1}
                         />
                      </a>
                   </Column>
                </Row>
             </Hidden>
             <Hidden smDown={true}>
-               <Row style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 400,
-               }}>
+               <Row style={style.card.row2}>
                   <Column
                      xs={7}
-                     style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        flexGrow: 1,
-                        minHeight: 0,
-                        width: '58.33%',
-                     }}
+                     style={style.card.column4}
                   >
                      <div>
-                        <div style={{
-                           backgroundColor: the.color.beige,
-                           display: css3.dislay.inlineBlock,
-                           height: 30,
-                           width: 10,
-                        }}/>
-                        <h3 style={{
-                           color: the.color.purple,
-                           display: css3.dislay.inlineBlock,
-                           marginLeft: 8,
-                           marginTop: 8,
-                        }}>
+                        <div style={style.card.div3}/>
+                        <h3 style={style.card.h32}>
                            {title}
                         </h3>
                      </div>
-                     <div style={{
-                        flexGrow: 1,
-                        fontSize: '0.9em',
-                        minHeight: 0,
-                        overflowY: css3.overflowY.auto,
-                        paddingBottom: 8,
-                        paddingLeft: 8,
-                        paddingRight: 8,
-                     }}>
+                     <div style={style.card.div4}>
                         {body}
                      </div>
                   </Column>
                   <Column xs={5}>
-                     <div style={{overflow: css3.overflow.hidden}}>
+                     <div style={style.overflowHidden}>
                         <a
                            href={url}
-                           rel={'noopener noreferrer'}
+                           rel={'noreferrer'}
                            target={'_blank'}
                         >
                            <img
                               alt={imageAltText}
                               src={desktopImage}
-                              style={{
-                                 height: 400,
-                                 width: css3.width.initial,
-                              }}
+                              style={style.card.img2}
                            />
                         </a>
                      </div>
@@ -375,22 +273,15 @@ export const Projects = () => {
 
    const getRepoLinks = () => {
       return github.repos.map((repo, index) => {
+         const divRowStyle = index % 2 ? style.repo.divLightRow : style.repo.divDarkRow;
          return <div
             key={repo.id}
-            style={{
-               backgroundColor: index % 2 ? '#eeeeee' : 'white',
-               fontSize: '0.9em',
-               paddingBottom: 4,
-               paddingTop: 4,
-            }}
+            style={divRowStyle}
          >
             <a
                href={repo.html_url}
                rel={'noreferrer'}
-               style={{
-                  fontWeight: css3.fontWeight._500,
-                  textDecoration: css3.textDecoration.none,
-               }}
+               style={style.repo.a}
                target={'_blank'}
             >
                {repo.name}
@@ -398,6 +289,199 @@ export const Projects = () => {
          </div>;
       });
    };
+
+   const style = useMemo(() => {
+      return {
+         article: {
+            a: {
+               fontWeight: css3.fontWeight._500,
+               textDecoration: css3.textDecoration.none,
+            },
+            divDark: {
+               backgroundColor: '#eeeeee',
+               fontSize: '0.9em',
+               paddingBottom: 4,
+               paddingTop: 4,
+            },
+            divLight: {
+               backgroundColor: 'white',
+               fontSize: '0.9em',
+               paddingBottom: 4,
+               paddingTop: 4,
+            },
+         },
+         backgroundColorGrey: {
+            backgroundColor: '#eeeeee',
+         },
+         backgroundColorWhite: {
+            backgroundColor: 'white',
+         },
+         card: {
+            column1: {
+               display: css3.dislay.flex,
+               flexDirection: css3.flexDirection.column,
+               flexGrow: 1,
+               minHeight: 0,
+            },
+            column2: {
+               backgroundColor: the.color.white,
+               height: 16,
+            },
+            column3: {
+               height: 200,
+               overflow: css3.overflow.hidden,
+            },
+            column4: {
+               display: css3.dislay.flex,
+               flexDirection: css3.flexDirection.column,
+               flexGrow: 1,
+               minHeight: 0,
+               width: '58.33%',
+            },
+            div1: {
+               backgroundColor: the.color.beige,
+               display: css3.dislay.inlineBlock,
+               height: 24,
+               width: 10,
+            },
+            div2: {
+               flexGrow: 1,
+               fontSize: '0.8em',
+               minHeight: 0,
+               overflowY: css3.overflowY.auto,
+               paddingLeft: 8,
+               paddingRight: 8,
+            },
+            div3: {
+               backgroundColor: the.color.beige,
+               display: css3.dislay.inlineBlock,
+               height: 30,
+               width: 10,
+            },
+            div4: {
+               flexGrow: 1,
+               fontSize: '0.9em',
+               minHeight: 0,
+               overflowY: css3.overflowY.auto,
+               paddingBottom: 8,
+               paddingLeft: 8,
+               paddingRight: 8,
+            },
+            h31: {
+               color: the.color.purple,
+               display: css3.dislay.inlineBlock,
+               fontSize: '0.9em',
+               marginLeft: 8,
+               marginTop: 8,
+            },
+            h32: {
+               color: the.color.purple,
+               display: css3.dislay.inlineBlock,
+               marginLeft: 8,
+               marginTop: 8,
+            },
+            img1: {
+               height: css3.height.initial,
+               width: '100%',
+            },
+            img2: {
+               height: 400,
+               width: css3.width.initial,
+            },
+            outerDivLeft: {
+               backgroundColor: the.color.white,
+               boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
+               left: getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12),
+               position: css3.position.relative,
+            },
+            outerDivRight: {
+               backgroundColor: the.color.white,
+               boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
+               position: css3.position.relative,
+               right: getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12),
+            },
+            row1: {
+               display: css3.dislay.flex,
+               flexDirection: css3.flexDirection.column,
+               height: 260,
+            },
+            row2: {
+               display: css3.dislay.flex,
+               flexDirection: css3.flexDirection.column,
+               height: 400,
+            },
+         },
+         fontSize0_9em: {
+            fontSize: '0.9em',
+         },
+         height48: {
+            height: 48,
+         },
+         marginBottom16: {
+            marginBottom: 16,
+         },
+         marginTop0: {
+            marginTop: 0,
+         },
+         npm: {
+            td1: {
+               fontSize: '0.9em',
+               fontWeight: css3.fontWeight._500,
+            },
+         },
+         overflowHidden: {
+            overflow: css3.overflow.hidden,
+         },
+         repo: {
+            a: {
+               fontWeight: css3.fontWeight._500,
+               textDecoration: css3.textDecoration.none,
+            },
+            divDarkRow: {
+               backgroundColor: '#eeeeee',
+               fontSize: '0.9em',
+               paddingBottom: 4,
+               paddingTop: 4,
+            },
+            divLightRow: {
+               backgroundColor: 'white',
+               fontSize: '0.9em',
+               paddingBottom: 4,
+               paddingTop: 4,
+            },
+         },
+         textAlignRight: {
+            textAlign: css3.textAlign.right,
+         },
+         textDecorationNone: {
+            textDecoration: css3.textDecoration.none,
+         },
+         transition: {
+            column: {
+               paddingLeft: 8,
+               paddingRight: 8,
+            },
+            div1: {
+               position: css3.position.absolute,
+               width: '100%',
+            },
+            div2: {
+               backgroundColor: the.color.sand,
+               paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+               paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+            },
+            th1: {
+               textAlign: css3.textAlign.left,
+               width: '90%',
+            },
+            th2: {
+               minWidth: 50,
+               textAlign: css3.textAlign.right,
+               width: '10%',
+            },
+         },
+      };
+   }, [viewport.size]);
 
    return <>
       <Route

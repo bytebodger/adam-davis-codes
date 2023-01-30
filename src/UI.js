@@ -13,7 +13,7 @@ import { Phone } from './routes/phone/Phone';
 import { useConstructor } from '@toolz/use-constructor';
 import { use } from './common/objects/use';
 import { FAQ } from './routes/faq/FAQ';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 export const UI = memo(() => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -24,14 +24,23 @@ export const UI = memo(() => {
       use.githubReposEndpoint.loadRepos();
    });
 
-   return <>
-      <div style={{minWidth: 300}}>
-         <Header/>
-         <Row style={{
+   const style = useMemo(() => {
+      return {
+         minWidth300: {
+            minWidth: 300,
+         },
+         row: {
             minWidth: 350,
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
-         }}>
+         },
+      };
+   }, [viewport.size]);
+
+   return <>
+      <div style={style.minWidth300}>
+         <Header/>
+         <Row style={style.row}>
             <Email/>
             <FAQ/>
             <Home/>

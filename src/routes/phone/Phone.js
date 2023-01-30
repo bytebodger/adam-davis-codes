@@ -38,7 +38,7 @@ export const Phone = memo(() => {
                         xs={12} sm={10} md={8} lg={7} xl={6}
                         style={style.column1}
                      >
-                        <h1 style={style.h1}>+1-904-434-9210</h1>
+                        <h1 style={style.textAlignCenter}>+1-904-434-9210</h1>
                         <div style={style.div3}>
                            <Row>
                               <Column xs={12}>
@@ -98,12 +98,12 @@ export const Phone = memo(() => {
             boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
             padding: 16,
          },
-         h1: {
-            textAlign: css3.textAlign.center,
-         },
          h3: {
             color: the.color.purple,
             margin: 0,
+            textAlign: css3.textAlign.center,
+         },
+         textAlignCenter: {
             textAlign: css3.textAlign.center,
          },
       };

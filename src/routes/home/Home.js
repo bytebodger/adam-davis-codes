@@ -27,7 +27,7 @@ export const Home = memo(() => {
 
    const getMainText = () => {
       return <>
-         <div style={style.mainText.div1}>
+         <div style={style.textAlignJustify}>
             I wrote my first program in 1984, when I was 11 years old, in BASIC, on a Coleco Adam home computer... that had a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
             SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of JavaScript. I was heavily focused first on jQuery, then Angular, and
             now React.
@@ -89,7 +89,7 @@ export const Home = memo(() => {
                      <Row>
                         <Column
                            xs={12}
-                           style={style.transition.column1}
+                           style={style.padding16}
                         >
                            <div style={style.transition.div1}>
                               <div style={style.transition.div2}>
@@ -102,19 +102,19 @@ export const Home = memo(() => {
                                     Adam Nathaniel Davis
                                  </div>
                                  <div style={style.transition.div4}/>
-                                 <div style={style.transition.div5}>
+                                 <div style={style.marginTop30}>
                                     <Button onClick={() => history.push('/resume')}>
                                        Resume
                                     </Button>
                                     <Button
                                        onClick={() => history.push('/projects')}
-                                       style={style.transition.button}
+                                       style={style.marginLeft20}
                                     >
                                        Projects
                                     </Button>
                                  </div>
                                  <div style={style.transition.div6}>
-                                    <div style={style.transition.div7}>
+                                    <div style={style.paddingTop7}>
                                        <FollowIcons dimension={25}/>
                                     </div>
                                  </div>
@@ -125,20 +125,20 @@ export const Home = memo(() => {
                      <Row>
                         <Column
                            xs={12}
-                           style={style.transition.column2}
+                           style={style.padding0_16_16_16}
                         >
                            <div style={style.transition.div8}>
-                              <h1 style={style.transition.h1}>A Coding Life</h1>
+                              <h1 style={style.marginTop0}>A Coding Life</h1>
                               {getMainText()}
                            </div>
                         </Column>
                      </Row>
-                     <div style={style.transition.div9}>
+                     <div style={style.transition.backgroundColorWhite}>
                         <Footer/>
                      </div>
                   </Hidden>
                   <Hidden smDown={true}>
-                     <Row style={style.transition.row}>
+                     <Row style={style.paddingTop150}>
                         <Column md={2} lg={3} xl={4}/>
                         <Column xs={6} md={4} lg={3} xl={2}>
                            <div style={style.transition.div1}>
@@ -152,12 +152,12 @@ export const Home = memo(() => {
                                     Adam Nathaniel Davis
                                  </div>
                                  <div style={style.transition.div12}/>
-                                 <div style={style.transition.div13}>
+                                 <div style={style.fontSize1_2em}>
                                     <ReactRotatingText items={titles}/>
                                  </div>
                               </div>
                               <div style={style.transition.div14}>
-                                 <div style={style.transition.div15}>
+                                 <div style={style.paddingTop12}>
                                     <FollowIcons dimension={25}/>
                                  </div>
                               </div>
@@ -175,7 +175,7 @@ export const Home = memo(() => {
                   </Hidden>
                </div>
                <Hidden mdUp={true}>
-                  <div style={style.transition.spacerDiv}/>
+                  <div style={style.height250}/>
                </Hidden>
                <div style={style.transition.imageDiv}/>
                <Hidden smDown={true}>
@@ -197,10 +197,16 @@ export const Home = memo(() => {
       };
 
       return {
+         backgroundColorWhite: {
+            backgroundColor: the.color.white,
+         },
+         fontSize1_2em: {
+            fontSize: '1.2em',
+         },
+         height250: {
+            height: 250,
+         },
          mainText: {
-            div1: {
-               textAlign: css3.textAlign.justify,
-            },
             div2: {
                marginTop: 16,
                textAlign: css3.textAlign.justify,
@@ -211,16 +217,34 @@ export const Home = memo(() => {
                textAlign: css3.textAlign.justify,
             },
          },
+         marginLeft20: {
+            marginLeft: 20,
+         },
+         marginTop0: {
+            marginTop: 0,
+         },
+         marginTop30: {
+            marginTop: 30,
+         },
+         padding0_16_16_16: {
+            padding: '0px 16px 16px 16px',
+         },
+         padding16: {
+            padding: 16,
+         },
+         paddingTop7: {
+            paddingTop: 7,
+         },
+         paddingTop12: {
+            paddingTop: 12,
+         },
+         paddingTop150: {
+            paddingTop: 150,
+         },
+         textAlignJustify: {
+            textAlign: css3.textAlign.justify,
+         },
          transition: {
-            button: {
-               marginLeft: 20,
-            },
-            column1: {
-               padding: 16,
-            },
-            column2: {
-               padding: '0px 16px 16px 16px',
-            },
             column3: {
                height: 525,
                overflowY: css3.overflowY.auto,
@@ -248,13 +272,10 @@ export const Home = memo(() => {
                backgroundColor: the.color.purple,
                height: 2,
                marginBottom: 20,
-               marginLeft: 'auto',
-               marginRight: 'auto',
+               marginLeft: css3.marginLeft.auto,
+               marginRight: css3.marginRight.auto,
                marginTop: 20,
                width: '25%',
-            },
-            div5: {
-               marginTop: 30,
             },
             div6: {
                backgroundColor: the.color.white,
@@ -262,15 +283,9 @@ export const Home = memo(() => {
                height: 40,
                marginTop: 40,
             },
-            div7: {
-               paddingTop: 7,
-            },
             div8: {
                backgroundColor: 'rgba(255, 255, 255, 0.8)',
                padding: 16,
-            },
-            div9: {
-               backgroundColor: the.color.white,
             },
             div10: {
                backgroundColor: the.color.sand,
@@ -286,24 +301,15 @@ export const Home = memo(() => {
                backgroundColor: the.color.purple,
                height: 2,
                marginBottom: 40,
-               marginLeft: 'auto',
-               marginRight: 'auto',
+               marginLeft: css3.marginLeft.auto,
+               marginRight: css3.marginRight.auto,
                marginTop: 40,
                width: '25%',
-            },
-            div13: {
-               fontSize: '1.2em',
             },
             div14: {
                backgroundColor: the.color.white,
                height: 50,
                textAlign: css3.textAlign.center,
-            },
-            div15: {
-               paddingTop: 12,
-            },
-            h1: {
-               marginTop: 0,
             },
             imageDiv: {
                backgroundImage: `url(${codeImage})`,
@@ -321,12 +327,6 @@ export const Home = memo(() => {
                height: 204,
                marginTop: 40,
                width: 204,
-            },
-            row: {
-               paddingTop: 150,
-            },
-            spacerDiv: {
-               height: 250,
             },
          },
       };

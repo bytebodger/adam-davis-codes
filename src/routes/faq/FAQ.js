@@ -37,7 +37,7 @@ export const FAQ = memo(() => {
                         xs={12} sm={10} md={8} lg={7} xl={6}
                         style={style.outerColumn}
                      >
-                        <h1 style={style.h1}>FAQ</h1>
+                        <h1 style={style.marginTop0}>FAQ</h1>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -48,7 +48,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -60,7 +60,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -74,7 +74,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -85,7 +85,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -99,7 +99,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -113,7 +113,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -127,7 +127,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -142,7 +142,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -157,7 +157,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -171,7 +171,7 @@ export const FAQ = memo(() => {
                               </div>
                            </Column>
                         </div>
-                        <div style={style.spacerDiv}/>
+                        <div style={style.height24Or48}/>
                         <div style={style.card}>
                            <Column xs={12}>
                               <h3 style={style.h3}>
@@ -208,17 +208,20 @@ export const FAQ = memo(() => {
             padding: 20,
             position: css3.position.relative,
          },
-         h1: {
-            marginTop: 0,
-         },
          h3: {
             color: the.color.purple,
             fontSize: isMobile ? '0.9em' : '1em',
             marginTop: 0,
          },
+         height24Or48: {
+            height: isMobile ? 24 : 48,
+         },
          innerDiv: {
             fontSize: isMobile ? '0.8em' : '0.9em',
             textAlign: css3.textAlign.justify,
+         },
+         marginTop0: {
+            marginTop: 0,
          },
          outerColumn: {
             paddingLeft: 8,
@@ -232,9 +235,6 @@ export const FAQ = memo(() => {
             backgroundColor: the.color.sand,
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
             paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-         },
-         spacerDiv: {
-            height: isMobile ? 24 : 48,
          },
       };
    }, [viewport.size]);
