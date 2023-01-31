@@ -121,7 +121,7 @@ export const Header = memo(() => {
    }, [viewport.size]);
 
    const getLinks = useCallback(() => {
-      return routes.map((route, index) => {
+      return routes.map(route => {
          const linkName = capitalize.firstLetter(route.replace('/', ''));
          const divStyle = location.pathname === route ? style.links.current : style.links.notCurrent;
          return <div
@@ -134,19 +134,19 @@ export const Header = memo(() => {
       });
    }, [history, location, routes, style]);
 
-   const getMobileLinks = useCallback(() => {
-      const goToLink = (route = '') => {
-         allow.aString(route, is.not.empty);
-         history.push(route);
-         setLinksOpen(false);
-      };
+   const goToLink = useCallback((event = {}) => {
+      allow.anObject(event, is.not.empty);
+      history.push('/' + event.target.innerText.toLowerCase());
+      setLinksOpen(false);
+   }, [history]);
 
+   const getMobileLinks = useCallback(() => {
       return routes.map(route => {
          const linkName = capitalize.firstLetter(route.replace('/', '')).toUpperCase();
          return <React.Fragment key={'mobileLink-' + route}>
             <ListItem
                button={true}
-               onClick={() => goToLink(route)}
+               onClick={goToLink}
             >
                <ListItemText
                   primary={linkName}
@@ -156,13 +156,17 @@ export const Header = memo(() => {
             <Divider/>
          </React.Fragment>;
       });
-   }, [history, routes, style]);
+   }, [goToLink, routes, style]);
+
+   const closeLinks = useCallback(() => setLinksOpen(false), []);
+
+   const openLinks = useCallback(() => setLinksOpen(true), []);
 
    return <>
       <Dialog
          fullScreen={true}
-         onClick={() => setLinksOpen(false)}
-         onClose={() => setLinksOpen(false)}
+         onClick={closeLinks}
+         onClose={closeLinks}
          open={linksOpen}
          TransitionComponent={Transition}
       >
@@ -171,7 +175,7 @@ export const Header = memo(() => {
                <IconButton
                   color={'inherit'}
                   edge={'start'}
-                  onClick={() => setLinksOpen(false)}
+                  onClick={closeLinks}
                >
                   <Close/>
                </IconButton>
@@ -223,7 +227,7 @@ export const Header = memo(() => {
             >
                <FontAwesomeIcon
                   icon={hamburgerMenu}
-                  onClick={() => setLinksOpen(true)}
+                  onClick={openLinks}
                   style={style.fontAwesomeIcon}
                />
             </Column>

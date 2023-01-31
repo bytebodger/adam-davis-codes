@@ -109,9 +109,11 @@ export const Phone = memo(() => {
       </>;
    }, [style]);
 
+   const triggerTransition = useCallback(({match}) => getCssTransition(match), [getCssTransition]);
+
    return <>
       <Route
-         children={({match}) => getCssTransition(match)}
+         children={triggerTransition}
          exact={true}
          path={'/phone'}
       />

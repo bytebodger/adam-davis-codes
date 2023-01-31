@@ -7,7 +7,7 @@ import { Hidden } from '@material-ui/core';
 import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 import { FollowIcons } from './common/components/FollowIcons';
 import { useHistory } from 'react-router';
-import { memo, useMemo } from 'react';
+import { memo, useMemo, useCallback } from 'react';
 
 export const Footer = memo(() => {
    const history = useHistory();
@@ -75,6 +75,10 @@ export const Footer = memo(() => {
       };
    }, [isMobile, viewport.size]);
 
+   const goToEmail = useCallback(() => history.push('/email'), [history]);
+
+   const goToPhone = useCallback(() => history.push('/phone'), [history]);
+
    return <>
       <Row
          justify={isMobile ? 'space-evenly' : 'space-between'}
@@ -88,7 +92,7 @@ export const Footer = memo(() => {
                <Row style={style.minWidth350}>
                   <Column
                      xs={6}
-                     onClick={() => history.push('/phone')}
+                     onClick={goToPhone}
                   >
                      <div style={style.div1}>
                         Call
@@ -99,7 +103,7 @@ export const Footer = memo(() => {
                   </Column>
                   <Column
                      xs={6}
-                     onClick={() => history.push('/email')}
+                     onClick={goToEmail}
                   >
                      <div style={style.div1}>
                         Write
@@ -145,7 +149,7 @@ export const Footer = memo(() => {
             <Column>
                <Row style={style.fontSize0_8em}>
                   <Column
-                     onClick={() => history.push('/phone')}
+                     onClick={goToPhone}
                      style={style.column3}
                   >
                      <div style={style.fontWeight600}>
@@ -156,7 +160,7 @@ export const Footer = memo(() => {
                      </div>
                   </Column>
                   <Column
-                     onClick={() => history.push('/email')}
+                     onClick={goToEmail}
                      style={style.column4}
                   >
                      <div style={style.fontWeight600}>

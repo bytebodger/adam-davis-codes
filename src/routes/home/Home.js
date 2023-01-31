@@ -214,6 +214,10 @@ export const Home = memo(() => {
       </>;
    }, [style]);
 
+   const goToResume = useCallback(() => history.push('/resume'), [history]);
+
+   const goToProjects = useCallback(() => history.push('/projects'), [history]);
+
    const getCssTransition = useCallback(match => {
       if (match !== null)
          logGooglePageHit('home');
@@ -249,11 +253,11 @@ export const Home = memo(() => {
                                  </div>
                                  <div style={style.transition.div4}/>
                                  <div style={style.marginTop30}>
-                                    <Button onClick={() => history.push('/resume')}>
+                                    <Button onClick={goToResume}>
                                        Resume
                                     </Button>
                                     <Button
-                                       onClick={() => history.push('/projects')}
+                                       onClick={goToProjects}
                                        style={style.marginLeft20}
                                     >
                                        Projects
@@ -330,11 +334,13 @@ export const Home = memo(() => {
             </div>
          </CSSTransition>
       </>;
-   }, [getMainText, history, style]);
+   }, [getMainText, goToProjects, goToResume, style]);
+
+   const triggerTransition = useCallback(({match}) => getCssTransition(match), [getCssTransition]);
 
    return <>
       <Route
-         children={({match}) => getCssTransition(match)}
+         children={triggerTransition}
          exact={true}
          path={'/home'}
       />

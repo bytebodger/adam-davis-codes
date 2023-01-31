@@ -414,9 +414,11 @@ export const Resume = memo(() => {
       </>;
    }, [getEducationCards, getJobCards, style]);
 
+   const triggerTransition = useCallback(({match}) => getCssTransition(match), [getCssTransition]);
+
    return <>
       <Route
-         children={({match}) => getCssTransition(match)}
+         children={triggerTransition}
          exact={true}
          path={'/resume'}
       />
