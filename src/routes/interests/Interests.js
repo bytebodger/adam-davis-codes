@@ -24,6 +24,7 @@ import { Hidden } from '@material-ui/core';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
 export const Interests = memo(() => {
+   const currentOffset = useRef('right');
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
 
@@ -151,9 +152,10 @@ export const Interests = memo(() => {
       };
    }, [viewport.size]);
 
-   const getProjectCard = useCallback((title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
-      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
-      const outerDivStyle = offset === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
+   const getProjectCard = useCallback((title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', url = '') => {
+      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).aString(url, is.not.empty);
+      currentOffset.current = currentOffset.current === 'right' ? 'left' : 'right';
+      const outerDivStyle = currentOffset.current === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
       return <>
          <div style={outerDivStyle}>
             <Hidden mdUp={true}>
@@ -267,7 +269,6 @@ export const Interests = memo(() => {
                            blobLifeDesktop,
                            blobLifeMobile,
                            'The Blob Life YouTube channel, showcasing the painting techniques of Adam Nathaniel Davis',
-                           'left',
                            'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag',
                         )}
                         <div style={style.height48}/>
@@ -279,7 +280,6 @@ export const Interests = memo(() => {
                            writingVoyageDesktop,
                            writingVoyageMobile,
                            'The personal site of Adam Nathaniel Davis',
-                           'right',
                            'https://writing.voyage',
                         )}
                         <div style={style.height48}/>
@@ -291,7 +291,6 @@ export const Interests = memo(() => {
                            exciliorDesktop,
                            exciliorMobile,
                            'The sci-fi world of Adam Nathaniel Davis',
-                           'left',
                            'https://www.worldanvil.com/w/excilior',
                         )}
                         <div style={style.height48}/>
@@ -303,7 +302,6 @@ export const Interests = memo(() => {
                            npxDesktop,
                            npxMobile,
                            'The plays written by Adam Nathaniel Davis',
-                           'right',
                            'https://newplayexchange.org/users/7276/adam-nathaniel-davis',
                         )}
                      </Column>

@@ -15,11 +15,118 @@ import { is } from '../../common/objects/is';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
 export const Resume = memo(() => {
-   const directions = useMemo(() => {
-      return ['left', 'right'];
-   }, []);
+   const currentDirection = useRef('right');
+   const jobCardCount = useRef(0);
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
+
+   const education = useMemo(() => {
+      return [
+         {
+            description: `I've never taken a programming course of any sort.  I never went to school to learn anything related to application development.  Every technology I've used, every software skill I've acquired, every language I've learned, has been completely self-taught.`,
+            employer: 'Self-taught',
+            technologies: '',
+            timeframe: '1985 - Present',
+            title: 'Programming',
+         },
+         {
+            description: 'San Antonio, Texas',
+            employer: 'Community College of the Air Force',
+            technologies: '',
+            timeframe: '1997',
+            title: 'Associate in Electronics',
+         },
+         {
+            description: 'Grand Rapids, Michigan (Nothing makes you feel older than realizing that your high school doesn\'t even exist anymore...)',
+            employer: 'Creston High School',
+            technologies: '',
+            timeframe: '1990',
+            title: 'Diploma',
+         },
+      ];
+   }, []);
+
+   const jobs = useMemo(() => {
+      return [
+         {
+            description: 'Maintaing, extending, and re-architecting the in-house application that handled all outgoing marketing email communications',
+            employer: 'Amazon',
+            technologies: 'JavaScript, Angular, React, Backbone, Node, jQuery',
+            timeframe: '2022 - 2023',
+            title: 'Frontend Engineer',
+         },
+         {
+            description: 'Technical lead on a team developing user interfaces for Medicare.gov and HealthCare.gov',
+            employer: 'SemanticBits',
+            technologies: 'JavaScript, TypeScript, React, Node, Express, REST, HTML/CSS, Electron, Jenkins, GitHub',
+            timeframe: '2020 - 2022',
+            title: 'Senior Software Engineer',
+         },
+         {
+            description: 'Full-stack developer responsible for building backend web services, and the SaaS frontend portals that consumed those services; High-volume environment coordinating sensitive data between major health insurance providers;',
+            employer: 'Availity',
+            technologies: 'Java, Oracle, JavaScript, Angular, React, jQuery, REST, HTML/CSS, Jenkins, Git',
+            timeframe: '2017 - 2020',
+            title: 'Developer III',
+         },
+         {
+            description: 'Maintaining a large, legacy, SaaS Applicant Tracking System, while converting its backend to a series of REST services',
+            employer: 'SilkRoad',
+            technologies: 'ColdFusion, C#, JavaScript, jQuery, REST, MS-SQL, HTML/CSS, Perforce',
+            timeframe: '2015 - 2017',
+            title: 'Senior Software Engineer',
+         },
+         {
+            description: 'Leading a team of developers initially focused on the implementation of a new content management system, and eventually tasked with supporting all functions on the public-facing website',
+            employer: 'EverBank',
+            technologies: 'C#, MS-SQL, JavaScript, jQuery, Knockout, Sitecore, Node, HTML/CSS, TFS',
+            timeframe: '2012 - 2015',
+            title: 'IT Manager',
+         },
+         {
+            description: 'Creating a US-based business for an international outsourcing firm specializing in application development, design/graphics, business analysis, staffing, and quality assurance testing',
+            employer: 'Insoft USA',
+            technologies: 'PHP, JavaScript, jQuery, C#, MS-SQL, MySQL, HTML/CSS',
+            timeframe: '2010 - 2012',
+            title: 'Managing Partner',
+         },
+         {
+            description: 'Building an IT department from scratch to support an $18M marketing company, including extensive budgeting and analysis of staffing and infrastructure',
+            employer: 'MECLABS',
+            technologies: 'PHP, MySQL, Google Analytics, JavaScript, jQuery, HTML/CSS',
+            timeframe: '2007 - 2010',
+            title: 'Director of Technology',
+         },
+         {
+            description: 'Leading the transition from delivering customized, ad hoc software to a SaaS model based on formalized release management, including the implementation of new source control tools and the reorganization of development resources',
+            employer: 'Vurv Technology',
+            technologies: 'ColdFusion, MS-SQL, JavaScript, HTML/CSS',
+            timeframe: '2004 - 2007',
+            title: 'Director of Application Delivery',
+         },
+         {
+            description: 'Developing custom applications to support the public website and internal/clinical objectives',
+            employer: 'Nemours',
+            technologies: 'ColdFusion, PHP, MS-SQL, HTML/CSS',
+            timeframe: '2001 - 2004',
+            title: 'Application Developer',
+         },
+         {
+            description: 'I built numerous websites for clients.  I created a web-based, publicly-playable game for trading "shares" of athletes in real-time.  I built a boxing simulation.  I wrote automated currency-trading software.  I got my fingers into all sorts of exotically-flavored pies.',
+            employer: 'Self-Employed',
+            technologies: 'PHP, MySQL, HTML/CSS',
+            timeframe: '1997 - 2001',
+            title: 'Owner',
+         },
+         {
+            description: 'I was a certified electronic technician, maintaining many of the same radars used at civilian airports.',
+            employer: 'U.S. Air Force',
+            technologies: '',
+            timeframe: '1992 - 1997',
+            title: 'Air Traffic Control Radar Technician',
+         },
+      ];
+   }, []);
 
    const style = useMemo(() => {
       const isMobile = ['xs', 'sm'].includes(viewport.size);
@@ -144,92 +251,125 @@ export const Resume = memo(() => {
       };
    }, [viewport.size]);
 
-   const getJobDescription = useCallback((description = '', direction = '') => {
-      allow.aString(description, is.not.empty).oneOf(direction, directions);
-      const columnStyle = direction === 'left' ? style.jobDescription.columnLeft : style.jobDescription.columnRight;
-      return <>
-         <Column
-            xs={8}
-            style={columnStyle}
-         >
-            {description}
-         </Column>
-      </>;
-   }, [directions, style]);
-
-   const getTechnologiesUsed = useCallback((technologies = '', direction = '') => {
-      allow.aString(technologies, is.not.empty).oneOf(direction, directions);
-      const columnStyle = direction === 'left' ? style.textAlignLeft : style.textAlignRight;
-      const divStyle = direction === 'left' ? style.technologiesUsed.div2Left : style.technologiesUsed.div3Right;
-      return <>
-         <Row
-            justify={'space-evenly'}
-            style={style.marginTop16}
-         >
-            <Column
-               xs={11}
-               style={columnStyle}
+   const getJobCard = useCallback((job = {}) => {
+      allow.anObject(job, is.not.empty);
+      currentDirection.current = currentDirection.current === 'right' ? 'left' : 'right';
+      jobCardCount.current = jobCardCount.current + 1;
+      let trailSpacer;
+      if (jobCardCount.current < 2)
+         trailSpacer = null;
+      else {
+         trailSpacer = <>
+            <Row justify={'space-evenly'}>
+               <Column xs={11}>
+                  <Row>
+                     <Column
+                        xs={currentDirection.current === 'left' ? 2 : 10}
+                        style={style.trailSpacer.column}
+                     />
+                  </Row>
+               </Column>
+            </Row>
+         </>;
+      }
+      let technologiesUsed;
+      if (job.technologies === '')
+         technologiesUsed = null;
+      else {
+         const column1Style = currentDirection.current === 'left' ? style.textAlignLeft : style.textAlignRight;
+         const divStyle = currentDirection.current === 'left' ? style.technologiesUsed.div2Left : style.technologiesUsed.div3Right;
+         technologiesUsed = <>
+            <Row
+               justify={'space-evenly'}
+               style={style.marginTop16}
             >
-               <div style={style.technologiesUsed.div1}>
-                  Technologies Used:
-               </div>
-               <div style={divStyle}>
-                  {technologies}
-               </div>
-            </Column>
-         </Row>
-      </>;
-   }, [directions, style]);
-
-   const getTimeframe = useCallback((timeframe = '', direction = '') => {
-      allow.aString(timeframe, is.not.empty).oneOf(direction, directions);
-      const h3Style = direction === 'right' ? style.timeframe.columnRight : style.timeframe.columnLeft;
-      return <>
-         <Row>
-            <Column xs={12}>
-               <h3 style={h3Style}>
-                  {timeframe}
-               </h3>
-            </Column>
-         </Row>
-      </>;
-   }, [directions, style]);
-
-   const getTitleAndEmployer = useCallback((title = '', employer = '', direction = '') => {
-      allow.aString(title, is.not.empty).aString(employer, is.not.empty).oneOf(direction, directions);
-      const columnStyle = direction === 'right' ? style.titleAndEmployer.columnRight : style.titleAndEmployer.columnLeft;
-      return <>
+               <Column
+                  xs={11}
+                  style={column1Style}
+               >
+                  <div style={style.technologiesUsed.div1}>
+                     Technologies Used:
+                  </div>
+                  <div style={divStyle}>
+                     {job.technologies}
+                  </div>
+               </Column>
+            </Row>
+         </>;
+      }
+      const h3Style = currentDirection.current === 'right' ? style.timeframe.columnRight : style.timeframe.columnLeft;
+      const column2Style = currentDirection.current === 'right' ? style.titleAndEmployer.columnRight : style.titleAndEmployer.columnLeft;
+      const column3Style = currentDirection.current === 'left' ? style.jobDescription.columnLeft : style.jobDescription.columnRight;
+      const titleAndEmployerColumn = <>
          <Column
             xs={4}
-            style={columnStyle}
+            style={column2Style}
          >
             <div style={style.textTransformUppercase}>
-               {title}
+               {job.title}
             </div>
             <div style={style.titleAndEmployer.div}>
-               {employer}
+               {job.employer}
             </div>
          </Column>
       </>;
-   }, [directions, style]);
-
-   const getTrailSpacer = useCallback((direction = '') => {
-      allow.oneOf(direction, directions);
-      return <>
-         <Row justify={'space-evenly'}>
-            <Column xs={11}>
-               <Row>
-                  <Column
-                     xs={direction === 'left' ? 2 : 10}
-                     style={style.trailSpacer.column}
-                  />
-               </Row>
-            </Column>
-         </Row>
+      const descriptionColumn = <>
+         <Column
+            xs={8}
+            style={column3Style}
+         >
+            {job.description}
+         </Column>
       </>;
-   }, [directions, style]);
+      let body;
+      if (currentDirection.current === 'right') {
+         body = <>
+            {descriptionColumn}
+            {titleAndEmployerColumn}
+         </>;
+      } else if (currentDirection.current === 'left') {
+         body = <>
+            {titleAndEmployerColumn}
+            {descriptionColumn}
+         </>;
+      }
+      return <>
+         {trailSpacer}
+         <div style={style.jobCard}>
+            <Row>
+               <Column xs={12}>
+                  <h3 style={h3Style}>
+                     {job.timeframe}
+                  </h3>
+               </Column>
+            </Row>
+            <Row style={style.paddingTop8}>
+               {body}
+            </Row>
+            {technologiesUsed}
+         </div>
+      </>;
+   }, [style]);
+
+   const getEducationCards = useCallback(() => {
+      jobCardCount.current = 0;
+      return education.map(card => {
+         return <div key={JSON.stringify(card)}>
+            {getJobCard(card)}
+         </div>;
+      });
+   }, [getJobCard, education]);
+
+   const getJobCards = useCallback(() => {
+      return jobs.map(job => {
+         return <div key={JSON.stringify(job)}>
+            {getJobCard(job)}
+         </div>;
+      });
+   }, [getJobCard, jobs]);
 
    const getCssTransition = useCallback(match => {
+      jobCardCount.current = 0;
       if (match !== null)
          logGooglePageHit('resume');
       return <>
@@ -252,104 +392,7 @@ export const Resume = memo(() => {
                         style={style.transition.column}
                      >
                         <h1 style={style.marginTop0OrInitial}>Experience</h1>
-                        {getTrailSpacer('right')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2020 - 2022', 'left')}
-                           <Row style={style.paddingTop8}>
-                              {getTitleAndEmployer('Senior Software Engineer', 'SemanticBits', 'left')}
-                              {getJobDescription('Technical lead on a team developing user interfaces for Medicare.gov and HealthCare.gov', 'left')}
-                           </Row>
-                           {getTechnologiesUsed('JavaScript, TypeScript, React, Node, Express, REST, HTML/CSS, Electron, Jenkins, GitHub', 'left')}
-                        </div>
-                        {getTrailSpacer('left')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2019', 'right')}
-                           <Row style={style.paddingTop8}>
-                              {getJobDescription('Site-based development and installation of custom solutions for video monitoring and physical security (site access) systems', 'right')}
-                              {getTitleAndEmployer('Lead Software Engineer', 'Duos Technologies', 'right')}
-                           </Row>
-                           {getTechnologiesUsed('PHP, JavaScript, React, jQuery, MySQL, PostgreSQL, REST, HTML/CSS, TFS', 'right')}
-                        </div>
-                        {getTrailSpacer('right')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2017 - 2019', 'left')}
-                           <Row style={style.paddingTop8}>
-                              {getTitleAndEmployer('Developer III', 'Availity', 'left')}
-                              {getJobDescription('Full-stack developer responsible for building backend web services, and the SaaS frontend portals that consumed those services; High-volume environment coordinating sensitive data between major health insurance providers;', 'left')}
-                           </Row>
-                           {getTechnologiesUsed('Java, Oracle, JavaScript, Angular, React, jQuery, REST, HTML/CSS, Jenkins, Git', 'left')}
-                        </div>
-                        {getTrailSpacer('left')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2015 - 2017', 'right')}
-                           <Row style={style.paddingTop8}>
-                              {getJobDescription('Maintaining a large, legacy, SaaS Applicant Tracking System, while converting its backend to a series of REST services', 'right')}
-                              {getTitleAndEmployer('Senior Software Engineer', 'SilkRoad', 'right')}
-                           </Row>
-                           {getTechnologiesUsed('ColdFusion, C#, JavaScript, jQuery, REST, MS-SQL, HTML/CSS, Perforce', 'right')}
-                        </div>
-                        {getTrailSpacer('right')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2012 - 2015', 'left')}
-                           <Row style={style.paddingTop8}>
-                              {getTitleAndEmployer('IT Manager', 'EverBank', 'left')}
-                              {getJobDescription('Leading a team of developers initially focused on the implementation of a new content management system, and eventually tasked with supporting all functions on the public-facing website', 'left')}
-                           </Row>
-                           {getTechnologiesUsed('C#, MS-SQL, JavaScript, jQuery, Knockout, Sitecore, Node, HTML/CSS, TFS', 'left')}
-                        </div>
-                        {getTrailSpacer('left')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2010 - 2012', 'right')}
-                           <Row style={style.paddingTop8}>
-                              {getJobDescription('Creating a US-based business for an international outsourcing firm specializing in application development, design/graphics, business analysis, staffing, and quality assurance testing', 'right')}
-                              {getTitleAndEmployer('Managing Partner', 'Insoft USA', 'right')}
-                           </Row>
-                           {getTechnologiesUsed('PHP, JavaScript, jQuery, C#, MS-SQL, MySQL, HTML/CSS', 'right')}
-                        </div>
-                        {getTrailSpacer('right')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2007 - 2010', 'left')}
-                           <Row style={style.paddingTop8}>
-                              {getTitleAndEmployer('Director of Technology', 'MECLABS', 'left')}
-                              {getJobDescription('Building an IT department from scratch to support an $18M marketing company, including extensive budgeting and analysis of staffing and infrastructure', 'left')}
-                           </Row>
-                           {getTechnologiesUsed('PHP, MySQL, Google Analytics, JavaScript, jQuery, HTML/CSS', 'left')}
-                        </div>
-                        {getTrailSpacer('left')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2004 - 2007', 'right')}
-                           <Row style={style.paddingTop8}>
-                              {getJobDescription('Leading the transition from delivering customized, ad hoc software to a SaaS model based on formalized release management, including the implementation of new source control tools and the reorganization of development resources', 'right')}
-                              {getTitleAndEmployer('Director of Application Delivery', 'Vurv Technology', 'right')}
-                           </Row>
-                           {getTechnologiesUsed('ColdFusion, MS-SQL, JavaScript, HTML/CSS', 'right')}
-                        </div>
-                        {getTrailSpacer('right')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('2001 - 2004', 'left')}
-                           <Row style={style.paddingTop8}>
-                              {getTitleAndEmployer('Application Developer', 'Nemours', 'left')}
-                              {getJobDescription('Developing custom applications to support the public website and internal/clinical objectives', 'left')}
-                           </Row>
-                           {getTechnologiesUsed('ColdFusion, PHP, MS-SQL, HTML/CSS', 'left')}
-                        </div>
-                        {getTrailSpacer('left')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('1997 - 2001', 'right')}
-                           <Row style={style.paddingTop8}>
-                              {getJobDescription('I built numerous websites for clients.  I created a web-based, publicly-playable game for trading "shares" of athletes in real-time.  I built a boxing simulation.  I wrote automated currency-trading software.  I got my fingers into all sorts of exotically-flavored pies.', 'right')}
-                              {getTitleAndEmployer('Owner', 'Self-Employed', 'right')}
-                           </Row>
-                           {getTechnologiesUsed('PHP, MySQL, HTML/CSS', 'right')}
-                        </div>
-                        {getTrailSpacer('right')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('1992 - 1997', 'left')}
-                           <Row style={style.paddingTop8}>
-                              {getTitleAndEmployer('Air Traffic Control Radar Technician', 'U.S. Air Force', 'left')}
-                              {getJobDescription('I was a certified electronic technician, maintaining most of the same radars used at civilian airports.', 'left')}
-                           </Row>
-                        </div>
+                        {getJobCards()}
                      </Column>
                   </Row>
                   <Row
@@ -361,29 +404,7 @@ export const Resume = memo(() => {
                         style={style.transition.column}
                      >
                         <h1>Education</h1>
-                        <div style={style.jobCard}>
-                           {getTimeframe('1985 - Present', 'left')}
-                           <Row style={style.paddingTop8}>
-                              {getTitleAndEmployer('Programming', 'Self-Taught', 'left')}
-                              {getJobDescription(`I've never taken a programming course of any sort.  I never went to school to learn anything related to application development.  Every technology I've used, every software skill I've acquired, every language I've learned, has been completely self-taught.`, 'left')}
-                           </Row>
-                        </div>
-                        {getTrailSpacer('left')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('1997', 'right')}
-                           <Row style={style.paddingTop8}>
-                              {getJobDescription('San Antonio, Texas', 'right')}
-                              {getTitleAndEmployer('Associate of Electronics', 'Community College of the Air Force', 'right')}
-                           </Row>
-                        </div>
-                        {getTrailSpacer('right')}
-                        <div style={style.jobCard}>
-                           {getTimeframe('1990', 'left')}
-                           <Row style={style.paddingTop8}>
-                              {getTitleAndEmployer('Diploma', 'Creston High School', 'left')}
-                              {getJobDescription('Grand Rapids, Michigan (Nothing makes you feel older than realizing that your high school doesn\'t even exist anymore...)', 'left')}
-                           </Row>
-                        </div>
+                        {getEducationCards()}
                      </Column>
                   </Row>
                </div>
@@ -391,7 +412,7 @@ export const Resume = memo(() => {
             </div>
          </CSSTransition>
       </>;
-   }, [getJobDescription, getTechnologiesUsed, getTimeframe, getTitleAndEmployer, getTrailSpacer, style]);
+   }, [getEducationCards, getJobCards, style]);
 
    return <>
       <Route

@@ -25,11 +25,12 @@ import { is } from '../../common/objects/is';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
 export const Projects = () => {
-   const nodeRef = useRef(null);
-   const viewport = useViewport(materialUiBreakpoints);
+   const currentOffset = useRef('right');
    const devTo = use.devToArticlesEndpoint;
-   const npm = use.npmDownloadsEndpoint;
    const github = use.githubReposEndpoint;
+   const nodeRef = useRef(null);
+   const npm = use.npmDownloadsEndpoint;
+   const viewport = useViewport(materialUiBreakpoints);
 
    const style = useMemo(() => {
       return {
@@ -270,9 +271,10 @@ export const Projects = () => {
       return rows;
    }, [npm, style]);
 
-   const getProjectCard = useCallback((title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
-      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
-      const outerDivStyle = offset === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
+   const getProjectCard = useCallback((title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', url = '') => {
+      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).aString(url, is.not.empty);
+      currentOffset.current = currentOffset.current === 'right' ? 'left' : 'right';
+      const outerDivStyle = currentOffset.current === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
       return <>
          <div style={outerDivStyle}>
             <Hidden mdUp={true}>
@@ -405,7 +407,6 @@ export const Projects = () => {
                            devDesktop,
                            devMobile,
                            'The Dev.to blogs written by Adam Nathaniel Davis',
-                           'left',
                            'https://dev.to/bytebodger',
                         )}
                         <div style={style.height48}/>
@@ -432,7 +433,6 @@ export const Projects = () => {
                            npmDesktop,
                            npmMobile,
                            'The NPM packages created by Adam Nathaniel Davis',
-                           'right',
                            'https://www.npmjs.com/search?q=%40toolz',
                         )}
                         <div style={style.height48}/>
@@ -458,7 +458,6 @@ export const Projects = () => {
                            spotifyDesktop,
                            spotifyMobile,
                            'A custom React application to extend Spotify\'s native functionality',
-                           'left',
                            'https://spotifytoolz.com',
                         )}
                         <div style={style.height48}/>
@@ -471,7 +470,6 @@ export const Projects = () => {
                            githubDesktop,
                            githubMobile,
                            'The GitHub repositories for Adam Nathaniel Davis',
-                           'right',
                            'https://github.com/bytebodger?tab=repositories',
                         )}
                      </Column>
