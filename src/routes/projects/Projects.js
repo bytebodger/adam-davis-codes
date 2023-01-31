@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useCallback } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { Footer } from '../../Footer';
@@ -30,265 +30,6 @@ export const Projects = () => {
    const devTo = use.devToArticlesEndpoint;
    const npm = use.npmDownloadsEndpoint;
    const github = use.githubReposEndpoint;
-
-   const getArticleLinks = () => {
-      return devTo.articles.map((article, index) => {
-         const divStyle = index % 2 ? style.article.divLight : style.article.divDark;
-         return <div
-            key={article.id}
-            style={divStyle}
-         >
-            <a
-               href={article.canonical_url}
-               rel={'noreferrer'}
-               style={style.article.a}
-               target={'_blank'}
-            >
-               [{article.readable_publish_date}] {article.title}
-            </a>
-         </div>;
-      });
-   };
-
-   const getCssTransition = match => {
-      if (match !== null)
-         logGooglePageHit('projects');
-      return <>
-         <CSSTransition
-            classNames={'fade'}
-            in={match !== null}
-            nodeRef={nodeRef}
-            timeout={2000}
-            unmountOnExit={true}
-         >
-            <div
-               key={'projects'}
-               ref={nodeRef}
-               style={style.transition.div1}
-            >
-               <div style={style.transition.div2}>
-                  <Row justify={'space-evenly'}>
-                     <Column
-                        xs={12} sm={10} md={8} lg={7} xl={6}
-                        style={style.transition.column}
-                     >
-                        <h1 style={style.marginTop0}>Projects</h1>
-                        {getProjectCard(
-                           'Blogging',
-                           <>
-                              I've currently written <b>{devTo.articles.length}</b> blog articles on Dev.to covering a broad range of my views on application development:
-                              {getArticleLinks()}
-                           </>,
-                           devDesktop,
-                           devMobile,
-                           'The Dev.to blogs written by Adam Nathaniel Davis',
-                           'left',
-                           'https://dev.to/bytebodger',
-                        )}
-                        <div style={style.height48}/>
-                        {getProjectCard(
-                           'NPM Packages',
-                           <>
-                              To-date, my NPM packages have been installed more than <b>{npm.downloads}</b> times:
-                              <table>
-                                 <thead>
-                                    <tr style={style.fontSize0_9em}>
-                                       <th style={style.transition.th1}>
-                                          Package
-                                       </th>
-                                       <th style={style.transition.th2}>
-                                          Downloads
-                                       </th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                    {getNpmPackageLinks()}
-                                 </tbody>
-                              </table>
-                           </>,
-                           npmDesktop,
-                           npmMobile,
-                           'The NPM packages created by Adam Nathaniel Davis',
-                           'right',
-                           'https://www.npmjs.com/search?q=%40toolz',
-                        )}
-                        <div style={style.height48}/>
-                        {getProjectCard(
-                           'Spotify Toolz',
-                           <>
-                              No, I didn't <i>write</i> any of the native Spotify clients. Nor did I contribute to them in any way. But as a longtime subscriber to their service, I grew increasingly exasperated by several
-                              key "issues":
-                              <ul>
-                                 <li style={style.marginBottom16}>Spotify's "shuffle" feature is not random. Not even close. And there's no way inside their client to configure it to behave randomly.</li>
-                                 <li style={style.marginBottom16}>Spotify is attrocious at recommending new music. It frequently recommends the same tracks/artists repeatedly, even if you've done everything in your power to ignore those recommendations.</li>
-                                 <li>If you maintain large playlists in Spotify, it's surprisingly difficult to identify/avoid duplicate entries, because Spotify can have many copies of the same track that are not 100% identical - but they're still essentially the <i>same</i> track.
-                                 </li>
-                              </ul>
-                              Thankfully, Spotify has a fairly-robust API. So I built
-                              <a
-                                 href={'https://spotifytoolz.com'}
-                                 rel={'noreferrer'}
-                                 target={'_blank'}
-                              > a publicly-accessible React application
-                              </a> that will allow anyone to mitigate the issues described above.
-                           </>,
-                           spotifyDesktop,
-                           spotifyMobile,
-                           'A custom React application to extend Spotify\'s native functionality',
-                           'left',
-                           'https://spotifytoolz.com',
-                        )}
-                        <div style={style.height48}/>
-                        {getProjectCard(
-                           'GitHub',
-                           <>
-                              This is basically a superset of my NPM packages:
-                              {getRepoLinks()}
-                           </>,
-                           githubDesktop,
-                           githubMobile,
-                           'The GitHub repositories for Adam Nathaniel Davis',
-                           'right',
-                           'https://github.com/bytebodger?tab=repositories',
-                        )}
-                     </Column>
-                  </Row>
-               </div>
-               <Footer/>
-            </div>
-         </CSSTransition>
-      </>;
-   };
-
-   const getNpmPackageLinks = () => {
-      const rows = [];
-      Object.entries(npm.npmPackages).forEach((entry, index) => {
-         const [npmPackage, downloads] = entry;
-         const trStyle = index % 2 ? style.backgroundColorWhite : style.backgroundColorGrey;
-         rows.push(
-            <tr
-               key={npmPackage}
-               style={trStyle}
-            >
-               <td style={style.npm.td1}>
-                  <a
-                     href={`https://npmjs.com/package/@toolz/${npmPackage}`}
-                     rel={'noreferrer'}
-                     style={style.textDecorationNone}
-                     target={'_blank'}
-                  >
-                     @toolz/{npmPackage}
-                  </a>
-               </td>
-               <td style={style.textAlignRight}>{downloads}</td>
-            </tr>
-         );
-      });
-      return rows;
-   };
-
-   const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
-      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
-      const outerDivStyle = offset === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
-      return <>
-         <div style={outerDivStyle}>
-            <Hidden mdUp={true}>
-               <Row style={style.card.row1}>
-                  <Column
-                     xs={12}
-                     style={style.card.column1}
-                  >
-                     <div>
-                        <div style={style.card.div1}/>
-                        <h3 style={style.card.h31}>
-                           {title}
-                        </h3>
-                     </div>
-                     <div style={style.card.div2}>
-                        {body}
-                     </div>
-                  </Column>
-               </Row>
-               <Row>
-                  <Column
-                     xs={12}
-                     style={style.card.column2}
-                  />
-               </Row>
-               <Row>
-                  <Column
-                     xs={12}
-                     style={style.card.column3}
-                  >
-                     <a
-                        href={url}
-                        rel={'noreferrer'}
-                        target={'_blank'}
-                     >
-                        <img
-                           alt={imageAltText}
-                           src={mobileImage}
-                           style={style.card.img1}
-                        />
-                     </a>
-                  </Column>
-               </Row>
-            </Hidden>
-            <Hidden smDown={true}>
-               <Row style={style.card.row2}>
-                  <Column
-                     xs={7}
-                     style={style.card.column4}
-                  >
-                     <div>
-                        <div style={style.card.div3}/>
-                        <h3 style={style.card.h32}>
-                           {title}
-                        </h3>
-                     </div>
-                     <div style={style.card.div4}>
-                        {body}
-                     </div>
-                  </Column>
-                  <Column xs={5}>
-                     <div style={style.overflowHidden}>
-                        <a
-                           href={url}
-                           rel={'noreferrer'}
-                           target={'_blank'}
-                        >
-                           <img
-                              alt={imageAltText}
-                              src={desktopImage}
-                              style={style.card.img2}
-                           />
-                        </a>
-                     </div>
-                  </Column>
-               </Row>
-            </Hidden>
-         </div>
-      </>;
-   };
-
-   const getRepoLinks = () => {
-      return github.repos.map((repo, index) => {
-         const divRowStyle = index % 2 ? style.repo.divLightRow : style.repo.divDarkRow;
-         return <div
-            key={repo.id}
-            style={divRowStyle}
-         >
-            <a
-               href={repo.html_url}
-               rel={'noreferrer'}
-               style={style.repo.a}
-               target={'_blank'}
-            >
-               {repo.name}
-            </a>
-         </div>;
-      });
-   };
 
    const style = useMemo(() => {
       return {
@@ -482,6 +223,265 @@ export const Projects = () => {
          },
       };
    }, [viewport.size]);
+
+   const getArticleLinks = useCallback(() => {
+      return devTo.articles.map((article, index) => {
+         const divStyle = index % 2 ? style.article.divLight : style.article.divDark;
+         return <div
+            key={article.id}
+            style={divStyle}
+         >
+            <a
+               href={article.canonical_url}
+               rel={'noreferrer'}
+               style={style.article.a}
+               target={'_blank'}
+            >
+               [{article.readable_publish_date}] {article.title}
+            </a>
+         </div>;
+      });
+   }, [devTo, style]);
+
+   const getNpmPackageLinks = useCallback(() => {
+      const rows = [];
+      Object.entries(npm.npmPackages).forEach((entry, index) => {
+         const [npmPackage, downloads] = entry;
+         const trStyle = index % 2 ? style.backgroundColorWhite : style.backgroundColorGrey;
+         rows.push(
+            <tr
+               key={npmPackage}
+               style={trStyle}
+            >
+               <td style={style.npm.td1}>
+                  <a
+                     href={`https://npmjs.com/package/@toolz/${npmPackage}`}
+                     rel={'noreferrer'}
+                     style={style.textDecorationNone}
+                     target={'_blank'}
+                  >
+                     @toolz/{npmPackage}
+                  </a>
+               </td>
+               <td style={style.textAlignRight}>{downloads}</td>
+            </tr>,
+         );
+      });
+      return rows;
+   }, [npm, style]);
+
+   const getProjectCard = useCallback((title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
+      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
+      const outerDivStyle = offset === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
+      return <>
+         <div style={outerDivStyle}>
+            <Hidden mdUp={true}>
+               <Row style={style.card.row1}>
+                  <Column
+                     xs={12}
+                     style={style.card.column1}
+                  >
+                     <div>
+                        <div style={style.card.div1}/>
+                        <h3 style={style.card.h31}>
+                           {title}
+                        </h3>
+                     </div>
+                     <div style={style.card.div2}>
+                        {body}
+                     </div>
+                  </Column>
+               </Row>
+               <Row>
+                  <Column
+                     xs={12}
+                     style={style.card.column2}
+                  />
+               </Row>
+               <Row>
+                  <Column
+                     xs={12}
+                     style={style.card.column3}
+                  >
+                     <a
+                        href={url}
+                        rel={'noreferrer'}
+                        target={'_blank'}
+                     >
+                        <img
+                           alt={imageAltText}
+                           src={mobileImage}
+                           style={style.card.img1}
+                        />
+                     </a>
+                  </Column>
+               </Row>
+            </Hidden>
+            <Hidden smDown={true}>
+               <Row style={style.card.row2}>
+                  <Column
+                     xs={7}
+                     style={style.card.column4}
+                  >
+                     <div>
+                        <div style={style.card.div3}/>
+                        <h3 style={style.card.h32}>
+                           {title}
+                        </h3>
+                     </div>
+                     <div style={style.card.div4}>
+                        {body}
+                     </div>
+                  </Column>
+                  <Column xs={5}>
+                     <div style={style.overflowHidden}>
+                        <a
+                           href={url}
+                           rel={'noreferrer'}
+                           target={'_blank'}
+                        >
+                           <img
+                              alt={imageAltText}
+                              src={desktopImage}
+                              style={style.card.img2}
+                           />
+                        </a>
+                     </div>
+                  </Column>
+               </Row>
+            </Hidden>
+         </div>
+      </>;
+   }, [style]);
+
+   const getRepoLinks = useCallback(() => {
+      return github.repos.map((repo, index) => {
+         const divRowStyle = index % 2 ? style.repo.divLightRow : style.repo.divDarkRow;
+         return <div
+            key={repo.id}
+            style={divRowStyle}
+         >
+            <a
+               href={repo.html_url}
+               rel={'noreferrer'}
+               style={style.repo.a}
+               target={'_blank'}
+            >
+               {repo.name}
+            </a>
+         </div>;
+      });
+   }, [github, style]);
+
+   const getCssTransition = useCallback(match => {
+      if (match !== null)
+         logGooglePageHit('projects');
+      return <>
+         <CSSTransition
+            classNames={'fade'}
+            in={match !== null}
+            nodeRef={nodeRef}
+            timeout={2000}
+            unmountOnExit={true}
+         >
+            <div
+               key={'projects'}
+               ref={nodeRef}
+               style={style.transition.div1}
+            >
+               <div style={style.transition.div2}>
+                  <Row justify={'space-evenly'}>
+                     <Column
+                        xs={12} sm={10} md={8} lg={7} xl={6}
+                        style={style.transition.column}
+                     >
+                        <h1 style={style.marginTop0}>Projects</h1>
+                        {getProjectCard(
+                           'Blogging',
+                           <>
+                              I've currently written <b>{devTo.articles.length}</b> blog articles on Dev.to covering a broad range of my views on application development:
+                              {getArticleLinks()}
+                           </>,
+                           devDesktop,
+                           devMobile,
+                           'The Dev.to blogs written by Adam Nathaniel Davis',
+                           'left',
+                           'https://dev.to/bytebodger',
+                        )}
+                        <div style={style.height48}/>
+                        {getProjectCard(
+                           'NPM Packages',
+                           <>
+                              To-date, my NPM packages have been installed more than <b>{npm.downloads}</b> times:
+                              <table>
+                                 <thead>
+                                    <tr style={style.fontSize0_9em}>
+                                       <th style={style.transition.th1}>
+                                          Package
+                                       </th>
+                                       <th style={style.transition.th2}>
+                                          Downloads
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {getNpmPackageLinks()}
+                                 </tbody>
+                              </table>
+                           </>,
+                           npmDesktop,
+                           npmMobile,
+                           'The NPM packages created by Adam Nathaniel Davis',
+                           'right',
+                           'https://www.npmjs.com/search?q=%40toolz',
+                        )}
+                        <div style={style.height48}/>
+                        {getProjectCard(
+                           'Spotify Toolz',
+                           <>
+                              No, I didn't <i>write</i> any of the native Spotify clients. Nor did I contribute to them in any way. But as a longtime subscriber to their service, I grew increasingly exasperated by several
+                              key "issues":
+                              <ul>
+                                 <li style={style.marginBottom16}>Spotify's "shuffle" feature is not random. Not even close. And there's no way inside their client to configure it to behave randomly.</li>
+                                 <li style={style.marginBottom16}>Spotify is attrocious at recommending new music. It frequently recommends the same tracks/artists repeatedly, even if you've done everything in your power to ignore those recommendations.</li>
+                                 <li>If you maintain large playlists in Spotify, it's surprisingly difficult to identify/avoid duplicate entries, because Spotify can have many copies of the same track that are not 100% identical - but they're still essentially the <i>same</i> track.
+                                 </li>
+                              </ul>
+                              Thankfully, Spotify has a fairly-robust API. So I built
+                              <a
+                                 href={'https://spotifytoolz.com'}
+                                 rel={'noreferrer'}
+                                 target={'_blank'}
+                              > a publicly-accessible React application
+                              </a> that will allow anyone to mitigate the issues described above.
+                           </>,
+                           spotifyDesktop,
+                           spotifyMobile,
+                           'A custom React application to extend Spotify\'s native functionality',
+                           'left',
+                           'https://spotifytoolz.com',
+                        )}
+                        <div style={style.height48}/>
+                        {getProjectCard(
+                           'GitHub',
+                           <>
+                              This is basically a superset of my NPM packages:
+                              {getRepoLinks()}
+                           </>,
+                           githubDesktop,
+                           githubMobile,
+                           'The GitHub repositories for Adam Nathaniel Davis',
+                           'right',
+                           'https://github.com/bytebodger?tab=repositories',
+                        )}
+                     </Column>
+                  </Row>
+               </div>
+               <Footer/>
+            </div>
+         </CSSTransition>
+      </>;
+   }, [devTo, getArticleLinks, getNpmPackageLinks, getProjectCard, getRepoLinks, npm, style]);
 
    return <>
       <Route

@@ -9,7 +9,7 @@ import { useLocation, useHistory } from 'react-router';
 import { capitalize } from '@toolz/capitalize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars as hamburgerMenu } from '@fortawesome/free-solid-svg-icons';
-import React, { useState, memo, useMemo } from 'react';
+import React, { useState, memo, useMemo, useCallback } from 'react';
 import { Close } from '@material-ui/icons';
 import { allow } from '@toolz/allow-react';
 import { is } from './common/objects/is';
@@ -30,44 +30,6 @@ export const Header = memo(() => {
    const history = useHistory();
    const location = useLocation();
    const viewport = useViewport(materialUiBreakpoints);
-
-   const getLinks = () => {
-      return routes.map((route, index) => {
-         const linkName = capitalize.firstLetter(route.replace('/', ''));
-         const divStyle = location.pathname === route ? style.links.current : style.links.notCurrent;
-         return <div
-            key={'link-' + route}
-            onClick={location.pathname === route ? null : () => history.push(route)}
-            style={divStyle}
-         >
-            {linkName}
-         </div>;
-      });
-   };
-
-   const getMobileLinks = () => {
-      const goToLink = (route = '') => {
-         allow.aString(route, is.not.empty);
-         history.push(route);
-         setLinksOpen(false);
-      };
-
-      return routes.map(route => {
-         const linkName = capitalize.firstLetter(route.replace('/', '')).toUpperCase();
-         return <React.Fragment key={'mobileLink-' + route}>
-            <ListItem
-               button={true}
-               onClick={() => goToLink(route)}
-            >
-               <ListItemText
-                  primary={linkName}
-                  style={style.textAlignCenter}
-               />
-            </ListItem>
-            <Divider/>
-         </React.Fragment>;
-      });
-   };
 
    const routes = useMemo(() => {
       return [
@@ -157,6 +119,44 @@ export const Header = memo(() => {
          },
       };
    }, [viewport.size]);
+
+   const getLinks = useCallback(() => {
+      return routes.map((route, index) => {
+         const linkName = capitalize.firstLetter(route.replace('/', ''));
+         const divStyle = location.pathname === route ? style.links.current : style.links.notCurrent;
+         return <div
+            key={'link-' + route}
+            onClick={location.pathname === route ? null : () => history.push(route)}
+            style={divStyle}
+         >
+            {linkName}
+         </div>;
+      });
+   }, [history, location, routes, style]);
+
+   const getMobileLinks = useCallback(() => {
+      const goToLink = (route = '') => {
+         allow.aString(route, is.not.empty);
+         history.push(route);
+         setLinksOpen(false);
+      };
+
+      return routes.map(route => {
+         const linkName = capitalize.firstLetter(route.replace('/', '')).toUpperCase();
+         return <React.Fragment key={'mobileLink-' + route}>
+            <ListItem
+               button={true}
+               onClick={() => goToLink(route)}
+            >
+               <ListItemText
+                  primary={linkName}
+                  style={style.textAlignCenter}
+               />
+            </ListItem>
+            <Divider/>
+         </React.Fragment>;
+      });
+   }, [history, routes, style]);
 
    return <>
       <Dialog

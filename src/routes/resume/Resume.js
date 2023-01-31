@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { useRef, memo, useMemo } from 'react';
+import { useRef, memo, useMemo, useCallback } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { Footer } from '../../Footer';
@@ -15,11 +15,221 @@ import { is } from '../../common/objects/is';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 
 export const Resume = memo(() => {
-   const directions = ['left', 'right'];
+   const directions = useMemo(() => {
+      return ['left', 'right'];
+   }, []);
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
 
-   const getCssTransition = match => {
+   const style = useMemo(() => {
+      const isMobile = ['xs', 'sm'].includes(viewport.size);
+      return {
+         jobCard: {
+            border: '1px solid grey',
+            backgroundColor: the.color.white,
+            borderRadius: 10,
+            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
+            padding: 16,
+            pageBreakInside: css3.pageBreakInside.avoid,
+         },
+         jobDescription: {
+            columnLeft: {
+               borderLeft: '1px solid #cccccc',
+               borderRight: css3.border.right.inherit,
+               fontSize: '0.8em',
+               paddingLeft: 8,
+               paddingRight: 0,
+               textAlign: css3.textAlign.left,
+            },
+            columnRight: {
+               borderLeft: css3.border.left.inherit,
+               borderRight: '1px solid #cccccc',
+               fontSize: '0.8em',
+               paddingLeft: 0,
+               paddingRight: 8,
+               textAlign: css3.textAlign.right,
+            },
+         },
+         marginTop0OrInitial: {
+            marginTop: isMobile ? 0 : 'initial',
+         },
+         marginTop16: {
+            marginTop: 16,
+         },
+         marginTop48: {
+            marginTop: 48,
+         },
+         paddingTop8: {
+            paddingTop: 8,
+         },
+         technologiesUsed: {
+            div1: {
+               fontWeight: css3.fontWeight._500,
+               marginBottom: 12,
+            },
+            div2Left: {
+               border: '1px solid #cccccc',
+               borderRadius: 5,
+               fontSize: '0.9em',
+               padding: 8,
+               textAlign: css3.textAlign.left,
+            },
+            div3Right: {
+               border: '1px solid #cccccc',
+               borderRadius: 5,
+               fontSize: '0.9em',
+               padding: 8,
+               textAlign: css3.textAlign.right,
+            },
+         },
+         textAlignLeft: {
+            textAlign: css3.textAlign.left,
+         },
+         textAlignRight: {
+            textAlign: css3.textAlign.right,
+         },
+         textTransformUppercase: {
+            textTransform: css3.textTransform.uppercase,
+         },
+         timeframe: {
+            columnLeft: {
+               color: the.color.purple,
+               margin: 0,
+               textAlign: css3.textAlign.left,
+            },
+            columnRight: {
+               color: the.color.purple,
+               margin: 0,
+               textAlign: css3.textAlign.right,
+            },
+         },
+         titleAndEmployer: {
+            columnLeft: {
+               paddingLeft: css3.paddingLeft.inherit,
+               paddingRight: 8,
+               textAlign: css3.textAlign.right,
+            },
+            columnRight: {
+               paddingLeft: 8,
+               paddingRight: css3.paddingRight.inherit,
+               textAlign: css3.textAlign.left,
+            },
+            div: {
+               marginTop: isMobile ? 4 : 0,
+               fontSize: '0.9em',
+               fontStyle: css3.fontStyle.italic,
+            },
+         },
+         trailSpacer: {
+            column: {
+               borderRight: '2px solid #551a8b',
+               minHeight: 48,
+            },
+         },
+         transition: {
+            column: {
+               paddingLeft: 8,
+               paddingRight: 8,
+            },
+            div1: {
+               position: css3.position.absolute,
+               width: '100%',
+            },
+            div2: {
+               backgroundColor: the.color.sand,
+               paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+               paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+            },
+         },
+      };
+   }, [viewport.size]);
+
+   const getJobDescription = useCallback((description = '', direction = '') => {
+      allow.aString(description, is.not.empty).oneOf(direction, directions);
+      const columnStyle = direction === 'left' ? style.jobDescription.columnLeft : style.jobDescription.columnRight;
+      return <>
+         <Column
+            xs={8}
+            style={columnStyle}
+         >
+            {description}
+         </Column>
+      </>;
+   }, [directions, style]);
+
+   const getTechnologiesUsed = useCallback((technologies = '', direction = '') => {
+      allow.aString(technologies, is.not.empty).oneOf(direction, directions);
+      const columnStyle = direction === 'left' ? style.textAlignLeft : style.textAlignRight;
+      const divStyle = direction === 'left' ? style.technologiesUsed.div2Left : style.technologiesUsed.div3Right;
+      return <>
+         <Row
+            justify={'space-evenly'}
+            style={style.marginTop16}
+         >
+            <Column
+               xs={11}
+               style={columnStyle}
+            >
+               <div style={style.technologiesUsed.div1}>
+                  Technologies Used:
+               </div>
+               <div style={divStyle}>
+                  {technologies}
+               </div>
+            </Column>
+         </Row>
+      </>;
+   }, [directions, style]);
+
+   const getTimeframe = useCallback((timeframe = '', direction = '') => {
+      allow.aString(timeframe, is.not.empty).oneOf(direction, directions);
+      const h3Style = direction === 'right' ? style.timeframe.columnRight : style.timeframe.columnLeft;
+      return <>
+         <Row>
+            <Column xs={12}>
+               <h3 style={h3Style}>
+                  {timeframe}
+               </h3>
+            </Column>
+         </Row>
+      </>;
+   }, [directions, style]);
+
+   const getTitleAndEmployer = useCallback((title = '', employer = '', direction = '') => {
+      allow.aString(title, is.not.empty).aString(employer, is.not.empty).oneOf(direction, directions);
+      const columnStyle = direction === 'right' ? style.titleAndEmployer.columnRight : style.titleAndEmployer.columnLeft;
+      return <>
+         <Column
+            xs={4}
+            style={columnStyle}
+         >
+            <div style={style.textTransformUppercase}>
+               {title}
+            </div>
+            <div style={style.titleAndEmployer.div}>
+               {employer}
+            </div>
+         </Column>
+      </>;
+   }, [directions, style]);
+
+   const getTrailSpacer = useCallback((direction = '') => {
+      allow.oneOf(direction, directions);
+      return <>
+         <Row justify={'space-evenly'}>
+            <Column xs={11}>
+               <Row>
+                  <Column
+                     xs={direction === 'left' ? 2 : 10}
+                     style={style.trailSpacer.column}
+                  />
+               </Row>
+            </Column>
+         </Row>
+      </>;
+   }, [directions, style]);
+
+   const getCssTransition = useCallback(match => {
       if (match !== null)
          logGooglePageHit('resume');
       return <>
@@ -181,215 +391,7 @@ export const Resume = memo(() => {
             </div>
          </CSSTransition>
       </>;
-   };
-
-   const getJobDescription = (description = '', direction = '') => {
-      allow.aString(description, is.not.empty).oneOf(direction, directions);
-      const columnStyle = direction === 'left' ? style.jobDescription.columnLeft : style.jobDescription.columnRight;
-      return <>
-         <Column
-            xs={8}
-            style={columnStyle}
-         >
-            {description}
-         </Column>
-      </>;
-   };
-
-   const getTechnologiesUsed = (technologies = '', direction = '') => {
-      allow.aString(technologies, is.not.empty).oneOf(direction, directions);
-      const columnStyle = direction === 'left' ? style.textAlignLeft : style.textAlignRight;
-      const divStyle = direction === 'left' ? style.technologiesUsed.div2Left : style.technologiesUsed.div3Right;
-      return <>
-         <Row
-            justify={'space-evenly'}
-            style={style.marginTop16}
-         >
-            <Column
-               xs={11}
-               style={columnStyle}
-            >
-               <div style={style.technologiesUsed.div1}>
-                  Technologies Used:
-               </div>
-               <div style={divStyle}>
-                  {technologies}
-               </div>
-            </Column>
-         </Row>
-      </>;
-   };
-
-   const getTimeframe = (timeframe = '', direction = '') => {
-      allow.aString(timeframe, is.not.empty).oneOf(direction, directions);
-      const h3Style = direction === 'right' ? style.timeframe.columnRight : style.timeframe.columnLeft;
-      return <>
-         <Row>
-            <Column xs={12}>
-               <h3 style={h3Style}>
-                  {timeframe}
-               </h3>
-            </Column>
-         </Row>
-      </>;
-   };
-
-   const getTitleAndEmployer = (title = '', employer = '', direction = '') => {
-      allow.aString(title, is.not.empty).aString(employer, is.not.empty).oneOf(direction, directions);
-      const columnStyle = direction === 'right' ? style.titleAndEmployer.columnRight : style.titleAndEmployer.columnLeft;
-      return <>
-         <Column
-            xs={4}
-            style={columnStyle}
-         >
-            <div style={style.textTransformUppercase}>
-               {title}
-            </div>
-            <div style={style.titleAndEmployer.div}>
-               {employer}
-            </div>
-         </Column>
-      </>;
-   };
-
-   const getTrailSpacer = (direction = '') => {
-      allow.oneOf(direction, directions);
-      return <>
-         <Row justify={'space-evenly'}>
-            <Column xs={11}>
-               <Row>
-                  <Column
-                     xs={direction === 'left' ? 2 : 10}
-                     style={style.trailSpacer.column}
-                  />
-               </Row>
-            </Column>
-         </Row>
-      </>;
-   };
-
-   const style = useMemo(() => {
-      const isMobile = ['xs', 'sm'].includes(viewport.size);
-      return {
-         jobCard: {
-            border: '1px solid grey',
-            backgroundColor: the.color.white,
-            borderRadius: 10,
-            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
-            padding: 16,
-            pageBreakInside: css3.pageBreakInside.avoid,
-         },
-         jobDescription: {
-            columnLeft: {
-               borderLeft: '1px solid #cccccc',
-               borderRight: css3.border.right.inherit,
-               fontSize: '0.8em',
-               paddingLeft: 8,
-               paddingRight: 0,
-               textAlign: css3.textAlign.left,
-            },
-            columnRight: {
-               borderLeft: css3.border.left.inherit,
-               borderRight: '1px solid #cccccc',
-               fontSize: '0.8em',
-               paddingLeft: 0,
-               paddingRight: 8,
-               textAlign: css3.textAlign.right,
-            },
-         },
-         marginTop0OrInitial: {
-            marginTop: isMobile ? 0 : 'initial',
-         },
-         marginTop16: {
-            marginTop: 16,
-         },
-         marginTop48: {
-            marginTop: 48,
-         },
-         paddingTop8: {
-            paddingTop: 8,
-         },
-         technologiesUsed: {
-            div1: {
-               fontWeight: css3.fontWeight._500,
-               marginBottom: 12,
-            },
-            div2Left: {
-               border: '1px solid #cccccc',
-               borderRadius: 5,
-               fontSize: '0.9em',
-               padding: 8,
-               textAlign: css3.textAlign.left,
-            },
-            div3Right: {
-               border: '1px solid #cccccc',
-               borderRadius: 5,
-               fontSize: '0.9em',
-               padding: 8,
-               textAlign: css3.textAlign.right,
-            },
-         },
-         textAlignLeft: {
-            textAlign: css3.textAlign.left,
-         },
-         textAlignRight: {
-            textAlign: css3.textAlign.right,
-         },
-         textTransformUppercase: {
-            textTransform: css3.textTransform.uppercase,
-         },
-         timeframe: {
-            columnLeft: {
-               color: the.color.purple,
-               margin: 0,
-               textAlign: css3.textAlign.left,
-            },
-            columnRight: {
-               color: the.color.purple,
-               margin: 0,
-               textAlign: css3.textAlign.right,
-            },
-         },
-         titleAndEmployer: {
-            columnLeft: {
-               paddingLeft: css3.paddingLeft.inherit,
-               paddingRight: 8,
-               textAlign: css3.textAlign.right,
-            },
-            columnRight: {
-               paddingLeft: 8,
-               paddingRight: css3.paddingRight.inherit,
-               textAlign: css3.textAlign.left,
-            },
-            div: {
-               marginTop: isMobile ? 4 : 0,
-               fontSize: '0.9em',
-               fontStyle: css3.fontStyle.italic,
-            },
-         },
-         trailSpacer: {
-            column: {
-               borderRight: '2px solid #551a8b',
-               minHeight: 48,
-            },
-         },
-         transition: {
-            column: {
-               paddingLeft: 8,
-               paddingRight: 8,
-            },
-            div1: {
-               position: css3.position.absolute,
-               width: '100%',
-            },
-            div2: {
-               backgroundColor: the.color.sand,
-               paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-               paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-            },
-         },
-      };
-   }, [viewport.size]);
+   }, [getJobDescription, getTechnologiesUsed, getTimeframe, getTitleAndEmployer, getTrailSpacer, style]);
 
    return <>
       <Route

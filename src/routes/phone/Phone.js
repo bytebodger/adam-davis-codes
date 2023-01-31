@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { CSSTransition } from 'react-transition-group';
 import '../../common/css/fade.css';
-import { useRef, memo, useMemo } from 'react';
+import { useRef, memo, useMemo, useCallback } from 'react';
 import { css3 } from '@toolz/css3/src/css3';
 import { the } from '../../common/objects/the';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
@@ -16,7 +16,45 @@ export const Phone = memo(() => {
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
 
-   const getCssTransition = match => {
+   const style = useMemo(() => {
+      return {
+         column1: {
+            paddingLeft: 8,
+            paddingRight: 8,
+         },
+         column2: {
+            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+            textAlign: css3.textAlign.justify,
+         },
+         div1: {
+            position: css3.position.absolute,
+            width: '100%',
+         },
+         div2: {
+            backgroundColor: the.color.sand,
+            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+         },
+         div3: {
+            border: '1px solid grey',
+            backgroundColor: the.color.white,
+            borderRadius: 10,
+            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
+            padding: 16,
+         },
+         h3: {
+            color: the.color.purple,
+            margin: 0,
+            textAlign: css3.textAlign.center,
+         },
+         textAlignCenter: {
+            textAlign: css3.textAlign.center,
+         },
+      };
+   }, [viewport.size]);
+
+   const getCssTransition = useCallback(match => {
       if (match !== null)
          logGooglePageHit('phone');
       return <>
@@ -69,45 +107,7 @@ export const Phone = memo(() => {
             </div>
          </CSSTransition>
       </>;
-   };
-
-   const style = useMemo(() => {
-      return {
-         column1: {
-            paddingLeft: 8,
-            paddingRight: 8,
-         },
-         column2: {
-            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-            textAlign: css3.textAlign.justify,
-         },
-         div1: {
-            position: css3.position.absolute,
-            width: '100%',
-         },
-         div2: {
-            backgroundColor: the.color.sand,
-            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-         },
-         div3: {
-            border: '1px solid grey',
-            backgroundColor: the.color.white,
-            borderRadius: 10,
-            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
-            padding: 16,
-         },
-         h3: {
-            color: the.color.purple,
-            margin: 0,
-            textAlign: css3.textAlign.center,
-         },
-         textAlignCenter: {
-            textAlign: css3.textAlign.center,
-         },
-      };
-   }, [viewport.size]);
+   }, [style]);
 
    return <>
       <Route

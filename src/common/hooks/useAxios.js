@@ -2,9 +2,10 @@ import { allow } from '@toolz/allow-react';
 import { the } from '../objects/the';
 import { is } from '../objects/is';
 import axios from 'axios';
+import { useCallback } from 'react';
 
 export const useAxios = () => {
-   const call = async (method = '', url = '', data = {}, headers = {}) => {
+   const call = useCallback(async (method = '', url = '', data = {}, headers = {}) => {
       allow.oneOf(method, the.method).aString(url, is.not.empty).anObject(data).anObject(headers);
       let response;
       if (method === the.method.get) {
@@ -16,8 +17,8 @@ export const useAxios = () => {
          }).catch(error => Promise.resolve(error));
       }
       return response;
-   };
-   
+   }, []);
+
    return {
       call,
    };

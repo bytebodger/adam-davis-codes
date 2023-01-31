@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { useRef, memo, useMemo } from 'react';
+import { useRef, memo, useMemo, useCallback } from 'react';
 import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { Footer } from '../../Footer';
@@ -26,170 +26,6 @@ import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints
 export const Interests = memo(() => {
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
-
-   const getCssTransition = match => {
-      if (match !== null)
-         logGooglePageHit('interests');
-      return <>
-         <CSSTransition
-            classNames={'fade'}
-            in={match !== null}
-            nodeRef={nodeRef}
-            timeout={2000}
-            unmountOnExit={true}
-         >
-            <div
-               key={'interests'}
-               ref={nodeRef}
-               style={style.transition.div1}
-            >
-               <div style={style.transition.div2}>
-                  <Row justify={'space-evenly'}>
-                     <Column
-                        xs={12} sm={10} md={8} lg={7} xl={6}
-                        style={style.transition.column}
-                     >
-                        <h1 style={style.marginTop0}>Interests</h1>
-                        {getProjectCard(
-                           'Blob Life',
-                           <>
-                              I paint (and make videos about the process)!<br/><br/>And... I babble about life, and YouTube-ing, and whatever else comes to my mind. I'm not nearly as soothing as Bob Ross. And I'm not half as talented as your
-                              friendly neighborhood busker. But I've never allowed a little problem like "lack of talent" to get in my way before.
-                           </>,
-                           blobLifeDesktop,
-                           blobLifeMobile,
-                           'The Blob Life YouTube channel, showcasing the painting techniques of Adam Nathaniel Davis',
-                           'left',
-                           'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag',
-                        )}
-                        <div style={style.height48}/>
-                        {getProjectCard(
-                           'Writing Voyage',
-                           <>
-                              I do the interwebs!<br/><br/>This is the one-stop shop for everything about me that's not coding/professional-related. It has general samples of my plays, poems, novels, and paintings.
-                           </>,
-                           writingVoyageDesktop,
-                           writingVoyageMobile,
-                           'The personal site of Adam Nathaniel Davis',
-                           'right',
-                           'https://writing.voyage',
-                        )}
-                        <div style={style.height48}/>
-                        {getProjectCard(
-                           'Excilior',
-                           <>
-                              I write sci-fi!<br/><br/>A half-million words of pure worldbuilding. Maps. Articles. Short stories. A (growing) novel. History. Races. This is my literary side project.
-                           </>,
-                           exciliorDesktop,
-                           exciliorMobile,
-                           'The sci-fi world of Adam Nathaniel Davis',
-                           'left',
-                           'https://www.worldanvil.com/w/excilior',
-                        )}
-                        <div style={style.height48}/>
-                        {getProjectCard(
-                           'New Play Exchange',
-                           <>
-                              I'm a playwright!<br/><br/>I may not quite be at the level of Tennessee Williams - but I'm working on it. I have a growing list of scripts that have been produced by local theatre groups.
-                           </>,
-                           npxDesktop,
-                           npxMobile,
-                           'The plays written by Adam Nathaniel Davis',
-                           'right',
-                           'https://newplayexchange.org/users/7276/adam-nathaniel-davis',
-                        )}
-                     </Column>
-                  </Row>
-               </div>
-               <Footer/>
-            </div>
-         </CSSTransition>
-      </>;
-   };
-
-   const getProjectCard = (title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
-      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
-      const outerDivStyle = offset === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
-      return <>
-         <div style={outerDivStyle}>
-            <Hidden mdUp={true}>
-               <Row style={style.card.row1}>
-                  <Column
-                     xs={12}
-                     style={style.card.column1}
-                  >
-                     <div>
-                        <div style={style.card.div1}/>
-                        <h3 style={style.card.h31}>
-                           {title}
-                        </h3>
-                     </div>
-                     <div style={style.card.div2}>
-                        {body}
-                     </div>
-                  </Column>
-               </Row>
-               <Row>
-                  <Column
-                     xs={12}
-                     style={style.card.column2}
-                  />
-               </Row>
-               <Row>
-                  <Column
-                     xs={12}
-                     style={style.card.column3}
-                  >
-                     <a
-                        href={url}
-                        rel={'noopener noreferrer'}
-                        target={'_blank'}
-                     >
-                        <img
-                           alt={imageAltText}
-                           src={mobileImage}
-                           style={style.card.img1}
-                        />
-                     </a>
-                  </Column>
-               </Row>
-            </Hidden>
-            <Hidden smDown={true}>
-               <Row style={style.card.row2}>
-                  <Column
-                     xs={7}
-                     style={style.card.column4}
-                  >
-                     <div>
-                        <div style={style.card.div3}/>
-                        <h3 style={style.card.h32}>
-                           {title}
-                        </h3>
-                     </div>
-                     <div style={style.card.div4}>
-                        {body}
-                     </div>
-                  </Column>
-                  <Column xs={5}>
-                     <div style={style.overflowHidden}>
-                        <a
-                           href={url}
-                           rel={'noopener noreferrer'}
-                           target={'_blank'}
-                        >
-                           <img
-                              alt={imageAltText}
-                              src={desktopImage}
-                              style={style.card.img2}
-                           />
-                        </a>
-                     </div>
-                  </Column>
-               </Row>
-            </Hidden>
-         </div>
-      </>;
-   };
 
    const style = useMemo(() => {
       return {
@@ -314,6 +150,170 @@ export const Interests = memo(() => {
          },
       };
    }, [viewport.size]);
+
+   const getProjectCard = useCallback((title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', offset = '', url = '') => {
+      allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).oneOf(offset, ['left', 'right']).aString(url, is.not.empty);
+      const outerDivStyle = offset === 'left' ? style.card.outerDivRight : style.card.outerDivLeft;
+      return <>
+         <div style={outerDivStyle}>
+            <Hidden mdUp={true}>
+               <Row style={style.card.row1}>
+                  <Column
+                     xs={12}
+                     style={style.card.column1}
+                  >
+                     <div>
+                        <div style={style.card.div1}/>
+                        <h3 style={style.card.h31}>
+                           {title}
+                        </h3>
+                     </div>
+                     <div style={style.card.div2}>
+                        {body}
+                     </div>
+                  </Column>
+               </Row>
+               <Row>
+                  <Column
+                     xs={12}
+                     style={style.card.column2}
+                  />
+               </Row>
+               <Row>
+                  <Column
+                     xs={12}
+                     style={style.card.column3}
+                  >
+                     <a
+                        href={url}
+                        rel={'noopener noreferrer'}
+                        target={'_blank'}
+                     >
+                        <img
+                           alt={imageAltText}
+                           src={mobileImage}
+                           style={style.card.img1}
+                        />
+                     </a>
+                  </Column>
+               </Row>
+            </Hidden>
+            <Hidden smDown={true}>
+               <Row style={style.card.row2}>
+                  <Column
+                     xs={7}
+                     style={style.card.column4}
+                  >
+                     <div>
+                        <div style={style.card.div3}/>
+                        <h3 style={style.card.h32}>
+                           {title}
+                        </h3>
+                     </div>
+                     <div style={style.card.div4}>
+                        {body}
+                     </div>
+                  </Column>
+                  <Column xs={5}>
+                     <div style={style.overflowHidden}>
+                        <a
+                           href={url}
+                           rel={'noopener noreferrer'}
+                           target={'_blank'}
+                        >
+                           <img
+                              alt={imageAltText}
+                              src={desktopImage}
+                              style={style.card.img2}
+                           />
+                        </a>
+                     </div>
+                  </Column>
+               </Row>
+            </Hidden>
+         </div>
+      </>;
+   }, [style]);
+
+   const getCssTransition = useCallback(match => {
+      if (match !== null)
+         logGooglePageHit('interests');
+      return <>
+         <CSSTransition
+            classNames={'fade'}
+            in={match !== null}
+            nodeRef={nodeRef}
+            timeout={2000}
+            unmountOnExit={true}
+         >
+            <div
+               key={'interests'}
+               ref={nodeRef}
+               style={style.transition.div1}
+            >
+               <div style={style.transition.div2}>
+                  <Row justify={'space-evenly'}>
+                     <Column
+                        xs={12} sm={10} md={8} lg={7} xl={6}
+                        style={style.transition.column}
+                     >
+                        <h1 style={style.marginTop0}>Interests</h1>
+                        {getProjectCard(
+                           'Blob Life',
+                           <>
+                              I paint (and make videos about the process)!<br/><br/>And... I babble about life, and YouTube-ing, and whatever else comes to my mind. I'm not nearly as soothing as Bob Ross. And I'm not half as talented as your
+                              friendly neighborhood busker. But I've never allowed a little problem like "lack of talent" to get in my way before.
+                           </>,
+                           blobLifeDesktop,
+                           blobLifeMobile,
+                           'The Blob Life YouTube channel, showcasing the painting techniques of Adam Nathaniel Davis',
+                           'left',
+                           'https://www.youtube.com/channel/UCHNDtVFC4WQTcp_awD9c1Ag',
+                        )}
+                        <div style={style.height48}/>
+                        {getProjectCard(
+                           'Writing Voyage',
+                           <>
+                              I do the interwebs!<br/><br/>This is the one-stop shop for everything about me that's not coding/professional-related. It has general samples of my plays, poems, novels, and paintings.
+                           </>,
+                           writingVoyageDesktop,
+                           writingVoyageMobile,
+                           'The personal site of Adam Nathaniel Davis',
+                           'right',
+                           'https://writing.voyage',
+                        )}
+                        <div style={style.height48}/>
+                        {getProjectCard(
+                           'Excilior',
+                           <>
+                              I write sci-fi!<br/><br/>A half-million words of pure worldbuilding. Maps. Articles. Short stories. A (growing) novel. History. Races. This is my literary side project.
+                           </>,
+                           exciliorDesktop,
+                           exciliorMobile,
+                           'The sci-fi world of Adam Nathaniel Davis',
+                           'left',
+                           'https://www.worldanvil.com/w/excilior',
+                        )}
+                        <div style={style.height48}/>
+                        {getProjectCard(
+                           'New Play Exchange',
+                           <>
+                              I'm a playwright!<br/><br/>I may not quite be at the level of Tennessee Williams - but I'm working on it. I have a growing list of scripts that have been produced by local theatre groups.
+                           </>,
+                           npxDesktop,
+                           npxMobile,
+                           'The plays written by Adam Nathaniel Davis',
+                           'right',
+                           'https://newplayexchange.org/users/7276/adam-nathaniel-davis',
+                        )}
+                     </Column>
+                  </Row>
+               </div>
+               <Footer/>
+            </div>
+         </CSSTransition>
+      </>;
+   }, [getProjectCard, style]);
 
    return <>
       <Route

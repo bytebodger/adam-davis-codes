@@ -5,7 +5,7 @@ import { css3 } from '@toolz/css3/src/css3';
 import { the } from '../../common/objects/the';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { Row } from '@toolz/material-ui/dist/Row';
-import { useRef, memo, useMemo } from 'react';
+import { useRef, memo, useMemo, useCallback } from 'react';
 import { useViewport } from '@toolz/use-viewport';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Footer } from '../../Footer';
@@ -15,7 +15,48 @@ export const FAQ = memo(() => {
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
 
-   const getCssTransition = match => {
+   const style = useMemo(() => {
+      const isMobile = ['xs', 'sm'].includes(viewport.size);
+      return {
+         card: {
+            backgroundColor: the.color.white,
+            borderRadius: 10,
+            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
+            padding: 20,
+            position: css3.position.relative,
+         },
+         h3: {
+            color: the.color.purple,
+            fontSize: isMobile ? '0.9em' : '1em',
+            marginTop: 0,
+         },
+         height24Or48: {
+            height: isMobile ? 24 : 48,
+         },
+         innerDiv: {
+            fontSize: isMobile ? '0.8em' : '0.9em',
+            textAlign: css3.textAlign.justify,
+         },
+         marginTop0: {
+            marginTop: 0,
+         },
+         outerColumn: {
+            paddingLeft: 8,
+            paddingRight: 8,
+         },
+         outerDiv1: {
+            position: css3.position.absolute,
+            width: '100%',
+         },
+         outerDiv2: {
+            backgroundColor: the.color.sand,
+            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+         },
+      };
+   }, [viewport.size]);
+
+   const getCssTransition = useCallback(match => {
       if (match !== null)
          logGooglePageHit('faq');
       return <>
@@ -196,48 +237,7 @@ export const FAQ = memo(() => {
             </div>
          </CSSTransition>
       </>;
-   };
-
-   const style = useMemo(() => {
-      const isMobile = ['xs', 'sm'].includes(viewport.size);
-      return {
-         card: {
-            backgroundColor: the.color.white,
-            borderRadius: 10,
-            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
-            padding: 20,
-            position: css3.position.relative,
-         },
-         h3: {
-            color: the.color.purple,
-            fontSize: isMobile ? '0.9em' : '1em',
-            marginTop: 0,
-         },
-         height24Or48: {
-            height: isMobile ? 24 : 48,
-         },
-         innerDiv: {
-            fontSize: isMobile ? '0.8em' : '0.9em',
-            textAlign: css3.textAlign.justify,
-         },
-         marginTop0: {
-            marginTop: 0,
-         },
-         outerColumn: {
-            paddingLeft: 8,
-            paddingRight: 8,
-         },
-         outerDiv1: {
-            position: css3.position.absolute,
-            width: '100%',
-         },
-         outerDiv2: {
-            backgroundColor: the.color.sand,
-            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-         },
-      };
-   }, [viewport.size]);
+   }, [style]);
 
    return <>
       <Route
