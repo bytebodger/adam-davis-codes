@@ -13,120 +13,15 @@ import { useViewport } from '@toolz/use-viewport';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
+import { Header } from '../../Header';
+import { jobs } from '../../common/arrays/jobs';
+import { education } from '../../common/arrays/education';
 
 export const Resume = memo(() => {
    const currentDirection = useRef('right');
    const jobCardCount = useRef(0);
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
-
-   const education = useMemo(() => {
-      return [
-         {
-            description: `I've never taken a programming course of any sort.  I never went to school to learn anything related to application development.  Every technology I've used, every software skill I've acquired, every language I've learned, has been completely self-taught.`,
-            employer: 'Self-taught',
-            technologies: '',
-            timeframe: '1985 - Present',
-            title: 'Programming',
-         },
-         {
-            description: 'San Antonio, Texas',
-            employer: 'Community College of the Air Force',
-            technologies: '',
-            timeframe: '1997',
-            title: 'Associate in Electronics',
-         },
-         {
-            description: 'Grand Rapids, Michigan (Nothing makes you feel older than realizing that your high school doesn\'t even exist anymore...)',
-            employer: 'Creston High School',
-            technologies: '',
-            timeframe: '1990',
-            title: 'Diploma',
-         },
-      ];
-   }, []);
-
-   const jobs = useMemo(() => {
-      return [
-         {
-            description: 'Maintaing, extending, and re-architecting the in-house application that handled all outgoing marketing email communications',
-            employer: 'Amazon',
-            technologies: 'JavaScript, Angular, React, Backbone, Node, jQuery',
-            timeframe: '2022 - 2023',
-            title: 'Frontend Engineer',
-         },
-         {
-            description: 'Technical lead on a team developing user interfaces for Medicare.gov and HealthCare.gov',
-            employer: 'SemanticBits',
-            technologies: 'JavaScript, TypeScript, React, Node, Express, REST, HTML/CSS, Electron, Jenkins, GitHub',
-            timeframe: '2020 - 2022',
-            title: 'Senior Software Engineer',
-         },
-         {
-            description: 'Full-stack developer responsible for building backend web services, and the SaaS frontend portals that consumed those services; High-volume environment coordinating sensitive data between major health insurance providers;',
-            employer: 'Availity',
-            technologies: 'Java, Oracle, JavaScript, Angular, React, jQuery, REST, HTML/CSS, Jenkins, Git',
-            timeframe: '2017 - 2020',
-            title: 'Developer III',
-         },
-         {
-            description: 'Maintaining a large, legacy, SaaS Applicant Tracking System, while converting its backend to a series of REST services',
-            employer: 'SilkRoad',
-            technologies: 'ColdFusion, C#, JavaScript, jQuery, REST, MS-SQL, HTML/CSS, Perforce',
-            timeframe: '2015 - 2017',
-            title: 'Senior Software Engineer',
-         },
-         {
-            description: 'Leading a team of developers initially focused on the implementation of a new content management system, and eventually tasked with supporting all functions on the public-facing website',
-            employer: 'EverBank',
-            technologies: 'C#, MS-SQL, JavaScript, jQuery, Knockout, Sitecore, Node, HTML/CSS, TFS',
-            timeframe: '2012 - 2015',
-            title: 'IT Manager',
-         },
-         {
-            description: 'Creating a US-based business for an international outsourcing firm specializing in application development, design/graphics, business analysis, staffing, and quality assurance testing',
-            employer: 'Insoft USA',
-            technologies: 'PHP, JavaScript, jQuery, C#, MS-SQL, MySQL, HTML/CSS',
-            timeframe: '2010 - 2012',
-            title: 'Managing Partner',
-         },
-         {
-            description: 'Building an IT department from scratch to support an $18M marketing company, including extensive budgeting and analysis of staffing and infrastructure',
-            employer: 'MECLABS',
-            technologies: 'PHP, MySQL, Google Analytics, JavaScript, jQuery, HTML/CSS',
-            timeframe: '2007 - 2010',
-            title: 'Director of Technology',
-         },
-         {
-            description: 'Leading the transition from delivering customized, ad hoc software to a SaaS model based on formalized release management, including the implementation of new source control tools and the reorganization of development resources',
-            employer: 'Vurv Technology',
-            technologies: 'ColdFusion, MS-SQL, JavaScript, HTML/CSS',
-            timeframe: '2004 - 2007',
-            title: 'Director of Application Delivery',
-         },
-         {
-            description: 'Developing custom applications to support the public website and internal/clinical objectives',
-            employer: 'Nemours',
-            technologies: 'ColdFusion, PHP, MS-SQL, HTML/CSS',
-            timeframe: '2001 - 2004',
-            title: 'Application Developer',
-         },
-         {
-            description: 'I built numerous websites for clients.  I created a web-based, publicly-playable game for trading "shares" of athletes in real-time.  I built a boxing simulation.  I wrote automated currency-trading software.  I got my fingers into all sorts of exotically-flavored pies.',
-            employer: 'Self-Employed',
-            technologies: 'PHP, MySQL, HTML/CSS',
-            timeframe: '1997 - 2001',
-            title: 'Owner',
-         },
-         {
-            description: 'I was a certified electronic technician, maintaining many of the same radars used at civilian airports.',
-            employer: 'U.S. Air Force',
-            technologies: '',
-            timeframe: '1992 - 1997',
-            title: 'Air Traffic Control Radar Technician',
-         },
-      ];
-   }, []);
 
    const style = useMemo(() => {
       const isMobile = ['xs', 'sm'].includes(viewport.size);
@@ -168,6 +63,18 @@ export const Resume = memo(() => {
          },
          paddingTop8: {
             paddingTop: 8,
+         },
+         printResumeLink1: {
+            cursor: css3.cursor.pointer,
+            marginBottom: 10,
+            textAlign: css3.textAlign.center,
+            textDecoration: css3.textDecoration.underline,
+         },
+         printResumeLink2: {
+            cursor: css3.cursor.pointer,
+            marginTop: 20,
+            textAlign: css3.textAlign.center,
+            textDecoration: css3.textDecoration.underline,
          },
          technologiesUsed: {
             div1: {
@@ -358,15 +265,17 @@ export const Resume = memo(() => {
             {getJobCard(card)}
          </div>;
       });
-   }, [getJobCard, education]);
+   }, [getJobCard]);
 
    const getJobCards = useCallback(() => {
-      return jobs.map(job => {
-         return <div key={JSON.stringify(job)}>
+      return jobs.map((job, index) => {
+         return <div key={'job-' + index}>
             {getJobCard(job)}
          </div>;
       });
-   }, [getJobCard, jobs]);
+   }, [getJobCard]);
+
+   const goToPrintResume = useCallback(() => window.open('/print-resume', '_blank'), []);
 
    const getCssTransition = useCallback(match => {
       jobCardCount.current = 0;
@@ -385,7 +294,14 @@ export const Resume = memo(() => {
                ref={nodeRef}
                style={style.transition.div1}
             >
+               <Header/>
                <div style={style.transition.div2}>
+                  <div
+                     onClick={goToPrintResume}
+                     style={style.printResumeLink1}
+                  >
+                     Click here for a printer-friendly version of this resume that can be saved in a PDF format
+                  </div>
                   <Row justify={'space-evenly'}>
                      <Column
                         xs={12} sm={10} md={8} lg={7} xl={6}
@@ -407,12 +323,18 @@ export const Resume = memo(() => {
                         {getEducationCards()}
                      </Column>
                   </Row>
+                  <div
+                     onClick={goToPrintResume}
+                     style={style.printResumeLink2}
+                  >
+                     Click here for a printer-friendly version of this resume that can be saved in a PDF format
+                  </div>
                </div>
                <Footer/>
             </div>
          </CSSTransition>
       </>;
-   }, [getEducationCards, getJobCards, style]);
+   }, [getEducationCards, getJobCards, goToPrintResume, style]);
 
    const triggerTransition = useCallback(({match}) => getCssTransition(match), [getCssTransition]);
 

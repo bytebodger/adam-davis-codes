@@ -1,4 +1,3 @@
-import { Header } from './Header';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { getResponsiveSpacing } from './common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
@@ -14,6 +13,7 @@ import { useConstructor } from '@toolz/use-constructor';
 import { use } from './common/objects/use';
 import { FAQ } from './routes/faq/FAQ';
 import { useMemo } from 'react';
+import { PrintResume } from './routes/print-resume/PrintResume';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -39,13 +39,13 @@ export const UI = () => {
 
    return <>
       <div style={style.minWidth300}>
-         <Header/>
          <Row style={style.row}>
             <Email/>
             <FAQ/>
             <Home/>
             <Interests/>
             <Phone/>
+            <PrintResume/>
             <Projects/>
             <Resume/>
             <Route

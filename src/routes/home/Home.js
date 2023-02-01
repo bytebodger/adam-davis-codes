@@ -19,6 +19,7 @@ import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacin
 import { Button } from '../../common/components/Button';
 import { useHistory } from 'react-router';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
+import { Header } from '../../Header';
 
 export const Home = memo(() => {
    const history = useHistory();
@@ -234,6 +235,7 @@ export const Home = memo(() => {
                ref={nodeRef}
                style={style.transition.containerDivs}
             >
+               <Header/>
                <div style={style.transition.containerDivs}>
                   <Hidden mdUp={true}>
                      <Row>

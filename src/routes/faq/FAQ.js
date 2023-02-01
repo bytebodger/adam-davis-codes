@@ -10,6 +10,7 @@ import { useViewport } from '@toolz/use-viewport';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Footer } from '../../Footer';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
+import { Header } from '../../Header';
 
 export const FAQ = memo(() => {
    const nodeRef = useRef(null);
@@ -22,7 +23,7 @@ export const FAQ = memo(() => {
                Where can I download a copy of your resume?
             </>,
             answer: <>
-               Everything on the <Link to={'/resume'}>Resume</Link> page is designed to be printer-friendly. Go to town! Print as many copies as you like! Or just "print" it into a PDF format, if that's your preference.
+               Here is the <Link to={'/print-resume'}>printer-friendly version</Link> of my resume. Go to town! Print as many hardcopies as you like! Or just save it into a PDF format, if that's your preference.
             </>,
          },
          {
@@ -30,7 +31,8 @@ export const FAQ = memo(() => {
                That's great that you have a resume website, but I need for you to <i>send me</i> a copy of your resume.
             </>,
             answer: <>
-               If I send you a copy of my resume, it will be <i>the exact same document</i> that you'd get by going to the <Link to={'/resume'}>Resume</Link> page and saving it to PDF.
+               If I send you a copy of my resume, it will be <i>the exact same document</i> that you'd get by going to <Link to={'/print-resume'}>this page</Link> page and saving it to PDF. If you don't know how to
+               save files from your browser into a PDF format then... I can't help you.
             </>,
          },
          {
@@ -46,7 +48,7 @@ export const FAQ = memo(() => {
                I'd like to talk to you about an onsite opportunity located in-
             </>,
             answer: <>
-               Lemme stop you right there. Maybe you didn't notice, but it says right on the home page that I'm a <b>remote</b> worker. It's not that I'm opposed to going onsite for unique situations. But I'm not
+               Lemme stop you right there. Maybe you didn't notice, but it says right on the home page that I'm a <b>remote</b> worker. It's not that I'm opposed to going onsite <i>temporarily</i>. But I'm not
                interested in employers that think they need to walk by my desk seven times a day just to <i>check</i> if I'm coding. I have a pretty nice remote gig right now. The pay is decent. My colleagues are solid.
                My at-home work setup is ideal. I can generate huge volumes of code, and I can do it early in the morning or late at night without having to sit by myself in some abandoned office park after all of the{` `}
                <i>other</i> employees have gone home for the evening. So why on earth would I want to trade that in so that I can <i>commute</i> into your office every day??
@@ -199,6 +201,7 @@ export const FAQ = memo(() => {
                ref={nodeRef}
                style={style.outerDiv1}
             >
+               <Header/>
                <div style={style.outerDiv2}>
                   <Row justify={'space-evenly'}>
                      <Column

@@ -11,6 +11,7 @@ import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Footer } from '../../Footer';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
+import { Header } from '../../Header';
 
 export const Phone = memo(() => {
    const nodeRef = useRef(null);
@@ -70,6 +71,7 @@ export const Phone = memo(() => {
                ref={nodeRef}
                style={style.div1}
             >
+               <Header/>
                <div style={style.div2}>
                   <Row justify={'space-evenly'}>
                      <Column

@@ -23,6 +23,7 @@ import { use } from '../../common/objects/use';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
+import { Header } from '../../Header';
 
 export const Projects = () => {
    const currentOffset = useRef('right');
@@ -391,6 +392,7 @@ export const Projects = () => {
                ref={nodeRef}
                style={style.transition.div1}
             >
+               <Header/>
                <div style={style.transition.div2}>
                   <Row justify={'space-evenly'}>
                      <Column

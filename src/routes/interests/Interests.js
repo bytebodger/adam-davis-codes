@@ -22,6 +22,7 @@ import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
 import { Hidden } from '@material-ui/core';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
+import { Header } from '../../Header';
 
 export const Interests = memo(() => {
    const currentOffset = useRef('right');
@@ -253,6 +254,7 @@ export const Interests = memo(() => {
                ref={nodeRef}
                style={style.transition.div1}
             >
+               <Header/>
                <div style={style.transition.div2}>
                   <Row justify={'space-evenly'}>
                      <Column

@@ -5,15 +5,15 @@ export const getViewportNumber = (size = '') => {
    allow.oneOf(size, viewportSizes);
    switch (size) {
       case 'xs':
-         return 1;
+         return 0;
       case 'sm':
-         return 2;
+         return 1;
       case 'md':
-         return 3;
+         return 2;
       case 'lg':
-         return 4;
+         return 3;
       case 'xl':
       default:
-         return 5;
+         return 4;
    }
 };
