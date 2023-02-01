@@ -10,12 +10,14 @@ import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacin
 import { useViewport } from '@toolz/use-viewport';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Row } from '@toolz/material-ui/dist/Row';
+import adamDavisLinkDesktop from '../../common/images/adam-davis-link-desktop.jpg';
+import adamDavisLinkMobile from '../../common/images/adam-davis-link-mobile.jpg';
 import blobLifeDesktop from '../../common/images/bloblife-desktop.jpg';
 import blobLifeMobile from '../../common/images/bloblife-mobile.jpg';
-import writingVoyageDesktop from '../../common/images/writingvoyage-desktop.jpg';
-import writingVoyageMobile from '../../common/images/writingvoyage-mobile.jpg';
 import exciliorDesktop from '../../common/images/excilior-desktop.jpg';
 import exciliorMobile from '../../common/images/excilior-mobile.jpg';
+import hegemonyDesktop from '../../common/images/hegemony-international-desktop.jpg';
+import hegemonyMobile from '../../common/images/hegemony-internation-mobile.jpg';
 import npxDesktop from '../../common/images/npx-desktop.jpg';
 import npxMobile from '../../common/images/npx-mobile.jpg';
 import { allow } from '@toolz/allow-react';
@@ -275,25 +277,25 @@ export const Interests = memo(() => {
                         )}
                         <div style={style.height48}/>
                         {getProjectCard(
-                           'Writing Voyage',
-                           <>
-                              I do the interwebs!<br/><br/>This is the one-stop shop for everything about me that's not coding/professional-related. It has general samples of my plays, poems, novels, and paintings.
-                           </>,
-                           writingVoyageDesktop,
-                           writingVoyageMobile,
-                           'The personal site of Adam Nathaniel Davis',
-                           'https://writing.voyage',
-                        )}
-                        <div style={style.height48}/>
-                        {getProjectCard(
                            'Excilior',
                            <>
-                              I write sci-fi!<br/><br/>A half-million words of pure worldbuilding. Maps. Articles. Short stories. A (growing) novel. History. Races. This is my literary side project.
+                              I write sci-fi!<br/><br/>A half-million words of pure worldbuilding. Maps. Articles. Short stories. A (growing) novel. History. Races. This is my literary worldbuilding project.
                            </>,
                            exciliorDesktop,
                            exciliorMobile,
                            'The sci-fi world of Adam Nathaniel Davis',
                            'https://www.worldanvil.com/w/excilior',
+                        )}
+                        <div style={style.height48}/>
+                        {getProjectCard(
+                           'Hegemony International',
+                           <>
+                              And I'm writing <i>more</i>!<br/><br/>75,000 words (and counting) of worldbuilding serial fiction, including a growing list of chapters with a sci-fi / dystopian / absurdist flavor. This is my "next big thing".
+                           </>,
+                           hegemonyDesktop,
+                           hegemonyMobile,
+                           'A growing web-serial work of fiction by Adam Nathaniel Davis',
+                           'https://www.worldanvil.com/w/hegemony-international',
                         )}
                         <div style={style.height48}/>
                         {getProjectCard(
@@ -305,6 +307,17 @@ export const Interests = memo(() => {
                            npxMobile,
                            'The plays written by Adam Nathaniel Davis',
                            'https://newplayexchange.org/users/7276/adam-nathaniel-davis',
+                        )}
+                        <div style={style.height48}/>
+                        {getProjectCard(
+                           'ALL The Links!',
+                           <>
+                              Want to see a complete (and growing) list of everything related to me? Check out my link farm.
+                           </>,
+                           adamDavisLinkDesktop,
+                           adamDavisLinkMobile,
+                           'Everything you ever wanted to know about Adam Nathaniel Davis',
+                           'https://www.adamdavis.link/',
                         )}
                      </Column>
                   </Row>
