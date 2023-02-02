@@ -4,7 +4,7 @@ export const jobs = [
       employer: 'Amazon',
       technologies: 'JavaScript, Angular, React, Backbone, Node, jQuery, AWS',
       timeframe: '2022 - 2023',
-      title: 'Frontend Engineer',
+      title: 'Frontend Development Engineer',
    },
    {
       description: 'Technical lead on a team developing user interfaces for Medicare.gov and HealthCare.gov',
