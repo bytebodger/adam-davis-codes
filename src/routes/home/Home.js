@@ -175,7 +175,7 @@ export const Home = memo(() => {
    const getMainText = useCallback(() => {
       return <>
          <div style={style.textAlignJustify}>
-            I wrote my first program in 1984, when I was 11 years old, in BASIC, on a Coleco Adam home computer... that had a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
+            I wrote my first program in 1984, when I was 11 years old, in BASIC, on a Coleco Adam home computer that had... a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
             SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of JavaScript. I was heavily focused first on jQuery, then Angular, and
             now React.
          </div>
@@ -194,7 +194,15 @@ export const Home = memo(() => {
             >
                GitHub repos
             </a>{` `}
-            (including the React code for <i>this</i> site), and all of my{` `}
+            (including the React code{` `}
+            <a
+               href={'https://github.com/bytebodger/adam-davis-codes'}
+               rel={'noreferrer'}
+               target={'_blank'}
+            >
+               for <i>this</i> site
+            </a>
+            ), and all of my{` `}
             <a
                href={'https://www.npmjs.com/search?q=%40toolz'}
                rel={'noreferrer'}
