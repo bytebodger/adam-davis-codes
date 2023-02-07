@@ -11,20 +11,16 @@ import { Email } from './routes/email/Email';
 import { Phone } from './routes/phone/Phone';
 import { use } from './common/objects/use';
 import { FAQ } from './routes/faq/FAQ';
-import { useMemo, useEffect, useRef } from 'react';
+import { useMemo, useEffect } from 'react';
 import { PrintResume } from './routes/print-resume/PrintResume';
 
 export const UI = () => {
-   const endpointsCalled = useRef(false);
    const viewport = useViewport(materialUiBreakpoints);
 
    useEffect(() => {
-      if (endpointsCalled.current)
-         return;
       use.devToArticlesEndpoint.loadArticles();
       use.npmDownloadsEndpoint.loadDownloads();
       use.githubReposEndpoint.loadRepos();
-      endpointsCalled.current = true;
    }, []);
 
    const style = useMemo(() => {
