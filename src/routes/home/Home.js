@@ -218,7 +218,7 @@ export const Home = memo(() => {
             >
                Dev.to articles
             </a>
-            . You'll learn more about me in those locations than you will in any traditional job interview.
+            . You'll probably learn more about me in those locations than you will in any traditional job interview.
          </div>
       </>;
    }, [style]);
