@@ -37,15 +37,6 @@ export const Home = memo(() => {
       };
 
       return {
-         backgroundColorWhite: {
-            backgroundColor: the.color.white,
-         },
-         fontSize1_2em: {
-            fontSize: '1.2em',
-         },
-         height250: {
-            height: 250,
-         },
          mainText: {
             div2: {
                marginTop: 16,
@@ -56,33 +47,6 @@ export const Home = memo(() => {
                marginTop: 16,
                textAlign: css3.textAlign.justify,
             },
-         },
-         marginLeft20: {
-            marginLeft: 20,
-         },
-         marginTop0: {
-            marginTop: 0,
-         },
-         marginTop30: {
-            marginTop: 30,
-         },
-         padding0_16_16_16: {
-            padding: '0px 16px 16px 16px',
-         },
-         padding16: {
-            padding: 16,
-         },
-         paddingTop7: {
-            paddingTop: 7,
-         },
-         paddingTop12: {
-            paddingTop: 12,
-         },
-         paddingTop150: {
-            paddingTop: 150,
-         },
-         textAlignJustify: {
-            textAlign: css3.textAlign.justify,
          },
          transition: {
             column3: {
@@ -174,7 +138,7 @@ export const Home = memo(() => {
 
    const getMainText = useCallback(() => {
       return <>
-         <div style={style.textAlignJustify}>
+         <div className={'textAlignJustify'}>
             I wrote my first program in 1984, when I was 11 years old, in BASIC, on a Coleco Adam home computer that had... a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
             SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of JavaScript. I was heavily focused first on jQuery, then Angular, and
             now React.
@@ -249,7 +213,7 @@ export const Home = memo(() => {
                      <Row>
                         <Column
                            xs={12}
-                           style={style.padding16}
+                           className={'padding_16'}
                         >
                            <div style={style.transition.div1}>
                               <div style={style.transition.div2}>
@@ -262,19 +226,19 @@ export const Home = memo(() => {
                                     Adam Nathaniel Davis
                                  </div>
                                  <div style={style.transition.div4}/>
-                                 <div style={style.marginTop30}>
+                                 <div className={'marginTop_30'}>
                                     <Button onClick={goToResume}>
                                        Resume
                                     </Button>
                                     <Button
+                                       className={'marginLeft_20'}
                                        onClick={goToProjects}
-                                       style={style.marginLeft20}
                                     >
                                        Projects
                                     </Button>
                                  </div>
                                  <div style={style.transition.div6}>
-                                    <div style={style.paddingTop7}>
+                                    <div className={'paddingTop_7'}>
                                        <FollowIcons dimension={25}/>
                                     </div>
                                  </div>
@@ -285,20 +249,18 @@ export const Home = memo(() => {
                      <Row>
                         <Column
                            xs={12}
-                           style={style.padding0_16_16_16}
+                           className={'padding_0_16_16_16'}
                         >
                            <div style={style.transition.div8}>
-                              <h1 style={style.marginTop0}>A Coding Life</h1>
+                              <h1 className={'marginTop_0'}>A Coding Life</h1>
                               {getMainText()}
                            </div>
                         </Column>
                      </Row>
-                     <div style={style.transition.backgroundColorWhite}>
-                        <Footer/>
-                     </div>
+                     <Footer/>
                   </Hidden>
                   <Hidden smDown={true}>
-                     <Row style={style.paddingTop150}>
+                     <Row className={'paddingTop_150'}>
                         <Column md={2} lg={3} xl={4}/>
                         <Column xs={6} md={4} lg={3} xl={2}>
                            <div style={style.transition.div1}>
@@ -312,12 +274,12 @@ export const Home = memo(() => {
                                     Adam Nathaniel Davis
                                  </div>
                                  <div style={style.transition.div12}/>
-                                 <div style={style.fontSize1_2em}>
+                                 <div className={'fontSize_1_2em'}>
                                     <ReactRotatingText items={titles}/>
                                  </div>
                               </div>
                               <div style={style.transition.div14}>
-                                 <div style={style.paddingTop12}>
+                                 <div className={'paddingTop_12'}>
                                     <FollowIcons dimension={25}/>
                                  </div>
                               </div>
@@ -335,7 +297,7 @@ export const Home = memo(() => {
                   </Hidden>
                </div>
                <Hidden mdUp={true}>
-                  <div style={style.height250}/>
+                  <div className={'height_250'}/>
                </Hidden>
                <div style={style.transition.imageDiv}/>
                <Hidden smDown={true}>
