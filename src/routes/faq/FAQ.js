@@ -1,8 +1,6 @@
 import { Route, Link } from 'react-router-dom';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { CSSTransition } from 'react-transition-group';
-import { css3 } from '@toolz/css3/src/css3';
-import { the } from '../../common/objects/the';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { useRef, memo, useMemo, useCallback } from 'react';
@@ -11,6 +9,8 @@ import { Column } from '@toolz/material-ui/dist/Column';
 import { Footer } from '../../Footer';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 import { Header } from '../../Header';
+import '../../common/css/baseProperties.css';
+import './css/faq.css';
 
 export const FAQ = memo(() => {
    const nodeRef = useRef(null);
@@ -126,64 +126,32 @@ export const FAQ = memo(() => {
       ];
    }, []);
 
-   const style = useMemo(() => {
-      const isMobile = ['xs', 'sm'].includes(viewport.size);
-      return {
-         card: {
-            backgroundColor: the.color.white,
-            borderRadius: 10,
-            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
-            padding: 20,
-            position: css3.position.relative,
-         },
-         h3: {
-            color: the.color.purple,
-            fontSize: isMobile ? '0.9em' : '1em',
-            marginTop: 0,
-         },
-         height24Or48: {
-            height: isMobile ? 24 : 48,
-         },
-         innerDiv: {
-            fontSize: isMobile ? '0.8em' : '0.9em',
-            textAlign: css3.textAlign.justify,
-         },
-         marginTop0: {
-            marginTop: 0,
-         },
-         outerColumn: {
-            paddingLeft: 8,
-            paddingRight: 8,
-         },
-         outerDiv1: {
-            position: css3.position.absolute,
-            width: '100%',
-         },
-         outerDiv2: {
-            backgroundColor: the.color.sand,
-            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-         },
-      };
-   }, [viewport.size]);
+   const isMobile = useMemo(() => {
+      ['xs', 'sm'].includes(viewport.size);
+   }, [viewport]);
 
    const getFaqs = useCallback(() => {
       return faqs.map((faq, index) => {
          return <div key={`faq-${index}`}>
-            <div style={style.card}>
+            <div className={'card'}>
                <Column xs={12}>
-                  <h3 style={style.h3}>
+                  <h3
+                     style={{fontSize: isMobile ? '0.9em' : '1em'}}
+                  >
                      {faq.question}
                   </h3>
-                  <div style={style.innerDiv}>
+                  <div
+                     className={'textAlignJustify'}
+                     style={{fontSize: isMobile ? '0.8em' : '0.9em'}}
+                  >
                      {faq.answer}
                   </div>
                </Column>
             </div>
-            <div style={style.height24Or48}/>
+            <div style={{height: isMobile ? 24 : 48}}/>
          </div>;
       });
-   }, [faqs, style]);
+   }, [faqs, isMobile]);
 
    const getCssTransition = useCallback(match => {
       if (match !== null)
@@ -197,18 +165,24 @@ export const FAQ = memo(() => {
             unmountOnExit={true}
          >
             <div
+               className={'outerDiv'}
                key={'faq'}
                ref={nodeRef}
-               style={style.outerDiv1}
             >
                <Header/>
-               <div style={style.outerDiv2}>
+               <div
+                  className={'backgroundColorSand'}
+                  style={{
+                     paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+                     paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+                  }}
+               >
                   <Row justify={'space-evenly'}>
                      <Column
+                        className={'faqContainerColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}
-                        style={style.outerColumn}
                      >
-                        <h1 style={style.marginTop0}>FAQ</h1>
+                        <h1 className={'marginTop_0'}>FAQ</h1>
                         {getFaqs()}
                      </Column>
                   </Row>
@@ -217,7 +191,7 @@ export const FAQ = memo(() => {
             </div>
          </CSSTransition>
       </>;
-   }, [getFaqs, style]);
+   }, [getFaqs, viewport]);
 
    const triggerTransition = useCallback(({match}) => getCssTransition(match), [getCssTransition]);
 

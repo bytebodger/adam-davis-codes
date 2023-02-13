@@ -8,6 +8,7 @@ import { materialUiBreakpoints } from './common/arrays/materialUiBreakpoints';
 import { FollowIcons } from './common/components/FollowIcons';
 import { useHistory } from 'react-router';
 import { memo, useMemo, useCallback } from 'react';
+import { the } from './common/objects/the';
 
 export const Footer = memo(() => {
    const history = useHistory();
@@ -22,6 +23,7 @@ export const Footer = memo(() => {
          column1: {
             fontSize: '0.8em',
             minWidth: 350,
+            paddingLeft: 24,
          },
          column3: {
             cursor: css3.cursor.pointer,
@@ -62,6 +64,7 @@ export const Footer = memo(() => {
             paddingLeft: 16,
          },
          row1: {
+            backgroundColor: the.color.white,
             fontWeight: css3.fontWeight._200,
             minWidth: 350,
             paddingBottom: 96,
@@ -71,6 +74,7 @@ export const Footer = memo(() => {
          },
          width100PercentOrAuto: {
             width: isMobile ? '100%' : css3.width.auto,
+            paddingLeft: 24,
          },
       };
    }, [isMobile, viewport.size]);

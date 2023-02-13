@@ -1,0 +1,67 @@
+.backgroundColorSand {
+    background-color: #f4ece6;
+}
+
+.backgroundColorWhite {
+    background-color: white;
+}
+
+.boxShadow {
+    box-shadow: rgba(0, 0, 0, 0.50) -11px 11px 17px 0;
+}
+
+.fontSize_1_2em {
+    font-size: 1.2em;
+}
+
+.height_250 {
+    height: 250px;
+}
+
+.marginLeft_20 {
+    margin-left: 20px;
+}
+
+.marginTop_0 {
+    margin-top: 0;
+}
+
+.marginTop_30 {
+    margin-top: 30px;
+}
+
+.padding_0_16_16_16 {
+    padding: 0 16px 16px 16px;
+}
+
+.padding_16 {
+    padding: 16px;
+}
+
+.paddingTop_7 {
+    padding-top: 7px;
+}
+
+.paddingTop_12 {
+    padding-top: 12px;
+}
+
+.paddingTop_150 {
+    padding-top: 150px;
+}
+
+.positionAbsolute {
+    position: absolute;
+}
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.textAlignJustify {
+    text-align: justify;
+}
+
+.width_100_percent {
+    width: 100%;
+}
