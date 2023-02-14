@@ -1,0 +1,90 @@
+.bottomPrintResumeLink {
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.jobCard {
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.50) -11px 11px 17px 0;
+    padding: 16px;
+    page-break-inside: avoid;
+}
+
+.jobDescriptionColumnLeft {
+    border-left: 1px solid #cccccc;
+    border-right: inherit;
+    font-size: 0.8em;
+    padding-left: 8px;
+    padding-right: 0;
+    text-align: left;
+}
+
+.jobDescriptionColumnRight {
+    border-left: inherit;
+    border-right: 1px solid #cccccc;
+    font-size: 0.8em;
+    padding-left: 0;
+    padding-right: 8px;
+    text-align: right;
+}
+
+.jobTechnologies {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 0.9em;
+    padding: 8px;
+}
+
+.technologiesUsedDiv {
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.timeframeH3 {
+    color: #551a8b;
+    margin: 0;
+}
+
+.titleAndEmployerColumnLeft {
+    padding-left: inherit;
+    padding-right: 8px;
+    text-align: right;
+}
+
+.titleAndEmployerColumnRight {
+    padding-left: 8px;
+    padding-right: inherit;
+    text-align: left;
+}
+
+.titleAndEmployerDiv {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.topPrintResumeLink {
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.trailspacerColumn {
+    border-right: 2px solid #551a8b;
+    min-height: 48px;
+}
+
+.transitionColumn {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.transitionContainer {
+    position: absolute;
+    width: 100%;
+}

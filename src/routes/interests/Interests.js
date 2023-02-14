@@ -34,12 +34,13 @@ export const Interests = memo(() => {
    const getProjectCard = useCallback((title = '', body = <></>, desktopImage = '', mobileImage = '', imageAltText = '', url = '') => {
       allow.aString(title, is.not.empty).aReactElement(body).aString(desktopImage, is.not.empty).aString(mobileImage, is.not.empty).aString(imageAltText, is.not.empty).aString(url, is.not.empty);
       currentOffset.current = currentOffset.current === 'right' ? 'left' : 'right';
+      const responsiveSpacing = getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12);
       return <>
          <div
             className={'cardDiv'}
             style={{
-               left: currentOffset.current === 'left' ? 'initial' : getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12),
-               right: currentOffset.current === 'left' ? getResponsiveSpacing(viewport.size, 12, Number.MAX_SAFE_INTEGER, 0, -12) : 'initial',
+               left: currentOffset.current === 'left' ? 'initial' : responsiveSpacing,
+               right: currentOffset.current === 'left' ? responsiveSpacing : 'initial',
             }}
          >
             <Hidden mdUp={true}>

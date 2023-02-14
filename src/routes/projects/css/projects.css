@@ -1,0 +1,145 @@
+.articleLink {
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.cardOuterDiv {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.50) -11px 11px 17px 0;
+    position: relative;
+}
+
+.desktopCardBodyDiv {
+    flex-grow: 1;
+    font-size: 0.9em;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.desktopCardH3 {
+    color: #551a8b;
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.desktopCardImage {
+    height: 400px;
+    width: initial;
+}
+
+.desktopCardRow {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+
+.desktopCardSpacerDiv {
+    background-color: #f4ece6;
+    display: inline-block;
+    height: 30px;
+    width: 10px;
+}
+
+.desktopCardTextContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+    width: 58.33%;
+}
+
+.lightRow {
+    background-color: white;
+    font-size: 0.9em;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.darkRow {
+    background-color: #eeeeee;
+    font-size: 0.9em;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.downloadsTableHeader {
+    min-width: 50px;
+    text-align: right;
+    width: 100%;
+}
+
+.mainBodyColumn {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mobileCardBodyDiv {
+    flex-grow: 1;
+    font-size: 0.8em;
+    min-height: 0;
+    overflow-y: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mobileCardH3 {
+    color: #551a8b;
+    display: inline-block;
+    font-size: 0.9em;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.mobileCardImage {
+    height: initial;
+    width: 100%;
+}
+
+.mobileCardImageContainer {
+    height: 200px;
+    overflow: hidden;
+}
+
+.mobileCardRow {
+    display: flex;
+    flex-direction: column;
+    height: 260px;
+}
+
+.mobileCardSpacerColumn {
+    background-color: white;
+    height: 16px;
+}
+
+.mobileCardSpacerDiv {
+    background-color: #f4ece6;
+    display: inline-block;
+    height: 24px;
+    width: 10px;
+}
+
+.mobileCardTitleContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.npmCell {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.packageTableHeader {
+    text-align: left;
+    width: 100%;
+}
+
+.transitionContainerDiv {
+    position: absolute;
+    width: 100%;
+}
