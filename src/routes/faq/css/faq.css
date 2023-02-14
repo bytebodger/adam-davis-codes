@@ -5,19 +5,16 @@
     padding: 20px;
     position: relative;
 }
-
 .faqContainerColumn {
     padding-left: 8px;
     padding-right: 8px;
 }
-
 h3 {
     color: #551a8b;
     margin-bottom: 20px;
     margin-top: 0;
     text-align: left;
 }
-
 .outerDiv {
     position: absolute;
     width: 100%;

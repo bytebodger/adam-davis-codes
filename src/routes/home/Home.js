@@ -55,10 +55,6 @@ export const Home = memo(() => {
                paddingLeft: getResponsiveSpacing(viewport.size, 8, 48),
                paddingRight: getResponsiveSpacing(viewport.size, 8, 48),
             },
-            containerDivs: {
-               position: css3.position.absolute,
-               width: '100%',
-            },
             div1: {
                boxShadow: 'rgba(0, 0, 0, 0.50) -11.31px 11.31px 17px 0px',
             },
@@ -203,12 +199,12 @@ export const Home = memo(() => {
             unmountOnExit={true}
          >
             <div
+               className={'positionAbsolute width_100_percent'}
                key={'home'}
                ref={nodeRef}
-               style={style.transition.containerDivs}
             >
                <Header/>
-               <div style={style.transition.containerDivs}>
+               <div className={'positionAbsolute width_100_percent'}>
                   <Hidden mdUp={true}>
                      <Row>
                         <Column
