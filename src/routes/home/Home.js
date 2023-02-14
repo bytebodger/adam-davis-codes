@@ -2,14 +2,12 @@ import { Route, Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import React, { useRef, memo, useMemo, useCallback } from 'react';
 import '../../common/css/fade.css';
-import { css3 } from '@toolz/css3/src/css3';
 import { useViewport } from '@toolz/use-viewport';
 import codeImage from '../../common/images/code.png';
 import { Footer } from '../../Footer';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
-import { the } from '../../common/objects/the';
 import { Hidden } from '@material-ui/core';
 import adam from '../../common/images/adam.jpg';
 import ReactRotatingText from 'react-rotating-text';
@@ -20,116 +18,15 @@ import { Button } from '../../common/components/Button';
 import { useHistory } from 'react-router';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { Header } from '../../Header';
+import './css/home.css';
 
 export const Home = memo(() => {
    const history = useHistory();
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
 
-   const style = useMemo(() => {
-      const isMobile = ['xs', 'sm'].includes(viewport.size);
-
-      const getBackgroundImageWidth = () => {
-         if (isMobile)
-            return '100%';
-         const half = Math.round(viewport.width * 0.4);
-         return half > 400 ? half : 400;
-      };
-
-      return {
-         mainText: {
-            div2: {
-               marginTop: 16,
-               textAlign: css3.textAlign.justify,
-            },
-            div3: {
-               marginBottom: 16,
-               marginTop: 16,
-               textAlign: css3.textAlign.justify,
-            },
-         },
-         transition: {
-            column3: {
-               height: 525,
-               overflowY: css3.overflowY.auto,
-               paddingLeft: getResponsiveSpacing(viewport.size, 8, 48),
-               paddingRight: getResponsiveSpacing(viewport.size, 8, 48),
-            },
-            div1: {
-               boxShadow: 'rgba(0, 0, 0, 0.50) -11.31px 11.31px 17px 0px',
-            },
-            div2: {
-               backgroundColor: the.color.sand,
-               height: 355,
-               textAlign: css3.textAlign.center,
-            },
-            div3: {
-               fontSize: '1.4em',
-               fontWeight: css3.fontWeight._600,
-               marginTop: 20,
-            },
-            div4: {
-               backgroundColor: the.color.purple,
-               height: 2,
-               marginBottom: 20,
-               marginLeft: css3.marginLeft.auto,
-               marginRight: css3.marginRight.auto,
-               marginTop: 20,
-               width: '25%',
-            },
-            div6: {
-               backgroundColor: the.color.white,
-               boxShadow: 'rgba(0, 0, 0, 0.50) -11.31px 11.31px 17px 0px',
-               height: 40,
-               marginTop: 40,
-            },
-            div8: {
-               backgroundColor: 'rgba(255, 255, 255, 0.8)',
-               padding: 16,
-            },
-            div10: {
-               backgroundColor: the.color.sand,
-               height: 475,
-               textAlign: css3.textAlign.center,
-            },
-            div11: {
-               fontSize: '1.4em',
-               fontWeight: css3.fontWeight._600,
-               marginTop: 40,
-            },
-            div12: {
-               backgroundColor: the.color.purple,
-               height: 2,
-               marginBottom: 40,
-               marginLeft: css3.marginLeft.auto,
-               marginRight: css3.marginRight.auto,
-               marginTop: 40,
-               width: '25%',
-            },
-            div14: {
-               backgroundColor: the.color.white,
-               height: 50,
-               textAlign: css3.textAlign.center,
-            },
-            imageDiv: {
-               backgroundImage: `url(${codeImage})`,
-               minHeight: isMobile ? 1250 : 850,
-               width: getBackgroundImageWidth(),
-            },
-            img1: {
-               borderRadius: 60,
-               height: 120,
-               marginTop: 20,
-               width: 120,
-            },
-            img2: {
-               borderRadius: 102,
-               height: 204,
-               marginTop: 40,
-               width: 204,
-            },
-         },
-      };
+   const isMobile = useMemo(() => {
+      return ['xs', 'sm'].includes(viewport.size);
    }, [viewport]);
 
    const getMainText = useCallback(() => {
@@ -139,12 +36,12 @@ export const Home = memo(() => {
             SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of JavaScript. I was heavily focused first on jQuery, then Angular, and
             now React.
          </div>
-         <div style={style.mainText.div2}>
+         <div className={'mainTextDiv2'}>
             I am a <b>remote</b> worker. I'm more than happy to travel. And I'm quite personable in an office setting. But I'm a coder, and there's nothing in your office
             that's going to make me a more <i>efficient</i> coder. I don't need a breakroom with free snacks. I don't need impromptu "breakout sessions". I don't need a ping-pong table. I
             need to concentrate - on many thousands of lines of code.
          </div>
-         <div style={style.mainText.div3}>
+         <div className={'mainTextDiv3'}>
             If you'd like <i>evidence</i> of what I can do, there's a good bit of that already online. You may want to browse over my <Link to={'/resume'}>Resume</Link>. But under{` `}
             <Link to={'/projects'}>Projects</Link> you'll find all of my{` `}
             <a
@@ -181,13 +78,20 @@ export const Home = memo(() => {
             . You'll probably learn more about me in those locations than you will in any traditional job interview.
          </div>
       </>;
-   }, [style]);
+   }, []);
 
    const goToResume = useCallback(() => history.push('/resume'), [history]);
 
    const goToProjects = useCallback(() => history.push('/projects'), [history]);
 
    const getCssTransition = useCallback(match => {
+      const getBackgroundImageWidth = () => {
+         if (isMobile)
+            return '100%';
+         const half = Math.round(viewport.width * 0.4);
+         return half > 400 ? half : 400;
+      };
+
       if (match !== null)
          logGooglePageHit('home');
       return <>
@@ -199,29 +103,29 @@ export const Home = memo(() => {
             unmountOnExit={true}
          >
             <div
-               className={'positionAbsolute width_100_percent'}
+               className={'containerDivs'}
                key={'home'}
                ref={nodeRef}
             >
                <Header/>
-               <div className={'positionAbsolute width_100_percent'}>
+               <div className={'containerDivs'}>
                   <Hidden mdUp={true}>
                      <Row>
                         <Column
                            xs={12}
                            className={'padding_16'}
                         >
-                           <div style={style.transition.div1}>
-                              <div style={style.transition.div2}>
+                           <div className={'boxShadow'}>
+                              <div className={'faceCard'}>
                                  <img
                                     alt={'Adam Nathaniel Davis'}
+                                    className={'mobileImage'}
                                     src={adam}
-                                    style={style.transition.img1}
                                  />
-                                 <div style={style.transition.div3}>
+                                 <div className={'nameDiv'}>
                                     Adam Nathaniel Davis
                                  </div>
-                                 <div style={style.transition.div4}/>
+                                 <div className={'purpleDivider'}/>
                                  <div className={'marginTop_30'}>
                                     <Button onClick={goToResume}>
                                        Resume
@@ -233,7 +137,7 @@ export const Home = memo(() => {
                                        Projects
                                     </Button>
                                  </div>
-                                 <div style={style.transition.div6}>
+                                 <div className={'followIconsContainer'}>
                                     <div className={'paddingTop_7'}>
                                        <FollowIcons dimension={25}/>
                                     </div>
@@ -247,7 +151,7 @@ export const Home = memo(() => {
                            xs={12}
                            className={'padding_0_16_16_16'}
                         >
-                           <div style={style.transition.div8}>
+                           <div className={'aCodingLifeContainer'}>
                               <h1 className={'marginTop_0'}>A Coding Life</h1>
                               {getMainText()}
                            </div>
@@ -259,22 +163,22 @@ export const Home = memo(() => {
                      <Row className={'paddingTop_150'}>
                         <Column md={2} lg={3} xl={4}/>
                         <Column xs={6} md={4} lg={3} xl={2}>
-                           <div style={style.transition.div1}>
-                              <div style={style.transition.div10}>
+                           <div className={'boxShadow'}>
+                              <div className={'desktopImageContainer'}>
                                  <img
                                     alt={'Adam Nathaniel Davis'}
+                                    className={'desktopImage'}
                                     src={adam}
-                                    style={style.transition.img2}
                                  />
-                                 <div style={style.transition.div11}>
+                                 <div className={'desktopNameDiv'}>
                                     Adam Nathaniel Davis
                                  </div>
-                                 <div style={style.transition.div12}/>
+                                 <div className={'desktopPurpleDivider'}/>
                                  <div className={'fontSize_1_2em'}>
                                     <ReactRotatingText items={titles}/>
                                  </div>
                               </div>
-                              <div style={style.transition.div14}>
+                              <div className={'desktopFollowIconsContainer'}>
                                  <div className={'paddingTop_12'}>
                                     <FollowIcons dimension={25}/>
                                  </div>
@@ -282,8 +186,12 @@ export const Home = memo(() => {
                            </div>
                         </Column>
                         <Column
+                           className={'aCodingLifeColumn'}
                            md={5} lg={4} xl={3}
-                           style={style.transition.column3}
+                           style={{
+                              paddingLeft: getResponsiveSpacing(viewport.size, 8, 48),
+                              paddingRight: getResponsiveSpacing(viewport.size, 8, 48),
+                           }}
                         >
                            <h1>A Coding Life</h1>
                            {getMainText()}
@@ -295,14 +203,18 @@ export const Home = memo(() => {
                <Hidden mdUp={true}>
                   <div className={'height_250'}/>
                </Hidden>
-               <div style={style.transition.imageDiv}/>
+               <div style={{
+                  backgroundImage: `url(${codeImage})`,
+                  minHeight: isMobile ? 1250 : 850,
+                  width: getBackgroundImageWidth(),
+               }}/>
                <Hidden smDown={true}>
                   <Footer/>
                </Hidden>
             </div>
          </CSSTransition>
       </>;
-   }, [getMainText, goToProjects, goToResume, style]);
+   }, [getMainText, goToProjects, goToResume, isMobile, viewport]);
 
    const triggerTransition = useCallback(({match}) => getCssTransition(match), [getCssTransition]);
 

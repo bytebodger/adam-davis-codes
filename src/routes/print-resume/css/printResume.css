@@ -1,0 +1,30 @@
+.contactInfo {
+    font-size: 0.7em;
+    text-align: right;
+}
+
+.sectionContainer {
+    font-size: 0.9em;
+    margin-bottom: 24px;
+}
+
+.tagline {
+    font-size: 0.7em;
+    padding-bottom: 16px;
+    text-align: right;
+}
+
+.technologiesUsed {
+    font-size: 0.8em;
+    margin-top: 8px;
+}
+
+.title {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+span {
+    font-size: 0.8em;
+    font-style: italic;
+}

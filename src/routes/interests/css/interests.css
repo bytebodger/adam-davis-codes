@@ -1,0 +1,104 @@
+.bodyColumn {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.cardBody {
+    flex-grow: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.cardDiv {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.50) -11px 11px 17px 0;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.cardSpacer {
+    background-color: #f4ece6;
+    display: inline-block;
+    height: 32px;
+    width: 10px;
+}
+
+.cardTitle {
+    background-color: #f4ece6;
+    display: inline-block;
+    height: 27px;
+    width: 10px;
+}
+
+.desktopCardBody {
+    flex-grow: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.desktopCardColumn {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+    width: 58.33%;
+}
+
+.desktopCardImage {
+    height: 400px;
+    width: initial;
+}
+
+.desktopCardRow {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+
+.desktopCardTitle {
+    color: #551a8b;
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.mobileCardColumn {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.mobileCardImage {
+    height: initial;
+    width: 100%;
+}
+
+.mobileCardImageColumn {
+    height: 200px;
+    overflow: hidden;
+}
+
+.mobileCardRow {
+    display: flex;
+    flex-direction: column;
+    height: 260px;
+}
+
+.mobileCardTitle {
+    color: #551a8b;
+    display: inline-block;
+    font-size: 0.9em;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.mobileSpacerColumn {
+    background-color: white;
+    height: 16px;
+}

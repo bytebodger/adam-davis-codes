@@ -2,9 +2,7 @@ import { Route } from 'react-router-dom';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { CSSTransition } from 'react-transition-group';
 import '../../common/css/fade.css';
-import { useRef, memo, useMemo, useCallback } from 'react';
-import { css3 } from '@toolz/css3/src/css3';
-import { the } from '../../common/objects/the';
+import { useRef, memo, useCallback } from 'react';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
 import { Row } from '@toolz/material-ui/dist/Row';
@@ -12,48 +10,12 @@ import { Column } from '@toolz/material-ui/dist/Column';
 import { Footer } from '../../Footer';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 import { Header } from '../../Header';
+import '../../common/css/baseProperties.css';
+import './css/phone.css';
 
 export const Phone = memo(() => {
    const nodeRef = useRef(null);
    const viewport = useViewport(materialUiBreakpoints);
-
-   const style = useMemo(() => {
-      return {
-         column1: {
-            paddingLeft: 8,
-            paddingRight: 8,
-         },
-         column2: {
-            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-            textAlign: css3.textAlign.justify,
-         },
-         div1: {
-            position: css3.position.absolute,
-            width: '100%',
-         },
-         div2: {
-            backgroundColor: the.color.sand,
-            paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
-            paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
-         },
-         div3: {
-            border: '1px solid grey',
-            backgroundColor: the.color.white,
-            borderRadius: 10,
-            boxShadow: 'rgba(0, 0, 0, 0.25) -11.31px 11.31px 17px 0px',
-            padding: 16,
-         },
-         h3: {
-            color: the.color.purple,
-            margin: 0,
-            textAlign: css3.textAlign.center,
-         },
-         textAlignCenter: {
-            textAlign: css3.textAlign.center,
-         },
-      };
-   }, [viewport.size]);
 
    const getCssTransition = useCallback(match => {
       if (match !== null)
@@ -67,30 +29,40 @@ export const Phone = memo(() => {
             unmountOnExit={true}
          >
             <div
+               className={'outerDiv'}
                key={'phone'}
                ref={nodeRef}
-               style={style.div1}
             >
                <Header/>
-               <div style={style.div2}>
+               <div
+                  className={'backgroundColorSand'}
+                  style={{
+                     paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+                     paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+                  }}
+               >
                   <Row justify={'space-evenly'}>
                      <Column
+                        className={'bodyColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}
-                        style={style.column1}
                      >
-                        <h1 style={style.textAlignCenter}>+1-904-434-9210</h1>
-                        <div style={style.div3}>
+                        <h1 className={'textAlignCenter'}>+1-904-434-9210</h1>
+                        <div className={'bodyDiv'}>
                            <Row>
                               <Column xs={12}>
-                                 <h3 style={style.h3}>
+                                 <h3>
                                     Please leave your message at the tone...
                                  </h3>
                               </Column>
                            </Row>
                            <Row justify={'space-evenly'}>
                               <Column
+                                 className={'textAlignJustify'}
                                  xs={12} sm={10}
-                                 style={style.column2}
+                                 style={{
+                                    paddingBottom: getResponsiveSpacing(viewport.size, 8, 48),
+                                    paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
+                                 }}
                               >
                                  No, <i>seriously</i>. You're free to call me whenever you like, but you'll almost certainly need to leave a voicemail if you expect me to actually <i>receive</i> your
                                  message and to <i>return</i> your call. If you're reading this, then your number is probably <i>not</i> already in my phone. And if the call's coming in from an
@@ -109,7 +81,7 @@ export const Phone = memo(() => {
             </div>
          </CSSTransition>
       </>;
-   }, [style]);
+   }, [viewport]);
 
    const triggerTransition = useCallback(({match}) => getCssTransition(match), [getCssTransition]);
 

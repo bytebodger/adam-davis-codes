@@ -10,12 +10,36 @@
     box-shadow: rgba(0, 0, 0, 0.50) -11px 11px 17px 0;
 }
 
+.fontSize_0_8em {
+    font-size: 0.8em;
+}
+
+.fontSize_0_9em {
+    font-size: 0.9em;
+}
+
 .fontSize_1_2em {
     font-size: 1.2em;
 }
 
+.fontWeightBold {
+    font-weight: bold;
+}
+
+.height_48 {
+    height: 48px
+}
+
 .height_250 {
     height: 250px;
+}
+
+.marginBottom_8 {
+    margin-bottom: 8px;
+}
+
+.marginBottom_16 {
+    margin-bottom: 16px;
 }
 
 .marginLeft_20 {
@@ -26,12 +50,24 @@
     margin-top: 0;
 }
 
+.marginTop_16 {
+    margin-top: 16px;
+}
+
 .marginTop_30 {
     margin-top: 30px;
 }
 
+.overflowHidden {
+    overflow: hidden
+}
+
 .padding_0_16_16_16 {
     padding: 0 16px 16px 16px;
+}
+
+.padding_8 {
+    padding: 8px;
 }
 
 .padding_16 {
@@ -57,9 +93,15 @@
 .textAlignCenter {
     text-align: center;
 }
+
 .textAlignJustify {
     text-align: justify;
 }
+
+.textAlignRight {
+    text-align: right;
+}
+
 .width_100_percent {
     width: 100%;
 }

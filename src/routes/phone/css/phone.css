@@ -1,0 +1,23 @@
+.bodyDiv {
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.50) -11px 11px 17px 0;
+    padding: 16px;
+}
+
+.bodyColumn {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.outerDiv {
+    position: absolute;
+    width: 100%;
+}
+
+h3 {
+    color: #551a8b;
+    margin: 0;
+    text-align: center;
+}

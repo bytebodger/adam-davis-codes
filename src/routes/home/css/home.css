@@ -2,6 +2,12 @@
     height: 525px;
     overflow-y: auto;
 }
+
+.aCodingLifeContainer {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 16px;
+}
+
 .adamImageDiv {
     background-color: #f4ece6;
     height: 355px;
@@ -13,12 +19,53 @@
     width: 100%;
 }
 
-.containerDiv2 {
-    position: absolute !important;
-    width: 100%;
+.desktopFollowIconsContainer {
+    background-color: white;
+    height: 50px;
+    text-align: center;
+}
+
+.desktopImage {
+    border-radius: 102px;
+    height: 204px;
+    margin-top: 40px;
+    width: 204px;
+}
+
+.desktopImageContainer {
+    background-color: #f4ece6;
+    height: 475px;
+    text-align: center;
+}
+
+.desktopNameDiv {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-top: 40px;
+}
+
+.desktopPurpleDivider {
+    background-color: #551a8b;
+    height: 2px;
+    margin: 40px auto;
+    width: 25%;
+}
+
+.faceCard {
+    background-color: #f4ece6;
+    height: 355px;
+    text-align: center;
+}
+
+.followIconsContainer {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.50) -11px 11px 17px 0;
+    height: 40px;
+    margin-top: 40px;
 }
 
 .mainTextDiv2 {
+    position: relative;
     margin-top: 16px;
     text-align: justify;
 }
@@ -29,8 +76,27 @@
     text-align: justify;
 }
 
+.mobileImage {
+    border-radius: 60px;
+    height: 120px;
+    margin-top: 20px;
+    width: 120px;
+}
+
 .nameDiv {
     font-size: 1.4em;
     font-weight: 600;
     margin-top: 20px;
+}
+
+.outerContainerDiv {
+    position: absolute;
+    width: 100%;
+}
+
+.purpleDivider {
+    background-color: #551a8b;
+    height: 2px;
+    margin: 20px auto;
+    width: 25%;
 }
