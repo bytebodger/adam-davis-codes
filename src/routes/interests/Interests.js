@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { useRef, memo, useCallback } from 'react';
 import '../../common/css/fade.css';
-import { Footer } from '../../Footer';
+import { Footer } from '../../common/components/Footer';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
@@ -22,7 +22,7 @@ import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
 import { Hidden } from '@material-ui/core';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
-import { Header } from '../../Header';
+import { Header } from '../../common/components/Header';
 import './css/interests.css';
 import '../../common/css/baseProperties.css';
 

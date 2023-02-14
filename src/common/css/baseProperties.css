@@ -26,6 +26,14 @@
     font-size: 1.2em;
 }
 
+.fontStyleNormal {
+    font-style: normal;
+}
+
+.fontWeight_600 {
+    font-weight: 600;
+}
+
 .fontWeightBold {
     font-weight: bold;
 }
@@ -46,12 +54,20 @@
     margin-bottom: 16px;
 }
 
+.marginLeft_8 {
+    margin-left: 8px;
+}
+
 .marginLeft_20 {
     margin-left: 20px;
 }
 
 .marginTop_0 {
     margin-top: 0;
+}
+
+.marginTop_8 {
+    margin-top: 8px;
 }
 
 .marginTop_16 {
@@ -64,6 +80,14 @@
 
 .marginTop_48 {
     margin-top: 48px;
+}
+
+.minWidth_300 {
+    min-width: 300px;
+}
+
+.minWidth_350 {
+    min-width: 350px;
 }
 
 .overflowHidden {
@@ -82,12 +106,28 @@
     padding: 16px;
 }
 
+.paddingLeft_16 {
+    padding-left: 16px;
+}
+
+.paddingLeft_24 {
+    padding-left: 24px;
+}
+
+.paddingTop_2 {
+    padding-top: 2px;
+}
+
 .paddingTop_7 {
     padding-top: 7px;
 }
 
 .paddingTop_8 {
     padding-top: 8px;
+}
+
+.paddingTop_10 {
+
 }
 
 .paddingTop_12 {

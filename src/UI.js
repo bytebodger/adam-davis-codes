@@ -11,8 +11,9 @@ import { Email } from './routes/email/Email';
 import { Phone } from './routes/phone/Phone';
 import { use } from './common/objects/use';
 import { FAQ } from './routes/faq/FAQ';
-import { useMemo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { PrintResume } from './routes/print-resume/PrintResume';
+import './common/css/baseProperties.css';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -23,22 +24,15 @@ export const UI = () => {
       use.githubReposEndpoint.loadRepos();
    }, []);
 
-   const style = useMemo(() => {
-      return {
-         minWidth300: {
-            minWidth: 300,
-         },
-         row: {
-            minWidth: 350,
-            paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
-            paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
-         },
-      };
-   }, [viewport.size]);
-
    return <>
-      <div style={style.minWidth300}>
-         <Row style={style.row}>
+      <div className={'minWidth_300'}>
+         <Row
+            className={'minWidth_350'}
+            style={{
+               paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
+               paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
+            }}
+         >
             <Email/>
             <FAQ/>
             <Home/>

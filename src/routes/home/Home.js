@@ -4,7 +4,7 @@ import React, { useRef, memo, useMemo, useCallback } from 'react';
 import '../../common/css/fade.css';
 import { useViewport } from '@toolz/use-viewport';
 import codeImage from '../../common/images/code.png';
-import { Footer } from '../../Footer';
+import { Footer } from '../../common/components/Footer';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
@@ -17,7 +17,7 @@ import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacin
 import { Button } from '../../common/components/Button';
 import { useHistory } from 'react-router';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
-import { Header } from '../../Header';
+import { Header } from '../../common/components/Header';
 import './css/home.css';
 
 export const Home = memo(() => {
@@ -127,14 +127,16 @@ export const Home = memo(() => {
                                  </div>
                                  <div className={'purpleDivider'}/>
                                  <div className={'marginTop_30'}>
-                                    <Button onClick={goToResume}>
-                                       Resume
+                                    <Button
+                                       onClick={goToResume}
+                                    >
+                                       <span className={'fontStyleNormal fontSize_1_2em'}>Resume</span>
                                     </Button>
                                     <Button
                                        className={'marginLeft_20'}
                                        onClick={goToProjects}
                                     >
-                                       Projects
+                                       <span className={'fontStyleNormal fontSize_1_2em'}>Project</span>
                                     </Button>
                                  </div>
                                  <div className={'followIconsContainer'}>
@@ -175,7 +177,10 @@ export const Home = memo(() => {
                                  </div>
                                  <div className={'desktopPurpleDivider'}/>
                                  <div className={'fontSize_1_2em'}>
-                                    <ReactRotatingText items={titles}/>
+                                    <ReactRotatingText
+                                       className={'fontStyleNormal'}
+                                       items={titles}
+                                    />
                                  </div>
                               </div>
                               <div className={'desktopFollowIconsContainer'}>

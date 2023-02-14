@@ -1,23 +1,10 @@
 import * as PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDev as devTo, faGithub as github, faNpm as npm, faFacebookF as facebook, faTwitter as twitter, faLinkedinIn as linkedIn, faInstagram as instagram, faYoutube as youtube } from '@fortawesome/free-brands-svg-icons';
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
+import '../css/baseProperties.css';
 
 export const FollowIcons = memo(props => {
-   const style = useMemo(() => {
-      return {
-         left: {
-            height: props.dimension,
-            width: props.dimension,
-         },
-         main: {
-            height: props.dimension,
-            marginLeft: 8,
-            width: props.dimension,
-         },
-      };
-   }, [props.dimension]);
-
    return <>
       <a
          href={'https://dev.to/bytebodger'}
@@ -27,7 +14,10 @@ export const FollowIcons = memo(props => {
       >
          <FontAwesomeIcon
             icon={devTo}
-            style={style.left}
+            style={{
+               height: props.dimension,
+               width: props.dimension,
+            }}
          />
       </a>
       <a
@@ -37,8 +27,12 @@ export const FollowIcons = memo(props => {
          title={'All my public GitHub repositories'}
       >
          <FontAwesomeIcon
+            className={'marginLeft_8'}
             icon={github}
-            style={style.main}
+            style={{
+               height: props.dimension,
+               width: props.dimension,
+            }}
          />
       </a>
       <a
@@ -48,8 +42,12 @@ export const FollowIcons = memo(props => {
          title={'All the packages I\'ve published to NPM'}
       >
          <FontAwesomeIcon
+            className={'marginLeft_8'}
             icon={npm}
-            style={style.main}
+            style={{
+               height: props.dimension,
+               width: props.dimension,
+            }}
          />
       </a>
       <a
@@ -59,8 +57,12 @@ export const FollowIcons = memo(props => {
          title={'The Facebook home for all my creative endeavors'}
       >
          <FontAwesomeIcon
+            className={'marginLeft_8'}
             icon={facebook}
-            style={style.main}
+            style={{
+               height: props.dimension,
+               width: props.dimension,
+            }}
          />
       </a>
       <a
@@ -70,8 +72,12 @@ export const FollowIcons = memo(props => {
          title={'I don\'t use Twitter much - but here it is'}
       >
          <FontAwesomeIcon
+            className={'marginLeft_8'}
             icon={twitter}
-            style={style.main}
+            style={{
+               height: props.dimension,
+               width: props.dimension,
+            }}
          />
       </a>
       <a
@@ -81,8 +87,12 @@ export const FollowIcons = memo(props => {
          title={'The place where all the recruiters hunt me down'}
       >
          <FontAwesomeIcon
+            className={'marginLeft_8'}
             icon={linkedIn}
-            style={style.main}
+            style={{
+               height: props.dimension,
+               width: props.dimension,
+            }}
          />
       </a>
       <a
@@ -92,8 +102,12 @@ export const FollowIcons = memo(props => {
          title={'A picto-diary of my paintings'}
       >
          <FontAwesomeIcon
+            className={'marginLeft_8'}
             icon={instagram}
-            style={style.main}
+            style={{
+               height: props.dimension,
+               width: props.dimension,
+            }}
          />
       </a>
       <a
@@ -103,8 +117,12 @@ export const FollowIcons = memo(props => {
          title={'Videos mostly dedicated to visual arts'}
       >
          <FontAwesomeIcon
+            className={'marginLeft_8'}
             icon={youtube}
-            style={style.main}
+            style={{
+               height: props.dimension,
+               width: props.dimension,
+            }}
          />
       </a>
    </>;

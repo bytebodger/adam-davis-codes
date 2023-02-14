@@ -7,9 +7,9 @@ import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacin
 import { useViewport } from '@toolz/use-viewport';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
-import { Footer } from '../../Footer';
+import { Footer } from '../../common/components/Footer';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
-import { Header } from '../../Header';
+import { Header } from '../../common/components/Header';
 import './css/email.css';
 import '../../common/css/baseProperties.css';
 

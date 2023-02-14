@@ -1,0 +1,41 @@
+.emailColumn {
+    cursor: pointer;
+    margin-left: 16px;
+    margin-right: 16px;
+    text-align: center;
+}
+
+.followColumn {
+    margin-left: 16px;
+    text-align: center;
+}
+
+.mobileContainerColumn {
+    font-size: 0.8em;
+    min-width: 350px;
+    padding-left: 24px;
+}
+
+.mobileTitleDiv {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.mobileValueDiv {
+    margin-bottom: 20px;
+    margin-top: 12px;
+}
+
+.phoneColumn {
+    cursor: pointer;
+    margin-right: 16px;
+    text-align: center;
+}
+
+.rowContainer {
+    background-color: white;
+    font-weight: 200;
+    min-width: 350px;
+    padding-bottom: 96px;
+    padding-top: 32px;
+}

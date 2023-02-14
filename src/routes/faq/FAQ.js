@@ -6,9 +6,9 @@ import { Row } from '@toolz/material-ui/dist/Row';
 import { useRef, memo, useMemo, useCallback } from 'react';
 import { useViewport } from '@toolz/use-viewport';
 import { Column } from '@toolz/material-ui/dist/Column';
-import { Footer } from '../../Footer';
+import { Footer } from '../../common/components/Footer';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
-import { Header } from '../../Header';
+import { Header } from '../../common/components/Header';
 import '../../common/css/baseProperties.css';
 import './css/faq.css';
 

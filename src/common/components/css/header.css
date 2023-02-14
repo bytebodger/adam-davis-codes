@@ -1,0 +1,61 @@
+.appBar {
+    background-color: #551a8b;
+    position: relative;
+}
+
+.currentLink {
+    cursor: inherit;
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-left: 8px;
+    margin-right: 8px;
+    text-decoration: underline;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.fontAwesomeIcon {
+    color: #551a8b;
+    height: 25px;
+    width: 25px;
+}
+
+.mobileSpacerDiv {
+    display: inline-block;
+    margin-left: 24px;
+}
+
+.name {
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: 600;
+    padding-left: 8px;
+}
+
+.notCurrentLink {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 300;
+    margin-left: 8px;
+    margin-right: 8px;
+    text-decoration: inherit;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.spacerDiv {
+    background-color: #f4ece6;
+    display: inline-block;
+    height: 16px;
+    margin-bottom: 2px;
+    width: 16px;
+}
+
+.whereTo {
+    flex: 1;
+    position: relative;
+    right: 18px;
+    text-align: center;
+}
