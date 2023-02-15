@@ -33,6 +33,10 @@
     text-align: right;
 }
 
+.jobDescriptionColumnRight ul {
+    text-align: left;
+}
+
 .jobTechnologies {
     border: 1px solid #cccccc;
     border-radius: 5px;

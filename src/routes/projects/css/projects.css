@@ -12,7 +12,7 @@
 .desktopCardBodyDiv {
     flex-grow: 1;
     font-size: 0.9em;
-    min-height: 0;
+    min-height: 330px;
     overflow-y: auto;
     padding-bottom: 8px;
     padding-left: 8px;

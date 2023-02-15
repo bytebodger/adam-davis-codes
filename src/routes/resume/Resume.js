@@ -17,6 +17,7 @@ import { jobs } from '../../common/arrays/jobs';
 import { education } from '../../common/arrays/education';
 import '../../common/css/baseProperties.css';
 import './css/resume.css';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
 
 export const Resume = memo(() => {
    const currentDirection = useRef('right');
@@ -27,6 +28,16 @@ export const Resume = memo(() => {
    const isMobile = useMemo(() => {
       return ['xs', 'sm'].includes(viewport.size);
    }, [viewport]);
+
+   const getTechnologies = useCallback((technologies = []) => {
+      let technologyList = '';
+      technologies.forEach((technology, index) => {
+         if (index !== 0)
+            technologyList += ', ';
+         technologyList += technology;
+      });
+      return technologyList;
+   }, []);
 
    const getJobCard = useCallback((job = {}) => {
       allow.anObject(job, is.not.empty);
@@ -50,7 +61,7 @@ export const Resume = memo(() => {
          </>;
       }
       let technologiesUsed;
-      if (job.technologies === '')
+      if (job.technologies.length === 0)
          technologiesUsed = null;
       else {
          technologiesUsed = <>
@@ -69,7 +80,7 @@ export const Resume = memo(() => {
                      className={'jobTechnologies'}
                      style={{textAlign: currentDirection.current === 'left' ? css3.textAlign.left : css3.textAlign.right}}
                   >
-                     {job.technologies}
+                     {getTechnologies(job.technologies)}
                   </div>
                </Column>
             </Row>
@@ -120,7 +131,7 @@ export const Resume = memo(() => {
                      className={'timeframeH3'}
                      style={{textAlign: currentDirection.current === 'right' ? css3.textAlign.right : css3.textAlign.left}}
                   >
-                     {job.timeframe}
+                     {job.beginYear} - {job.endYear}
                   </h3>
                </Column>
             </Row>
@@ -130,7 +141,7 @@ export const Resume = memo(() => {
             {technologiesUsed}
          </div>
       </>;
-   }, [isMobile]);
+   }, [getTechnologies, isMobile]);
 
    const getEducationCards = useCallback(() => {
       jobCardCount.current = 0;
@@ -148,6 +159,58 @@ export const Resume = memo(() => {
          </div>;
       });
    }, [getJobCard]);
+
+   const getSkills = useCallback(() => {
+      const skills = {};
+      jobs.forEach(job => {
+         job.technologies.forEach(technology => {
+            if (!skills[technology]) {
+               skills[technology] = {
+                  firstUsed: 5000,
+                  lastUsed: 0,
+                  yearsUsed: 0,
+               };
+            }
+            if (job.beginYear < skills[technology].firstUsed)
+               skills[technology].firstUsed = job.beginYear;
+            if (job.endYear > skills[technology].lastUsed)
+               skills[technology].lastUsed = job.endYear;
+            skills[technology].yearsUsed += (job.endYear - job.beginYear);
+         });
+      });
+      const keys = Object.keys(skills).sort();
+      const rows = keys.map(technology => {
+         const skill = skills[technology];
+         return (
+            <TableRow
+               key={technology}
+               sx={{'&:last-child td, &:last-child th': {border: 0}}}
+            >
+               <TableCell>{technology}</TableCell>
+               <TableCell>{skill.yearsUsed}</TableCell>
+               <TableCell>{skill.firstUsed}</TableCell>
+               <TableCell>{skill.lastUsed}</TableCell>
+            </TableRow>
+         );
+      });
+      return (
+         <TableContainer component={Paper}>
+            <Table aria-label={'skills table'}>
+               <TableHead>
+                  <TableRow>
+                     <TableCell>Technology</TableCell>
+                     <TableCell>Years Used</TableCell>
+                     <TableCell>First</TableCell>
+                     <TableCell>Last</TableCell>
+                  </TableRow>
+               </TableHead>
+               <TableBody>
+                  {rows}
+               </TableBody>
+            </Table>
+         </TableContainer>
+      );
+   }, []);
 
    const goToPrintResume = useCallback(() => window.open('/print-resume', '_blank'), []);
 
@@ -187,8 +250,54 @@ export const Resume = memo(() => {
                         className={'transitionColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}
                      >
+                        <h1 style={{marginTop: isMobile ? 0 : 'initial'}}>Overview</h1>
+                        <div className={'jobCard'}>
+                           <Row className={'paddingTop_8'}>
+                              <Column
+                                 className={'fontSize_0_9em textAlignJustify'}
+                                 xs={12}
+                              >
+                                 I'm a lifelong software engineering professional, having worked in this career field for a quarter-century. Over the years I progressed
+                                 through static websites, to server-side scripting, to backend databases and compiled languages. In the last decade, I've focused
+                                 progressively on <i>frontend</i> development, working with all manner of JavaScript technologies and frameworks including jQuery,
+                                 Knockout, Angular, Svelte, Node, and React. Although I can work in many different codebases, my tech-stack-of-choice is React, Node,
+                                 Express/REST, and any flavor of backend data storage.
+                              </Column>
+                           </Row>
+                        </div>
+                     </Column>
+                  </Row>
+                  <Row
+                     className={'marginTop_48'}
+                     justify={'space-evenly'}
+                  >
+                     <Column
+                        className={'transitionColumn'}
+                        xs={12} sm={10} md={8} lg={7} xl={6}
+                     >
                         <h1 style={{marginTop: isMobile ? 0 : 'initial'}}>Experience</h1>
                         {getJobCards()}
+                     </Column>
+                  </Row>
+                  <Row
+                     className={'marginTop_48'}
+                     justify={'space-evenly'}
+                  >
+                     <Column
+                        className={'transitionColumn'}
+                        xs={12} sm={10} md={8} lg={7} xl={6}
+                     >
+                        <h1 style={{marginTop: isMobile ? 0 : 'initial'}}>Skills</h1>
+                        <div className={'jobCard'}>
+                           <Row className={'paddingTop_8'}>
+                              <Column
+                                 className={'fontSize_0_9em textAlignJustify'}
+                                 xs={12}
+                              >
+                                 {getSkills()}
+                              </Column>
+                           </Row>
+                        </div>
                      </Column>
                   </Row>
                   <Row
@@ -214,7 +323,7 @@ export const Resume = memo(() => {
             </div>
          </CSSTransition>
       </>;
-   }, [getEducationCards, getJobCards, goToPrintResume, isMobile, viewport]);
+   }, [getEducationCards, getJobCards, getSkills, goToPrintResume, isMobile, viewport]);
 
    const triggerTransition = useCallback(({match}) => getCssTransition(match), [getCssTransition]);
 

@@ -127,9 +127,7 @@ export const Home = memo(() => {
                                  </div>
                                  <div className={'purpleDivider'}/>
                                  <div className={'marginTop_30'}>
-                                    <Button
-                                       onClick={goToResume}
-                                    >
+                                    <Button onClick={goToResume}>
                                        <span className={'fontStyleNormal fontSize_1_2em'}>Resume</span>
                                     </Button>
                                     <Button

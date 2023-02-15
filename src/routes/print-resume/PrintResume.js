@@ -2,7 +2,7 @@ import { memo, useCallback, useMemo } from 'react';
 import { Route } from 'react-router-dom';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
-import { Divider } from '@material-ui/core';
+import { Divider, TableRow, TableCell, TableContainer, Paper, Table, TableHead, TableBody } from '@material-ui/core';
 import { jobs } from '../../common/arrays/jobs';
 import { useViewport } from '@toolz/use-viewport';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
@@ -33,7 +33,7 @@ export const PrintResume = memo(() => {
                         {card.title}
                      </div>
                      <div className={'fontSize_0_9em'}>
-                        {card.timeframe}
+                        {card.beginYear} - {card.endYear}
                      </div>
                   </Column>
                   <Column xs={6} sm={7} md={8} lg={9} xl={10}>
@@ -47,6 +47,16 @@ export const PrintResume = memo(() => {
       });
    }, [isMobile]);
 
+   const getTechnologies = useCallback((technologies = []) => {
+      let technologyList = '';
+      technologies.forEach((technology, index) => {
+         if (index !== 0)
+            technologyList += ', ';
+         technologyList += technology;
+      });
+      return technologyList;
+   }, []);
+
    const getJobCards = useCallback(() => {
       return jobs.map((job, index) => {
          let divider = null;
@@ -59,7 +69,7 @@ export const PrintResume = memo(() => {
                </Row>
             </>;
          let technologies = null;
-         if (job.technologies !== '')
+         if (job.technologies.length !== 0)
             technologies = <>
                <Row className={'marginBottom_16'} justify={'space-evenly'}>
                   <Column xs={12}>
@@ -67,7 +77,7 @@ export const PrintResume = memo(() => {
                         Technologies used:
                      </div>
                      <div className={'fontSize_0_8em'}>
-                        {job.technologies}
+                        {getTechnologies(job.technologies)}
                      </div>
                   </Column>
                </Row>
@@ -86,7 +96,7 @@ export const PrintResume = memo(() => {
                         {job.title}
                      </div>
                      <div className={'fontSize_0_9em'}>
-                        {job.timeframe}
+                        {job.beginYear} - {job.endYear}
                      </div>
                   </Column>
                   <Column xs={6} sm={7} md={8} lg={9} xl={10}>
@@ -100,7 +110,62 @@ export const PrintResume = memo(() => {
             </div>
          );
       });
-   }, [isMobile]);
+   }, [getTechnologies, isMobile]);
+
+   const getSkills = useCallback(() => {
+      const skills = {};
+      jobs.forEach(job => {
+         job.technologies.forEach(technology => {
+            if (!skills[technology]) {
+               skills[technology] = {
+                  firstUsed: 5000,
+                  lastUsed: 0,
+                  yearsUsed: 0,
+               };
+            }
+            if (job.beginYear < skills[technology].firstUsed)
+               skills[technology].firstUsed = job.beginYear;
+            if (job.endYear > skills[technology].lastUsed)
+               skills[technology].lastUsed = job.endYear;
+            skills[technology].yearsUsed += (job.endYear - job.beginYear);
+         });
+      });
+      const keys = Object.keys(skills).sort();
+      const rows = keys.map(technology => {
+         const skill = skills[technology];
+         return (
+            <TableRow
+               key={technology}
+               sx={{'&:last-child td, &:last-child th': {border: 0}}}
+            >
+               <TableCell><span className={'fontSize_0_8em fontStyleNormal'}>{technology}</span></TableCell>
+               <TableCell><span className={'fontSize_0_8em fontStyleNormal'}>{skill.yearsUsed}</span></TableCell>
+               <TableCell><span className={'fontSize_0_8em fontStyleNormal'}>{skill.firstUsed}</span></TableCell>
+               <TableCell><span className={'fontSize_0_8em fontStyleNormal'}>{skill.lastUsed}</span></TableCell>
+            </TableRow>
+         );
+      });
+      return (
+         <TableContainer component={Paper}>
+            <Table
+               aria-label={'skills table'}
+               size={'small'}
+            >
+               <TableHead>
+                  <TableRow>
+                     <TableCell><span className={'fontSize_0_9em fontStyleNormal'}>Technology</span></TableCell>
+                     <TableCell><span className={'fontSize_0_9em fontStyleNormal'}>Years Used</span></TableCell>
+                     <TableCell><span className={'fontSize_0_9em fontStyleNormal'}>First</span></TableCell>
+                     <TableCell><span className={'fontSize_0_9em fontStyleNormal'}>Last</span></TableCell>
+                  </TableRow>
+               </TableHead>
+               <TableBody>
+                  {rows}
+               </TableBody>
+            </Table>
+         </TableContainer>
+      );
+   }, []);
 
    return <>
       <Route
@@ -128,12 +193,36 @@ export const PrintResume = memo(() => {
                </div>
                <div className={'sectionContainer'}>
                   <div className={'marginBottom_8'}>
-                     EXPERIENCE: <span>a quarter century of industry expertise</span>
+                     OVERVIEW:
+                     <div className={'textAlignJustify marginTop_8 fontSize_0_9em'}>
+                        I'm a lifelong software engineering professional, having worked in this career field for a quarter-century. Over the years I progressed
+                        through static websites, to server-side scripting, to backend databases and compiled languages. In the last decade, I've focused
+                        progressively on <i>frontend</i> development, working with all manner of JavaScript technologies and frameworks including jQuery,
+                        Knockout, Angular, Svelte, Node, and React. Although I can work in many different codebases, my tech-stack-of-choice is React, Node,
+                        Express/REST, and any flavor of backend data storage.
+                        <br/><br/>
+                        <b>NOTE:</b> If you're viewing this in a printed/file format, you're missing the vast majority of the information that's available about me on my
+                        CV site. Please check that out at: <b>https://adamdavis.codes</b>. There you'll find links to my many blogs about software engineering, my GitHub
+                        repos, my NPM packages, the live sites I have on the web, and much more. (Also, the site itself is a React application.)
+                     </div>
+                  </div>
+               </div>
+               <Divider/>
+               <div className={'sectionContainer marginTop_16'}>
+                  <div className={'marginBottom_8'}>
+                     EXPERIENCE: <span>a quarter-century of industry expertise</span>
                   </div>
                   {getJobCards()}
                </div>
                <Divider/>
-               <div className={'sectionContainer'}>
+               <div className={'sectionContainer marginTop_16'}>
+                  <div className={'marginBottom_8'}>
+                     SKILLS:
+                  </div>
+                  {getSkills()}
+               </div>
+               <Divider/>
+               <div className={'sectionContainer marginTop_16'}>
                   <div className={'marginBottom_8'}>
                      EDUCATION:
                   </div>
