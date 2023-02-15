@@ -1,7 +1,9 @@
+import '../css/baseProperties.css';
+
 export const jobs = [
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Managed the internal app (Sonar) that handles the vast majority (<i>billions</i>) of all Amazon's outbound marketing messages
          </p>
          <ul>
@@ -36,7 +38,7 @@ export const jobs = [
    },
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Provided frontend support for all account and authorization systems on Healthcare.org and Medicare.org
          </p>
          <ul>
@@ -70,7 +72,7 @@ export const jobs = [
    },
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Performed fullstack development for all medical eligibility services on Availity's proprietary portal
          </p>
          <ul>
@@ -105,7 +107,7 @@ export const jobs = [
    },
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Maintained huge legacy SaaS ATS application
          </p>
          <ul>
@@ -137,7 +139,7 @@ export const jobs = [
    },
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Led a team that supported all marketing functions on the public website
          </p>
          <ul>
@@ -169,7 +171,7 @@ export const jobs = [
    },
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Led the US side of an offshore development company
          </p>
          <ul>
@@ -200,7 +202,7 @@ export const jobs = [
    },
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Led all technology operations for a web optimization consultancy
          </p>
          <ul>
@@ -230,7 +232,7 @@ export const jobs = [
    },
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Led 60 developers organized in 6 different teams, responsible for the delivery of new client solutions
          </p>
          <ul>
@@ -263,7 +265,7 @@ export const jobs = [
    },
    {
       description: <>
-         <p style={{marginTop: 0}}>
+         <p className={'marginTop_0'}>
             Managed all public-facing web content
          </p>
          <ul>
