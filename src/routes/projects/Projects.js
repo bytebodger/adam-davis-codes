@@ -9,21 +9,23 @@ import { useViewport } from '@toolz/use-viewport';
 import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Hidden } from '@material-ui/core';
-import devDesktop from '../../common/images/dev-desktop.jpg';
-import devMobile from '../../common/images/dev-mobile.jpg';
-import npmDesktop from '../../common/images/npm-desktop.jpg';
-import npmMobile from '../../common/images/npm-mobile.jpg';
-import spotifyDesktop from '../../common/images/spotify-desktop.jpg';
-import spotifyMobile from '../../common/images/spotify-mobile.jpg';
-import githubDesktop from '../../common/images/github-desktop.jpg';
-import githubMobile from '../../common/images/github-mobile.jpg';
-import { use } from '../../common/objects/use';
+import devDesktop from './images/dev-desktop.jpg';
+import devMobile from './images/dev-mobile.jpg';
+import npmDesktop from './images/npm-desktop.jpg';
+import npmMobile from './images/npm-mobile.jpg';
+import spotifyDesktop from './images/spotify-desktop.jpg';
+import spotifyMobile from './images/spotify-mobile.jpg';
+import githubDesktop from './images/github-desktop.jpg';
+import githubMobile from './images/github-mobile.jpg';
 import { allow } from '@toolz/allow-react';
 import { is } from '../../common/objects/is';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 import { Header } from '../../common/components/Header';
 import '../../common/css/baseProperties.css';
 import './css/projects.css';
+import studioMobile from './images/studio-mobile.png';
+import studioDesktop from './images/studio-desktop.png';
+import { use } from '../../common/objects/use';
 
 export const Projects = () => {
    const currentOffset = useRef('right');
@@ -217,18 +219,6 @@ export const Projects = () => {
                      >
                         <h1 className={'marginTop_0'}>Projects</h1>
                         {getProjectCard(
-                           'Blogging',
-                           <>
-                              I've currently written <b>{devTo.articles.length}</b> blog articles on Dev.to covering a broad range of my views on application development:
-                              {getArticleLinks()}
-                           </>,
-                           devDesktop,
-                           devMobile,
-                           'The Dev.to blogs written by Adam Nathaniel Davis',
-                           'https://dev.to/bytebodger',
-                        )}
-                        <div className={'height_48'}/>
-                        {getProjectCard(
                            'NPM Packages',
                            <>
                               To-date, my NPM packages have been installed more than <b>{npm.downloads}</b> times:
@@ -252,6 +242,35 @@ export const Projects = () => {
                            npmMobile,
                            'The NPM packages created by Adam Nathaniel Davis',
                            'https://www.npmjs.com/search?q=%40toolz',
+                        )}
+                        <div className={'height_48'}/>
+                        {getProjectCard(
+                           'GitHub',
+                           <>
+                              This is basically a superset of my NPM packages:
+                              {getRepoLinks()}
+                           </>,
+                           githubDesktop,
+                           githubMobile,
+                           'The GitHub repositories for Adam Nathaniel Davis',
+                           'https://github.com/bytebodger?tab=repositories',
+                        )}
+                        <div className={'height_48'}/>
+                        {getProjectCard(
+                           'Paint Map Studio',
+                           <>
+                              This is my most-recent site launch. The app takes a chosen image, pixelates it, and then uses various algorithms to match the colors in the digital image
+                              to a given palette of heavy body acrylic paints. This required me to do a deep-dive into many aspects of color theory and programmatically manipulating
+                              images.
+                              <br/>
+                              <br/>
+                              It digitally mixes paint colors, builds an inventory of the colors needed to paint a given image, and creates a paint-by-numbers grid that shows where
+                              all of the matched colors exist on the new image.
+                           </>,
+                           studioDesktop,
+                           studioMobile,
+                           'A custom React application to do digital color matching between image files and real-life paints',
+                           'https://paintmap.studio',
                         )}
                         <div className={'height_48'}/>
                         {getProjectCard(
@@ -280,15 +299,15 @@ export const Projects = () => {
                         )}
                         <div className={'height_48'}/>
                         {getProjectCard(
-                           'GitHub',
+                           'Blogging',
                            <>
-                              This is basically a superset of my NPM packages:
-                              {getRepoLinks()}
+                              I've currently written <b>{devTo.articles.length}</b> blog articles on Dev.to covering a broad range of my views on application development:
+                              {getArticleLinks()}
                            </>,
-                           githubDesktop,
-                           githubMobile,
-                           'The GitHub repositories for Adam Nathaniel Davis',
-                           'https://github.com/bytebodger?tab=repositories',
+                           devDesktop,
+                           devMobile,
+                           'The Dev.to blogs written by Adam Nathaniel Davis',
+                           'https://dev.to/bytebodger',
                         )}
                      </Column>
                   </Row>

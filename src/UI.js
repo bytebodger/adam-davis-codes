@@ -20,8 +20,8 @@ export const UI = () => {
 
    useEffect(() => {
       use.devToArticlesEndpoint.loadArticles();
-      use.npmDownloadsEndpoint.loadDownloads();
       use.githubReposEndpoint.loadRepos();
+      use.npmDownloadsEndpoint.loadDownloads();
    }, []);
 
    return <>
