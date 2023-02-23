@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { useAxios } from './useAxios';
 import { the } from '../objects/the';
 
-export const useGithubReposEndpoint = () => {
+export const useGitHubEndpoint = () => {
    const [repos, setRepos] = useState([]);
    const axios = useAxios();
 

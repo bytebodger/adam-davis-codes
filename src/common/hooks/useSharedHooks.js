@@ -1,10 +1,10 @@
 import { use } from '../objects/use';
-import { useDevToArticlesEndpoint } from './useDevToArticlesEndpoint';
-import { useNpmDownloadsEndpoint } from './useNpmDownloadsEndpoint';
-import { useGithubReposEndpoint } from './useGithubReposEndpoint';
+import { useDevToEndpoint } from './useDevToEndpoint';
+import { useNpmEndpoint } from './useNpmEndpoint';
+import { useGitHubEndpoint } from './useGitHubEndpoint';
 
 export const useSharedHooks = () => {
-   use.devToArticlesEndpoint = useDevToArticlesEndpoint();
-   use.githubReposEndpoint = useGithubReposEndpoint();
-   use.npmDownloadsEndpoint = useNpmDownloadsEndpoint();
+   use.devToArticlesEndpoint = useDevToEndpoint();
+   use.githubReposEndpoint = useGitHubEndpoint();
+   use.npmDownloadsEndpoint = useNpmEndpoint();
 };

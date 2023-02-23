@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { the } from '../objects/the';
 import { useAxios } from './useAxios';
 
-export const useNpmDownloadsEndpoint = () => {
+export const useNpmEndpoint = () => {
    const [downloads, setDownloads] = useState(0);
    const [npmPackages, setNpmPackages] = useState(the.npm.packages);
    const axios = useAxios();
