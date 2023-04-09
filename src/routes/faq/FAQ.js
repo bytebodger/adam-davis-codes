@@ -93,7 +93,7 @@ export const FAQ = memo(() => {
                We need you to build our demo app because we don't know if the code in your repos was written <i>by you</i>.
             </>,
             answer: <>
-               I've written more than 80 blog articles talking about all aspects of my coding. I've put up dozens of GitHub repos and NPM packages. I've launched several live sites (including <i>this</i> one) with
+               I've written well over 100 blog articles talking about all aspects of my coding. I've put up dozens of GitHub repos and NPM packages. I've launched several live sites (including <i>this</i> one) with
                custom code. But you really think that I went through all of that effort as some sort of elaborate ruse? Just to get my foot in the door of your company?? Look... if you're really not
                sure if this stuff was written <i>by me</i>, let's just do a screenshare. I can talk you through the coding decisions that I've made. I can even make some minor, live changes just to illustrate that it's all <i>mine</i>.
             </>,
@@ -119,8 +119,8 @@ export const FAQ = memo(() => {
                to hear this, but the simple fact is that I probably couldn't care less <i>what</i> your company does and, at the point you're asking me this question, I probably have no idea whether or not I'm a good
                fit for your company. I don't much care if you're in Silicon Valley or sub-Saharan Africa. I don't care if your company makes piston rings or SaaS products. The splendiforous nature of your company's
                product/industry/whatever has little-to-no impact on my desire to actually write code for your company. What I care about is: How does your <i>current</i> dev process work (or... not)? How do you go about
-               writing code? How do client needs/requests ultimately get communicated to the dev team? How are the devs in your company treated? What is it actually <i>like</i> to write code for your company? If I know
-               <i>those</i> sorts of things, then I can more accurately answer whether I'm a good fit for your company and whether I'd even like to continue being considered for any potential role.
+               writing code? How do client needs/requests ultimately get communicated to the dev team? How are the devs in your company treated? What is it actually <i>like</i> to write code for your company? If I
+               know <i>those</i> sorts of things, then I can more accurately answer whether I'm a good fit for your company and whether I'd even like to continue being considered for any potential role.
             </>,
          },
       ];
