@@ -124,7 +124,7 @@ export const Header = memo(() => {
          <Column>
             <div className={'spacerDiv'}/>
             <span className={'name'}>Adam Nathaniel Davis</span>
-            <span className={'hidden-print fontSize_1_2em'}>:
+            <span className={'hidden-print fontSize_1_2em fontStyleNormal'}>:
                <Hidden mdUp={true}>
                   <br/>
                   <div className={'mobileSpacerDiv'}/>
