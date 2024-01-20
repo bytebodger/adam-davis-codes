@@ -259,7 +259,7 @@ export const Resume = memo(() => {
                               >
                                  I'm a lifelong software engineering professional, having worked in this career field for a quarter-century. Over the years I progressed
                                  through static websites, to server-side scripting, to backend databases and compiled languages. In the last decade, I've focused
-                                 progressively on <i>frontend</i> development, working with all manner of JavaScript technologies and frameworks including jQuery,
+                                 progressively on <i>frontend</i> development, working with all manner of TypeScript/JavaScript technologies and frameworks including jQuery,
                                  Knockout, Angular, Svelte, Node, and React. Although I can work in many different codebases, my tech-stack-of-choice is React, Node,
                                  Express/REST, and any flavor of backend data storage.
                               </Column>

@@ -80,7 +80,7 @@ export const Footer = memo(() => {
          >
             <div className={'fontSize_0_8em'}>
                &copy; {currentDate.getFullYear()} by Adam Nathaniel Davis<br/>
-               Lovingly created with JavaScript<br/>
+               Lovingly created with TypeScript<br/>
                <div className={'paddingLeft_16'}>
                   & React<br/>
                   & GitHub<br/>

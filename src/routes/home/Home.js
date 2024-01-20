@@ -33,7 +33,7 @@ export const Home = memo(() => {
       return <>
          <div className={'textAlignJustify'}>
             I wrote my first program in 1984, when I was 11 years old, in BASIC, on a Coleco Adam home computer that had... a <i>tape drive</i>. I've travelled through PHP, ColdFusion,
-            SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of JavaScript. I was heavily focused first on jQuery, then Angular, and
+            SQL, Java, and C#. For the last decade or so, I've been been working my way through the many regions of TypeScript/JavaScript. I was heavily focused first on jQuery, then Angular, and
             now React.
          </div>
          <div className={'mainTextDiv2'}>

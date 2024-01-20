@@ -1,6 +1,6 @@
 export const titles = [
    'React Acolyte',
-   'JavaScript Ninja',
+   'TypeScript Ninja',
    'Full-Stack Developer',
    'Stack Overflow Pirate',
    'Senior Software Engineer',

@@ -37,6 +37,7 @@ export const jobs = [
       </>,
       employer: 'Sequelae',
       technologies: [
+         'TypeScript',
          'JavaScript',
          'React',
          'C#',
@@ -71,6 +72,7 @@ export const jobs = [
       </>,
       employer: 'Amazon',
       technologies: [
+         'TypeScript',
          'JavaScript',
          'Angular',
          'React',
@@ -141,6 +143,7 @@ export const jobs = [
       technologies: [
          'Java',
          'Oracle',
+         'TypeScript',
          'JavaScript',
          'Angular',
          'React',
@@ -175,6 +178,7 @@ export const jobs = [
       technologies: [
          'ColdFusion',
          'C#',
+         'TypeScript',
          'JavaScript',
          'JQuery',
          'REST',
@@ -207,6 +211,7 @@ export const jobs = [
       technologies: [
          'C#',
          'MS-SQL',
+         'TypeScript',
          'JavaScript',
          'JQuery',
          'Knockout',
