@@ -161,6 +161,8 @@ export const Resume = memo(() => {
       const skills = {};
       jobs.forEach(job => {
          job.technologies.forEach(technology => {
+            if (job.endYear === 'Present')
+               job.endYear = new Date().getFullYear();
             if (!skills[technology]) {
                skills[technology] = {
                   firstUsed: 5000,
