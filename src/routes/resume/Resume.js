@@ -5,7 +5,6 @@ import '../../common/css/fade.css';
 import { css3 } from '@toolz/css3/src/css3';
 import { Footer } from '../../common/components/Footer';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
-import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
@@ -18,6 +17,7 @@ import { education } from '../../common/arrays/education';
 import '../../common/css/baseProperties.css';
 import './css/resume.css';
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
+import { Row } from '../../common/components/Row';
 
 export const Resume = memo(() => {
    const currentDirection = useRef('right');
@@ -48,7 +48,7 @@ export const Resume = memo(() => {
          trailSpacer = null;
       else {
          trailSpacer = <>
-            <Row justify={'space-evenly'}>
+            <Row className={'justifyContentEvenly'}>
                <Column xs={11}>
                   <Row>
                      <Column
@@ -65,10 +65,7 @@ export const Resume = memo(() => {
          technologiesUsed = null;
       else {
          technologiesUsed = <>
-            <Row
-               className={'marginTop_16'}
-               justify={'space-evenly'}
-            >
+            <Row className={'justifyContentEvenly marginTop_16'}>
                <Column
                   className={currentDirection.current === 'left' ? 'textAlignLeft' : 'textAlignRight'}
                   xs={11}
@@ -245,7 +242,7 @@ export const Resume = memo(() => {
                   >
                      Click here for a printer-friendly version of this resume that can be saved in a PDF format
                   </div>
-                  <Row justify={'space-evenly'}>
+                  <Row className={'justifyContentEvenly'}>
                      <Column
                         className={'transitionColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}
@@ -267,10 +264,7 @@ export const Resume = memo(() => {
                         </div>
                      </Column>
                   </Row>
-                  <Row
-                     className={'marginTop_48'}
-                     justify={'space-evenly'}
-                  >
+                  <Row className={'justifyContentEvenly marginTop_48'}>
                      <Column
                         className={'transitionColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}
@@ -279,10 +273,7 @@ export const Resume = memo(() => {
                         {getJobCards()}
                      </Column>
                   </Row>
-                  <Row
-                     className={'marginTop_48'}
-                     justify={'space-evenly'}
-                  >
+                  <Row className={'justifyContentEvenly marginTop_48'}>
                      <Column
                         className={'transitionColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}
@@ -300,10 +291,7 @@ export const Resume = memo(() => {
                         </div>
                      </Column>
                   </Row>
-                  <Row
-                     className={'marginTop_48'}
-                     justify={'space-evenly'}
-                  >
+                  <Row className={'justifyContentEvenly marginTop_48'}>
                      <Column
                         className={'transitionColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}

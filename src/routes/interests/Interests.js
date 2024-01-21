@@ -7,7 +7,6 @@ import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
 import { Column } from '@toolz/material-ui/dist/Column';
-import { Row } from '@toolz/material-ui/dist/Row';
 import adamDavisLinkDesktop from '../resume/images/adam-davis-link-desktop.jpg';
 import adamDavisLinkMobile from '../resume/images/adam-davis-link-mobile.jpg';
 import blobLifeDesktop from '../resume/images/bloblife-desktop.jpg';
@@ -25,6 +24,7 @@ import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints
 import { Header } from '../../common/components/Header';
 import './css/interests.css';
 import '../../common/css/baseProperties.css';
+import { Row } from '../../common/components/Row';
 
 export const Interests = memo(() => {
    const currentOffset = useRef('right');
@@ -146,7 +146,7 @@ export const Interests = memo(() => {
                      paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
                   }}
                >
-                  <Row justify={'space-evenly'}>
+                  <Row className={'justifyContentEvenly'}>
                      <Column
                         className={'bodyColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}

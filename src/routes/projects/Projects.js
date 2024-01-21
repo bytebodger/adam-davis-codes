@@ -6,7 +6,6 @@ import { Footer } from '../../common/components/Footer';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
-import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Hidden } from '@material-ui/core';
 import devDesktop from './images/dev-desktop.jpg';
@@ -26,6 +25,7 @@ import './css/projects.css';
 import studioMobile from './images/studio-mobile.png';
 import studioDesktop from './images/studio-desktop.png';
 import { use } from '../../common/objects/use';
+import { Row } from '../../common/components/Row';
 
 export const Projects = () => {
    const currentOffset = useRef('right');
@@ -212,7 +212,7 @@ export const Projects = () => {
                      paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
                   }}
                >
-                  <Row justify={'space-evenly'}>
+                  <Row className={'justifyContentEvenly'}>
                      <Column
                         className={'mainBodyColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}

@@ -1,6 +1,5 @@
 import { getResponsiveSpacing } from '../functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
-import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { css3 } from '@toolz/css3/src/css3';
 import { Hidden } from '@material-ui/core';
@@ -10,6 +9,7 @@ import { useHistory } from 'react-router';
 import { memo, useMemo, useCallback } from 'react';
 import './css/footer.css';
 import '../css/baseProperties.css';
+import { Row } from './Row';
 
 export const Footer = memo(() => {
    const history = useHistory();
@@ -26,8 +26,7 @@ export const Footer = memo(() => {
 
    return <>
       <Row
-         className={'rowContainer'}
-         justify={isMobile ? 'space-evenly' : 'space-between'}
+         className={'rowContainer ' + isMobile ? 'justifyContentEvenly' : 'justifyContentBetween'}
          style={{
             paddingLeft: getResponsiveSpacing(viewport.size, 16, 80),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),

@@ -5,7 +5,6 @@ import '../../common/css/fade.css';
 import { useViewport } from '@toolz/use-viewport';
 import codeImage from './images/code.png';
 import { Footer } from '../../common/components/Footer';
-import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 import { Hidden } from '@material-ui/core';
@@ -19,6 +18,7 @@ import { useHistory } from 'react-router';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { Header } from '../../common/components/Header';
 import './css/home.css';
+import { Row } from '../../common/components/Row';
 
 export const Home = memo(() => {
    const history = useHistory();

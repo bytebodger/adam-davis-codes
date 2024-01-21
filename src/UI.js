@@ -1,4 +1,3 @@
-import { Row } from '@toolz/material-ui/dist/Row';
 import { getResponsiveSpacing } from './common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
 import { Home } from './routes/home/Home';
@@ -14,6 +13,7 @@ import { FAQ } from './routes/faq/FAQ';
 import { useEffect } from 'react';
 import { PrintResume } from './routes/print-resume/PrintResume';
 import './common/css/baseProperties.css';
+import { Row } from './common/components/Row';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);

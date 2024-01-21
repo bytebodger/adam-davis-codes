@@ -46,6 +46,14 @@
     height: 250px;
 }
 
+.justifyContentBetween {
+    justify-content: space-between;
+}
+
+.justifyContentEvenly {
+    justify-content: space-evenly;
+}
+
 .marginBottom_8 {
     margin-bottom: 8px;
 }

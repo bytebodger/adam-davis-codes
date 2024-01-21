@@ -5,13 +5,13 @@ import '../../common/css/fade.css';
 import { useRef, memo, useCallback } from 'react';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
 import { useViewport } from '@toolz/use-viewport';
-import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Footer } from '../../common/components/Footer';
 import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints';
 import { Header } from '../../common/components/Header';
 import '../../common/css/baseProperties.css';
 import './css/phone.css';
+import { Row } from '../../common/components/Row';
 
 export const Phone = memo(() => {
    const nodeRef = useRef(null);
@@ -41,7 +41,7 @@ export const Phone = memo(() => {
                      paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
                   }}
                >
-                  <Row justify={'space-evenly'}>
+                  <Row className={'justifyContentEvenly'}>
                      <Column
                         className={'bodyColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}
@@ -55,7 +55,7 @@ export const Phone = memo(() => {
                                  </h3>
                               </Column>
                            </Row>
-                           <Row justify={'space-evenly'}>
+                           <Row className={'justifyContentEvenly'}>
                               <Column
                                  className={'textAlignJustify'}
                                  xs={12} sm={10}

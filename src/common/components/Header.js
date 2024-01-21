@@ -1,4 +1,3 @@
-import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Hidden, Dialog, Slide, AppBar, Toolbar, IconButton, Typography, List, ListItem, ListItemText, Divider } from '@material-ui/core';
 import ReactRotatingText from 'react-rotating-text/lib/ReactRotatingText';
@@ -16,6 +15,7 @@ import { materialUiBreakpoints } from '../arrays/materialUiBreakpoints';
 import { titles } from '../arrays/titles';
 import './css/header.css';
 import '../css/baseProperties.css';
+import { Row } from './Row';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
    return <Slide
@@ -112,8 +112,7 @@ export const Header = memo(() => {
          </List>
       </Dialog>
       <Row
-         className={'minWidth_350'}
-         justify={'space-between'}
+         className={'justifyContentBetween minWidth_350'}
          style={{
             paddingBottom: getResponsiveSpacing(viewport.size, 8, 24),
             paddingLeft: getResponsiveSpacing(viewport.size, 16, 80),

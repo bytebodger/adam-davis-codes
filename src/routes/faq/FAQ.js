@@ -2,7 +2,6 @@ import { Route, Link } from 'react-router-dom';
 import { logGooglePageHit } from '../../common/functions/logGooglePageHit';
 import { CSSTransition } from 'react-transition-group';
 import { getResponsiveSpacing } from '../../common/functions/getResponsiveSpacing';
-import { Row } from '@toolz/material-ui/dist/Row';
 import { useRef, memo, useMemo, useCallback } from 'react';
 import { useViewport } from '@toolz/use-viewport';
 import { Column } from '@toolz/material-ui/dist/Column';
@@ -11,6 +10,7 @@ import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints
 import { Header } from '../../common/components/Header';
 import '../../common/css/baseProperties.css';
 import './css/faq.css';
+import { Row } from '../../common/components/Row';
 
 export const FAQ = memo(() => {
    const nodeRef = useRef(null);
@@ -127,7 +127,7 @@ export const FAQ = memo(() => {
    }, []);
 
    const isMobile = useMemo(() => {
-      ['xs', 'sm'].includes(viewport.size);
+      return ['xs', 'sm'].includes(viewport.size);
    }, [viewport]);
 
    const getFaqs = useCallback(() => {
@@ -177,7 +177,7 @@ export const FAQ = memo(() => {
                      paddingTop: getResponsiveSpacing(viewport.size, 8, 48),
                   }}
                >
-                  <Row justify={'space-evenly'}>
+                  <Row className={'justifyContentEvenly'}>
                      <Column
                         className={'faqContainerColumn'}
                         xs={12} sm={10} md={8} lg={7} xl={6}

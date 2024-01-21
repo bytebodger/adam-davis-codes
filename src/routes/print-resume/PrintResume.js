@@ -1,6 +1,5 @@
 import { memo, useCallback, useMemo } from 'react';
 import { Route } from 'react-router-dom';
-import { Row } from '@toolz/material-ui/dist/Row';
 import { Column } from '@toolz/material-ui/dist/Column';
 import { Divider, TableRow, TableCell, TableContainer, Paper, Table, TableHead, TableBody } from '@material-ui/core';
 import { jobs } from '../../common/arrays/jobs';
@@ -9,6 +8,7 @@ import { materialUiBreakpoints } from '../../common/arrays/materialUiBreakpoints
 import { education } from '../../common/arrays/education';
 import '../../common/css/baseProperties.css';
 import './css/printResume.css';
+import { Row } from '../../common/components/Row';
 
 export const PrintResume = memo(() => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -24,7 +24,7 @@ export const PrintResume = memo(() => {
                className={'marginBottom_16'}
                key={'education-' + index}
             >
-               <Row justify={'space-evenly'}>
+               <Row className={'justifyContentEvenly'}>
                   <Column xs={6} sm={5} md={4} lg={3} xl={2}>
                      <div className={'fontWeightBold'}>
                         {card.employer}
@@ -62,7 +62,7 @@ export const PrintResume = memo(() => {
          let divider = null;
          if (index < jobs.length - 1)
             divider = <>
-               <Row justify={'space-evenly'}>
+               <Row className={'justifyContentEvenly'}>
                   <Column xs={6} sm={7} md={8} lg={9} xl={10}>
                      <Divider/>
                   </Column>
@@ -71,7 +71,7 @@ export const PrintResume = memo(() => {
          let technologies = null;
          if (job.technologies.length !== 0)
             technologies = <>
-               <Row className={'marginBottom_16'} justify={'space-evenly'}>
+               <Row className={'justifyContentEvenly marginBottom_16'}>
                   <Column xs={12}>
                      <div className={'technologiesUsed'}>
                         Technologies used:
@@ -87,7 +87,7 @@ export const PrintResume = memo(() => {
                className={'marginBottom_16'}
                key={'job-' + index}
             >
-               <Row justify={'space-evenly'}>
+               <Row className={'justifyContentEvenly'}>
                   <Column xs={6} sm={5} md={4} lg={3} xl={2}>
                      <div className={'fontWeightBold'}>
                         {job.employer}
@@ -172,7 +172,7 @@ export const PrintResume = memo(() => {
          exact={true}
          path={'/print-resume'}
       >
-         <Row justify={'space-evenly'}>
+         <Row className={'justifyContentEvenly'}>
             <Column
                className={'padding_8'}
                xs={12} sm={11} md={10} lg={9} xl={8}
