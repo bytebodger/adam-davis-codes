@@ -26,7 +26,7 @@ export const Footer = memo(() => {
 
    return <>
       <Row
-         className={'rowContainer ' + isMobile ? 'justifyContentEvenly' : 'justifyContentBetween'}
+         className={'rowContainer ' + isMobile ? 'justifyContentBetween' : 'justifyContentEvenly'}
          style={{
             paddingLeft: getResponsiveSpacing(viewport.size, 16, 80),
             paddingRight: getResponsiveSpacing(viewport.size, 16, 80),
