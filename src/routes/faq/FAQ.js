@@ -67,7 +67,7 @@ export const FAQ = memo(() => {
          },
          {
             question: <>
-               I see that you live in Jacksonville, Florida, and you're interested in remote work. Well, I have a "remote" opportunity with a company right here in Jacksonville.
+               I see that you live in New Orleans and you're interested in remote work. Well, I have a "remote" opportunity with a company right here in New Orleans.
             </>,
             answer: <>
                Before you get too far into your pitch... I'm probably not interested. You see, I've found through rather painful firsthand experience that, when you work "remotely", but you live in the same

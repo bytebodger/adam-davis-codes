@@ -185,7 +185,7 @@ export const PrintResume = memo(() => {
                </div>
                <Divider/>
                <div className={'contactInfo'}>
-                  2512 Dellwood Avenue, Jacksonville, Florida 32204
+                  507 Mandeville Street, New Orleans, Louisiana 70117
                   <br/>
                   904-434-9210 / me@adamdavis{'\u2024'}codes
                   <br/>
