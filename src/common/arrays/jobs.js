@@ -4,57 +4,6 @@ export const jobs = [
    {
       description: <>
          <p className={'marginTop_0'}>
-            Developing and supporting numerous internal-and-external coding initiatives
-         </p>
-         <ul>
-            <li>
-               Work hands-on within the Interventions domain team to lead and execute software-related
-               activities, efforts, and initiatives
-            </li>
-            <li>
-               Collaborate with machine learning engineers and scientists as well as data specialists and data
-               product developers/owners to fully embed and optimize for machine learning capabilities
-            </li>
-            <li>
-               Work with other software applications resources to implement and document robust, scalable
-               software applications across the stack (e.g. Front-end UI, APIs, Event publishing, etc.) that are
-               interoperable with other domains
-            </li>
-            <li>
-               Design and implement services and software components that are well-defined, modularized,
-               secure, reliable, reusable, diagnosable, and actively monitored.
-            </li>
-            <li>
-               Follow best practices adopted by the company (e.g. DDD, TDD) and partner with the governance
-               office to implement and adhere to agreed-upon policies
-            </li>
-            <li>
-               Engage with business and other stakeholders to anticipate and capture future needs and build
-               flexible backlogs and roadmaps to serve these needs while remaining nimble to accommodate
-               frequent pivots and changes in direction and priority
-            </li>
-         </ul>
-      </>,
-      employer: 'Sequelae',
-      technologies: [
-         'TypeScript',
-         'JavaScript',
-         'React',
-         'Jest',
-         'C#',
-         '.NET',
-         'HTML/CSS',
-         'Azure',
-         'Docker',
-         'Git',
-      ],
-      beginYear: 2023,
-      endYear: 'Present',
-      title: 'Staff Software Engineer',
-   },
-   {
-      description: <>
-         <p className={'marginTop_0'}>
             Managed the internal app (Sonar) that handles the vast majority (<i>billions</i>) of all Amazon's outbound marketing messages
          </p>
          <ul>
@@ -86,7 +35,7 @@ export const jobs = [
          'Git',
       ],
       beginYear: 2022,
-      endYear: 2023,
+      endYear: 'Present',
       title: 'Frontend Development Engineer',
    },
    {
