@@ -34,44 +34,9 @@ export const jobs = [
          'AWS',
          'Git',
       ],
-      beginYear: 2022,
+      beginYear: 2021,
       endYear: 'Present',
       title: 'Frontend Development Engineer',
-   },
-   {
-      description: <>
-         <p className={'marginTop_0'}>
-            Provided frontend support for all account and authorization systems on Healthcare.org and Medicare.org
-         </p>
-         <ul>
-            <li>
-               Revamp all UX elements related to account management and authorization
-            </li>
-            <li>
-               Rebuilt all UX processes using modern (React) approaches; facilitate API integrations with all legacy authorization services
-            </li>
-            <li>
-               Went live with completely revamped account/authorization processes for both Healthcare.org and Medicare.org
-            </li>
-         </ul>
-      </>,
-      employer: 'SemanticBits',
-      technologies: [
-         'JavaScript',
-         'TypeScript',
-         'React',
-         'Jest',
-         'Node',
-         'Express',
-         'REST',
-         'HTML/CSS',
-         'Electron',
-         'Jenkins',
-         'Git',
-      ],
-      beginYear: 2020,
-      endYear: 2022,
-      title: 'Senior Software Engineer',
    },
    {
       description: <>
@@ -107,7 +72,7 @@ export const jobs = [
          'Git',
       ],
       beginYear: 2016,
-      endYear: 2020,
+      endYear: 2021,
       title: 'Developer III',
    },
    {
