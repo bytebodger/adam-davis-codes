@@ -106,42 +106,9 @@ export const jobs = [
          'Jenkins',
          'Git',
       ],
-      beginYear: 2017,
+      beginYear: 2016,
       endYear: 2020,
       title: 'Developer III',
-   },
-   {
-      description: <>
-         <p className={'marginTop_0'}>
-            Maintained huge legacy SaaS ATS application
-         </p>
-         <ul>
-            <li>
-               Prepare application to be consumed via microservices as REST endpoints
-            </li>
-            <li>
-               Continually maintaining key features in existing app while planning for C#/REST implementation
-            </li>
-            <li>
-               Turned the entire app into a series of microservices that could be consumed and extended by many other areas of the business
-            </li>
-         </ul>
-      </>,
-      employer: 'SilkRoad',
-      technologies: [
-         'ColdFusion',
-         'C#',
-         'TypeScript',
-         'JavaScript',
-         'JQuery',
-         'REST',
-         'MS-SQL',
-         'HTML/CSS',
-         'Perforce',
-      ],
-      beginYear: 2015,
-      endYear: 2017,
-      title: 'Senior Software Engineer',
    },
    {
       description: <>
@@ -173,7 +140,7 @@ export const jobs = [
          'TFS',
       ],
       beginYear: 2012,
-      endYear: 2015,
+      endYear: 2016,
       title: 'IT Manager',
    },
    {
