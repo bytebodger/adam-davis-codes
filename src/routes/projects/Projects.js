@@ -286,7 +286,7 @@ export const Projects = () => {
                               </ul>
                               Thankfully, Spotify has a fairly-robust API. So I built
                               <a
-                                 href={'https://spotifytoolz.com'}
+                                 href={'https://playlist.help'}
                                  rel={'noreferrer'}
                                  target={'_blank'}
                               > a publicly-accessible React application
@@ -295,7 +295,7 @@ export const Projects = () => {
                            spotifyDesktop,
                            spotifyMobile,
                            'A custom React application to extend Spotify\'s native functionality',
-                           'https://spotifytoolz.com',
+                           'https://playlist.help',
                         )}
                         <div className={'height_48'}/>
                         {getProjectCard(

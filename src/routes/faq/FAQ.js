@@ -83,7 +83,7 @@ export const FAQ = memo(() => {
             answer: <>
                The answer is probably: <i>No, thanks.</i> I'm sorry if that sounds rude. But I don't have time to spend <i>days</i> building demo apps for a job that
                I may not even want if it were offered to me. Everyone swears that their quaint little demo app should only take a few hours to code up. And that's usually wishful thinking. If you want to see how I code, take
-               a look at the code <i>for this site</i>. You can find it <a href={'https://github.com/bytebodger/adam-davis-codes'}>here</a>. Check out the code for <a href={'https://spotifytoolz.com'}>Spotify Toolz</a>.
+               a look at the code <i>for this site</i>. You can find it <a href={'https://github.com/bytebodger/adam-davis-codes'}>here</a>. Check out the code for <a href={'https://playlist.help'}>Spotify Toolz</a>.
                You can find it <a href={'https://github.com/bytebodger/spotify'}>here</a>. Browse through any of the code in my <a href={'https://www.npmjs.com/search?q=%40toolz'}>NPM packages</a>. Or look through
                my <a href={'https://github.com/bytebodger'}>GitHub repositories</a>. I don't particularly care <i>where</i> you choose to look, but the point is that you can find plenty of live examples of the type of work I do.
             </>,
