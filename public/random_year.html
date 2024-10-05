@@ -1,0 +1,48 @@
+<html lang="en">
+   <head>
+      <title>Random Year</title>
+   </head>
+   <body>
+      <div>
+         <span id="year"></span> <span id="age"></span>
+      </div>
+   </body>
+</html>
+
+<script>
+   const getUrlParameters = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let processedUrlParams = {};
+      for (let entry of urlParams.entries()) {
+         let [key, value] = entry;
+         if (value.toLowerCase() === 'true')
+            value = true;
+         else if (value.toLowerCase() === 'false')
+            value = false;
+         else if (value.toLowerCase() === 'null')
+            value = null;
+         else if (!isNaN(parseFloat(value)))
+            value = parseFloat(value);
+         processedUrlParams[key] = value;
+      }
+      return processedUrlParams;
+   };
+
+   const urlParameters = getUrlParameters();
+   let startYear = 0;
+   if (urlParameters.hasOwnProperty('startYear')) {
+      const requestedStartYear = parseInt(urlParameters.startYear, 10);
+      if (startYear < requestedStartYear)
+         startYear = requestedStartYear;
+   }
+   const year = Math.floor(Math.random() * (3001 - startYear) + startYear);
+   let age = 'Age of Enlightenment';
+   if (year < 1085)
+      age = 'Age of Quickening';
+   else if (year < 2019)
+      age = 'Age of Expansion';
+   const yearSpan = document.getElementById('year');
+   yearSpan.innerHTML = year.toString();
+   const ageSpan = document.getElementById('age');
+   ageSpan.innerHTML = age;
+</script>
