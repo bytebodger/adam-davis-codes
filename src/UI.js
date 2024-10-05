@@ -47,6 +47,12 @@ export const UI = () => {
             >
                <Redirect to={'/home'}/>
             </Route>
+            <Route
+               exact={true}
+               path={'/random_year.html'}
+            >
+               <Redirect to={'/random_year.html'}/>
+            </Route>
          </Row>
       </div>
    </>;
