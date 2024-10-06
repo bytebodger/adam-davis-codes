@@ -311,7 +311,7 @@ export const RandomPerson = () => {
          },
          'Shunlerry': {
             'start': 1071,
-            'demonym': 'Shunlerrian',
+            'demonym': 'Shunlian',
             'nameBase': 'hebrew-names',
          },
          'Strynea': {
