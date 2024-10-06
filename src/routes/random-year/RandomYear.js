@@ -45,10 +45,9 @@ export const RandomYear = () => {
       >
          <div style={{
             fontSize: '1.5em',
-            fontStyle: 'normal',
             fontWeight: 'bold',
          }}>
-            <span>{year.current}</span>, <span>{age.current}</span>
+            <span style={{fontStyle: 'normal'}}>{year.current}</span>, <span style={{fontStyle: 'normal'}}>{age.current}</span>
          </div>
       </Route>
    </>;
