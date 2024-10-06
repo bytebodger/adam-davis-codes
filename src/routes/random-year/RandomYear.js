@@ -36,7 +36,7 @@ export const RandomYear = () => {
          setAge('Age of Antiquity');
       else if (year < 2019)
          setAge('Age of Expansion');
-   }, [year]);
+   });
 
    return <>
       <Route
