@@ -1,9 +1,9 @@
 import { Route } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 
 export const RandomYear = () => {
-   let age = 'Age of Enlightenment';
-   let year = 0;
+   const age = useRef('Age of Enlightenment');
+   const year = useRef(0);
 
    const getUrlParameters = () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -31,11 +31,11 @@ export const RandomYear = () => {
          if (startYear < requestedStartYear)
             startYear = requestedStartYear;
       }
-      year = Math.floor(Math.random() * (3001 - startYear) + startYear);
-      if (year < 1085)
-         age = 'Age of Antiquity';
-      else if (year < 2019)
-         age = 'Age of Expansion';
+      year.current = Math.floor(Math.random() * (3001 - startYear) + startYear);
+      if (year.current < 1085)
+         age.current = 'Age of Antiquity';
+      else if (year.current < 2019)
+         age.current = 'Age of Expansion';
    }, [])
 
    return <>
@@ -44,7 +44,7 @@ export const RandomYear = () => {
          path={'/random-year'}
        >
          <div>
-            <span>{year}</span>, <span>{age}</span>
+            <span>{year.current}</span>, <span>{age.current}</span>
          </div>
       </Route>
    </>
