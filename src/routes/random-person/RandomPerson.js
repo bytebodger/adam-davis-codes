@@ -7,6 +7,7 @@ export const RandomPerson = () => {
    const age = useRef('Age of Enlightenment');
    const country = useRef({});
    const countryName = useRef('');
+   const model = useRef('');
    const fontNormal = { fontStyle: 'normal' };
    const label = useRef('');
    const year = useRef(0);
@@ -215,124 +216,235 @@ export const RandomPerson = () => {
       ];
       const countries = {
          'Adja': {
-            'start': 71,
-            'demonym': 'Adjan',
-            'nameBase': 'moldovan-names',
+            demonym: 'Adjan',
+            founded: 71,
+            models: [
+               'Dunerion',
+               'Eldar',
+               'Kahlek',
+               'Mordai',
+               'Onlock',
+               'Orock',
+               'Trow',
+            ],
+            nameBase: 'moldovan-names',
          },
          'Altakaya': {
-            'start': 1570,
-            'demonym': 'Altakayan',
-            'nameBase': 'greek-names',
+            demonym: 'Altakayan',
+            founded: 1570,
+            models: [
+               'Mordai',
+               'Onlock',
+               'Taniir',
+            ],
+            nameBase: 'greek-names',
          },
          'Amon-Morn': {
-            'start': 2174,
-            'demonym': 'Amornian',
-            'nameBase': 'gothic-names',
+            demonym: 'Amornian',
+            founded: 2174,
+            models: [
+               'Ahquinn',
+               'Eldar',
+               'Taniir',
+            ],
+            nameBase: 'gothic-names',
          },
          'Donethal': {
-            'start': 2111,
-            'demonym': 'Donethal',
-            'nameBase': 'modern-irish-names',
+            demonym: 'Donethal',
+            founded: 2111,
+            models: [
+               'Ahquinn',
+               'Arago',
+            ],
+            nameBase: 'modern-irish-names',
          },
          'Donothor': {
-            'start': 800,
-            'demonym': 'Donothor',
-            'nameBase': 'italian-names',
+            demonym: 'Donothor',
+            founded: 800,
+            models: [
+               'Onlock',
+               'Taniir',
+            ],
+            nameBase: 'italian-names',
          },
          'Harren': {
-            'start': 85,
-            'demonym': 'Harren',
-            'nameBase': 'latin-names',
+            demonym: 'Harren',
+            founded: 85,
+            models: [
+               'Ahquinn',
+               'Mordai',
+            ],
+            nameBase: 'latin-names',
          },
          'Herinesh': {
-            'start': 1973,
-            'demonym': 'Herinesh',
-            'nameBase': 'norman-names',
+            demonym: 'Herinesh',
+            founded: 1973,
+            models: [
+               'Arago',
+               'Ashj-Shanah',
+            ],
+            nameBase: 'norman-names',
          },
          'Ileuthyia': {
-            'start': 2478,
-            'demonym': 'Ileuthyian',
-            'nameBase': 'polish-names',
+            demonym: 'Ileuthyian',
+            founded: 2478,
+            models: [
+               'Anorian',
+               'Taniir',
+            ],
+            nameBase: 'polish-names',
          },
          'Iperia': {
-            'start': 1196,
-            'demonym': 'Iperian',
-            'nameBase': 'cornish-names',
+            demonym: 'Iperian',
+            founded: 1196,
+            models: [
+               'Ahquinn',
+               'Arago',
+               'Ashj-Shanah',
+            ],
+            nameBase: 'cornish-names',
          },
          'Kamarak': {
-            'start': 1801,
-            'demonym': 'Kamarak',
-            'nameBase': 'celtic-welsh_names',
+            demonym: 'Kamarak',
+            founded: 1801,
+            models: [
+               'Kahlek',
+               'Onlock',
+               'Taniir',
+            ],
+            nameBase: 'celtic-welsh_names',
          },
          'Khulundar': {
-            'start': 2474,
-            'demonym': 'Khulundaran',
-            'nameBase': 'german-names',
+            demonym: 'Khulundaran',
+            founded: 2474,
+            models: [
+               'Romiir',
+               'Taniir',
+            ],
+            nameBase: 'german-names',
          },
          'Klower': {
-            'start': 2239,
-            'demonym': 'Klowan',
-            'nameBase': 'jamaican-names',
+            demonym: 'Klowan',
+            founded: 2239,
+            models: [
+               'Ahquinn',
+               'Mordai',
+               'Onlock',
+               'Orock',
+            ],
+            nameBase: 'jamaican-names',
          },
          'Lhamborgelo': {
-            'start': 2005,
-            'demonym': 'Lhamborgelan',
-            'nameBase': 'roma-gypsy-names',
+            demonym: 'Lhamborgelan',
+            founded: 2005,
+            models: [
+               'Eldar',
+               'Kahlek',
+               'Taniir',
+            ],
+            nameBase: 'roma-gypsy-names',
          },
          'Memaruud': {
-            'start': 1370,
-            'demonym': 'Memaruud',
-            'nameBase': 'cosmic-names',
+            demonym: 'Memaruud',
+            founded: 1370,
+            models: [
+               'Ahquinn',
+               'Dahlit',
+               'Dunerion',
+               'Eldar',
+               'Trow',
+            ],
+            nameBase: 'cosmic-names',
          },
          'Mipheas': {
-            'start': 1109,
-            'demonym': 'Miphean',
-            'nameBase': 'japanese-names',
+            demonym: 'Miphean',
+            founded: 1109,
+            models: [
+               'Ahquinn',
+               'Ashj-Shanah',
+            ],
+            nameBase: 'japanese-names',
          },
          'Morin': {
-            'start': 1410,
-            'demonym': 'Morinian',
-            'nameBase': 'latvian-names',
+            demonym: 'Morinian',
+            founded: 1410,
+            models: [
+               'Ahquinn',
+               'Orock',
+               'Trow',
+            ],
+            nameBase: 'latvian-names',
          },
          'Najez': {
-            'start': 2874,
-            'demonym': 'Najezian',
-            'nameBase': 'estonian-names',
+            demonym: 'Najezian',
+            founded: 2874,
+            models: [
+               'Ashj-Shanah',
+            ],
+            nameBase: 'estonian-names',
          },
          'Oxlight': {
-            'start': 582,
-            'demonym': 'Oxlight',
-            'nameBase': 'portuguese-names',
+            demonym: 'Oxlight',
+            founded: 582,
+            models: [
+               'Anorian',
+               'Taniir',
+            ],
+            nameBase: 'portuguese-names',
          },
          'Salaste': {
-            'start': 218,
-            'demonym': 'Salastian',
-            'nameBase': 'modern-welsh-names',
+            demonym: 'Salastian',
+            founded: 218,
+            models: [
+               'Anorian',
+               'Taniir',
+            ],
+            nameBase: 'modern-welsh-names',
          },
          'Shunlerry': {
-            'start': 1071,
-            'demonym': 'Shunlian',
-            'nameBase': 'hebrew-names',
+            demonym: 'Shunlian',
+            founded: 1071,
+            models: [
+               'Ahquinn',
+               'Eldar',
+            ],
+            nameBase: 'hebrew-names',
          },
          'Strynea': {
-            'start': 2552,
-            'demonym': 'Strynean',
-            'nameBase': 'dutch-names',
+            demonym: 'Strynean',
+            founded: 2552,
+            models: [
+               'Mordai',
+               'Onlock',
+            ],
+            nameBase: 'dutch-names',
          },
          'Traith': {
-            'start': 659,
-            'demonym': 'Traithian',
-            'nameBase': 'swedish-names',
+            demonym: 'Traithian',
+            founded: 659,
+            models: [
+               'Ahquinn',
+               'Mordai',
+               'Orock',
+            ],
+            nameBase: 'swedish-names',
          },
          'Vishnar': {
-            'start': 1475,
-            'demonym': 'Vishnarian',
-            'nameBase': 'luxembourgish-names',
+            demonym: 'Vishnarian',
+            founded: 1475,
+            models: [
+               'Ashj-Shanah',
+            ],
+            nameBase: 'luxembourgish-names',
          },
          'Ytal': {
-            'start': 2269,
-            'demonym': 'Ytalian',
-            'nameBase': 'romanian-names',
+            demonym: 'Ytalian',
+            founded: 2269,
+            models: [
+               'Romiir',
+               'Taniir',
+            ],
+            nameBase: 'romanian-names',
          },
       };
       const labelIndex = Math.floor(Math.random() * labels.length);
@@ -341,7 +453,7 @@ export const RandomPerson = () => {
       const countryIndex = Math.floor(Math.random() * countryNames.length);
       countryName.current = countryNames[countryIndex];
       country.current = countries[countryName.current];
-      let startYear = country.current.start;
+      let startYear = country.current.founded;
       const urlParameters = getUrlParameters();
       if (urlParameters.hasOwnProperty('startYear')) {
          const requestedStartYear = parseInt(urlParameters.startYear, 10);
@@ -350,6 +462,8 @@ export const RandomPerson = () => {
       }
       year.current = Math.floor(Math.random() * startYear + startYear);
       age.current = getAge(year.current);
+      const modelIndex = Math.floor(Math.random() * country.current.models.length);
+      model.current = country.current.models[modelIndex];
    }, []);
 
    return <>
@@ -361,11 +475,29 @@ export const RandomPerson = () => {
             fontSize: '1.5em',
             padding: '32px',
          }}>
-            <span style={fontNormal}>{year.current}</span>
-            {' '}
-            <span style={fontNormal}>{age.current}</span>
-            {' '}in{' '}
-            <span id='country'>
+            <span style={fontNormal}>
+               <a
+                  href={`https://www.fantasynamegenerators.com/${country.current.nameBase}.php`}
+                  rel={'noreferrer'}
+                  target={'_blank'}
+               >
+                  Get Name
+               </a>
+            </span>
+            <br/>
+            <br/>
+            <span style={fontNormal}>
+               <a
+                  href={`https://www.worldanvil.com/w/ethyria/a/${model.current.toLowerCase()}-ethnicity`}
+                  rel={'noreferrer'}
+                  target={'_blank'}
+               >
+                  {model.current}
+               </a>
+            </span>
+            <span style={fontNormal}> {label.current} </span>
+            <span style={fontNormal}> from </span>
+            <span style={fontNormal}>
                <a
                   href={`https://www.worldanvil.com/w/ethyria/a/${countryName.current.toLowerCase()}-organization`}
                   rel={'noreferrer'}
@@ -376,18 +508,8 @@ export const RandomPerson = () => {
             </span>
             <br/>
             <br/>
-            <span style={fontNormal}>{label.current}</span>
-            <br/>
-            <br/>
-            <span style={fontNormal}>
-               <a
-                  href={`https://www.fantasynamegenerators.com/${country.current.nameBase}.php`}
-                  rel={'noreferrer'}
-                  target={'_blank'}
-               >
-                  Get Name
-               </a>
-            </span>
+            <span style={fontNormal}>{year.current} </span>
+            <span style={fontNormal}>({age.current})</span>
          </div>
       </Route>
    </>;
