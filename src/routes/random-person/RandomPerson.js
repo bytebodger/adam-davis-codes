@@ -254,7 +254,7 @@ export const RandomPerson = () => {
             'demonym': 'Ileuthyian',
             'nameBase': 'polish-names',
          },
-         'Iperian': {
+         'Iperia': {
             'start': 1196,
             'demonym': 'Iperian',
             'nameBase': 'cornish-names',
