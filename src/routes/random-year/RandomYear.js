@@ -36,13 +36,13 @@ export const RandomYear = () => {
          age.current = 'Age of Antiquity';
       else if (year.current < 2019)
          age.current = 'Age of Expansion';
-   }, [])
+   }, []);
 
    return <>
       <Route
          exact={true}
          path={'/random-year'}
-       >
+      >
          <div style={{
             fontSize: '1.5em',
             fontWeight: 'bold',
@@ -50,5 +50,5 @@ export const RandomYear = () => {
             <span>{year.current}</span>, <span>{age.current}</span>
          </div>
       </Route>
-   </>
-}
+   </>;
+};
