@@ -371,7 +371,7 @@ export const RandomPerson = () => {
                   rel={'noreferrer'}
                   target={'_blank'}
                >
-                  {countryName.current}
+                  {countryName.current} ({country.current.demonym})
                </a>
             </span>
             <br/>
@@ -385,7 +385,7 @@ export const RandomPerson = () => {
                   rel={'noreferrer'}
                   target={'_blank'}
                >
-                  {countryName.current} ({country.current.demonym})
+                  Get Name
                </a>
             </span>
          </div>
