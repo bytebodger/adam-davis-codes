@@ -1,9 +1,8 @@
 import { Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 export const RandomYear = () => {
-   const [age, setAge] = useState('Age of Enlightenment');
-   const [year, setYear] = useState(0);
+   let age = 'Age of Enlightenment';
+   let year = 0;
 
    const getUrlParameters = () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -23,7 +22,15 @@ export const RandomYear = () => {
       return processedUrlParams;
    };
 
-   useEffect(() => {
+   const getAge = () => {
+      if (year < 1085)
+         age = 'Age of Antiquity';
+      else if (year < 2019)
+         age = 'Age of Expansion';
+      return age;
+   }
+
+   const getYear = () => {
       const urlParameters = getUrlParameters();
       let startYear = 0;
       if (urlParameters.hasOwnProperty('startYear')) {
@@ -31,12 +38,9 @@ export const RandomYear = () => {
          if (startYear < requestedStartYear)
             startYear = requestedStartYear;
       }
-      setYear(Math.floor(Math.random() * (3001 - startYear) + startYear));
-      if (year < 1085)
-         setAge('Age of Antiquity');
-      else if (year < 2019)
-         setAge('Age of Expansion');
-   });
+      year = Math.floor(Math.random() * (3001 - startYear) + startYear);
+      return year;
+   }
 
    return <>
       <Route
@@ -44,7 +48,7 @@ export const RandomYear = () => {
          path={'/random-year'}
        >
          <div>
-            <span>{year}</span>, <span>{age}</span>
+            <span>{getYear()}</span>, <span>{getAge()}</span>
          </div>
       </Route>
    </>
