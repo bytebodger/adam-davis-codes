@@ -15,6 +15,7 @@ import { PrintResume } from './routes/print-resume/PrintResume';
 import './common/css/baseProperties.css';
 import { Row } from './common/components/Row';
 import { RandomYear } from './routes/random-year/RandomYear';
+import { RandomPerson } from './routes/random-person/RandomPerson';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -41,6 +42,7 @@ export const UI = () => {
             <Phone/>
             <PrintResume/>
             <Projects/>
+            <RandomPerson/>
             <RandomYear/>
             <Resume/>
             <Route
