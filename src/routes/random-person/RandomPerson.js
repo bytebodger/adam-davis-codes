@@ -340,7 +340,7 @@ export const RandomPerson = () => {
       const countryNames = Object.keys(countries);
       const countryIndex = Math.floor(Math.random() * countryNames.length);
       countryName.current = countryNames[countryIndex];
-      country.current = countries[countryName];
+      country.current = countries[countryName.current];
       let startYear = country.current.start;
       const urlParameters = getUrlParameters();
       if (urlParameters.hasOwnProperty('startYear')) {
@@ -362,15 +362,16 @@ export const RandomPerson = () => {
             padding: '32px',
          }}>
             <span style={fontNormal}>{year.current}</span>
+            {' '}
             <span style={fontNormal}>{age.current}</span>
-            in
+            {' '}in{' '}
             <span id='country'>
                <a
-                  href={`https://www.worldanvil.com/w/ehtyria/a/${countryName.current.toLowerCase()}-article`}
+                  href={`https://www.worldanvil.com/w/ethyria/a/${countryName.current.toLowerCase()}-organization`}
                   rel={'noreferrer'}
                   target={'_blank'}
                >
-                  ${countryName.current}
+                  {countryName.current}
                </a>
             </span>
             <br/>
@@ -384,7 +385,7 @@ export const RandomPerson = () => {
                   rel={'noreferrer'}
                   target={'_blank'}
                >
-                  ${countryName.current} (${country.current.demonym})
+                  {countryName.current} ({country.current.demonym})
                </a>
             </span>
          </div>
