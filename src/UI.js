@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 import { PrintResume } from './routes/print-resume/PrintResume';
 import './common/css/baseProperties.css';
 import { Row } from './common/components/Row';
+import { RandomYear } from './routes/random-year/RandomYear';
 
 export const UI = () => {
    const viewport = useViewport(materialUiBreakpoints);
@@ -40,18 +41,13 @@ export const UI = () => {
             <Phone/>
             <PrintResume/>
             <Projects/>
+            <RandomYear/>
             <Resume/>
             <Route
                exact={true}
                path={'/'}
             >
                <Redirect to={'/home'}/>
-            </Route>
-            <Route
-               exact={true}
-               path={'/random_year.html'}
-            >
-               <Redirect to={'/random_year.html'}/>
             </Route>
          </Row>
       </div>
