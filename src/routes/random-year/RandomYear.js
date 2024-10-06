@@ -43,7 +43,10 @@ export const RandomYear = () => {
          exact={true}
          path={'/random-year'}
        >
-         <div>
+         <div style={{
+            fontSize: '1.5em',
+            fontWeight: 'bold',
+         }}>
             <span>{year.current}</span>, <span>{age.current}</span>
          </div>
       </Route>
