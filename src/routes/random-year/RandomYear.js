@@ -1,4 +1,5 @@
 import { Route } from 'react-router-dom';
+import { useMemo } from 'react';
 
 export const RandomYear = () => {
    let age = 'Age of Enlightenment';
@@ -22,15 +23,7 @@ export const RandomYear = () => {
       return processedUrlParams;
    };
 
-   const getAge = () => {
-      if (year < 1085)
-         age = 'Age of Antiquity';
-      else if (year < 2019)
-         age = 'Age of Expansion';
-      return age;
-   }
-
-   const getYear = () => {
+   useMemo(() => {
       const urlParameters = getUrlParameters();
       let startYear = 0;
       if (urlParameters.hasOwnProperty('startYear')) {
@@ -39,8 +32,11 @@ export const RandomYear = () => {
             startYear = requestedStartYear;
       }
       year = Math.floor(Math.random() * (3001 - startYear) + startYear);
-      return year;
-   }
+      if (year < 1085)
+         age = 'Age of Antiquity';
+      else if (year < 2019)
+         age = 'Age of Expansion';
+   }, [])
 
    return <>
       <Route
@@ -48,7 +44,7 @@ export const RandomYear = () => {
          path={'/random-year'}
        >
          <div>
-            <span>{getYear()}</span>, <span>{getAge()}</span>
+            <span>{year}</span>, <span>{age}</span>
          </div>
       </Route>
    </>
