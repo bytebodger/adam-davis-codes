@@ -1,54 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
-   <head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-3B6EP6KQL0"></script>
-      <script>
-         window.dataLayer = window.dataLayer || [];
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adam Davis | Force Multiplier & Senior Software Engineer</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono&display=swap');
+            body { font-family: 'Inter', sans-serif; }
+            .mono { font-family: 'JetBrains Mono', monospace; }
+        </style>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Adam Davis",
+                "jobTitle": "Senior Software Engineer & Development Manager",
+                "url": "https://www.adamdavis.codes",
+                "alumniOf": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "University of North Florida"
+                },
+                "sameAs": [
+                    "https://www.linkedin.com/in/bytebodger",
+                    "https://github.com/bytebodger",
+                    "https://www.youtube.com/@TimeSkimmer"
+                ],
+                "description": "Software engineer with 25 years of experience specializing in TypeScript, React, and Node. Former Development Manager at Amazon, YouTube content creator, and published author of 'A Dusk Forever Waning'.",
+                "knowsAbout": [
+                    "Software Development",
+                    "TypeScript",
+                    "React",
+                    "AWS",
+                    "Software Architecture",
+                    "Technical Leadership"
+                ],
+                "hasCredential": [
+                    {
+                        "@type": "EducationalOccupationalCredential",
+                        "credentialCategory": "degree",
+                        "name": "Bachelor of Science in Computer Science"
+                    }
+                ],
+                "publishingPrinciples": "https://www.adamdavis.codes/about",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://www.adamdavis.codes"
+                }
+            }
+        </script>
+    </head>
+    <body class="bg-slate-950 text-slate-200 antialiased">
 
-         function gtag() {
-            dataLayer.push(arguments);
-         }
+        <header class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+            <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+                <div class="text-xl font-black tracking-tighter text-white">ADAM <span class="text-emerald-500">DAVIS</span></div>
+                <ul class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest text-slate-400">
+                    <li><a href="#experience" class="hover:text-emerald-400 transition">Experience</a></li>
+                    <li><a href="#creative" class="hover:text-emerald-400 transition">Creative</a></li>
+                    <li><a href="mailto:me@adamdavis.codes" class="text-emerald-500 hover:text-white transition underline decoration-2">Hire Me</a></li>
+                </ul>
+            </nav>
+        </header>
 
-         gtag('js', new Date());
-         gtag('config', 'G-3B6EP6KQL0');
-      </script>
-      <meta charset="utf-8"/>
-      <meta content="width=device-width, initial-scale=1" name="viewport"/>
-      <meta content="#000000" name="theme-color"/>
-      <meta content="More than you ever wanted to know about Adam Nathaniel Davis" property="og:title"/>
-      <meta content='https://adamdavis.codes/adam-davis-codes.png' property='og:image'/>
-      <meta content="https://adamdavis.codes" property="og:url"/>
-      <meta content="website" property="og:type"/>
-      <meta content='The online CV/resume for Adam Nathaniel Davis' name='description'/>
-      <!--
-        manifest.json provides metadata used when your web app is installed on a
-        user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-      -->
-      <link href="%PUBLIC_URL%/manifest.json" rel="manifest"/>
-      <!--
-        Notice the use of %PUBLIC_URL% in the tags above.
-        It will be replaced with the URL of the `public` folder during the build.
-        Only files inside the `public` folder can be referenced from the HTML.
+        <main class="pt-32">
+            <section id="hero" class="max-w-6xl mx-auto px-6 pt-24 pb-32 md:pt-40">
+                <div class="flex flex-col md:flex-row items-start gap-16">
 
-        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-        work correctly both with client-side routing and a non-root public URL.
-        Learn how to configure a non-root public URL by running `npm run build`.
-      -->
-      <title>Adam Nathaniel Davis</title>
-   </head>
-   <body>
-      <noscript>You need to enable JavaScript to run this app.</noscript>
-      <div id="root" style="min-width: 300px"></div>
-      <!--
-        This HTML file is a template.
-        If you open it directly in the browser, you will see an empty page.
+                    <div class="flex-1 order-2 md:order-1">
+                        <span class="mono text-emerald-500 text-sm font-bold uppercase tracking-widest mb-6 block">Remote Engineer</span>
 
-        You can add webfonts, meta tags, or analytics to this file.
-        The build step will place the bundled scripts into the <body> tag.
+                        <h1 class="text-5xl md:text-7xl font-black text-white leading-[1.1] mb-8">
+                            25 Years of Software Engineering <br/>
+                            <span class="text-slate-600">Former Amazon Dev Manager</span> <br/>
+                            Force Multiplier
+                        </h1>
 
-        To begin the development, run `npm start` or `yarn start`.
-        To create a production bundle, use `npm run build` or `yarn build`.
-      -->
-   </body>
+                        <p class="text-xl text-slate-400 mb-12 leading-relaxed max-w-xl">
+                            I bridge the gap between high-level business strategy and robust technical architecture. I don't just write code; I build the teams and systems that scale.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4">
+                            <a href="/adam-davis-resume.pdf" class="bg-slate-800 hover:bg-slate-700 text-white font-bold py-4 px-8 rounded-lg transition">
+                                Download Resume (PDF)
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex-shrink-0 order-1 md:order-2">
+                        <div class="relative group">
+                            <div class="absolute -top-4 -right-4 w-full h-full border-2 border-emerald-500/10 rounded-2xl group-hover:border-emerald-500/30 transition-colors duration-500"></div>
+
+                            <img
+                                src="/adamdavis.png"
+                                alt="Adam Davis - Senior Software Engineer & Former Amazon Development Manager"
+                                class="w-64 h-64 md:w-96 md:h-96 object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-700 border-2 border-slate-800 shadow-[0_0_50px_-12px_rgba(16,185,129,0.15)] relative z-10"
+                            />
+
+                            <div class="absolute -bottom-4 -left-4 bg-slate-900 border border-slate-800 px-4 py-2 rounded-lg z-20 shadow-xl">
+                                <p class="mono text-[10px] uppercase tracking-tighter text-slate-500 font-bold">Current Role</p>
+                                <p class="text-xs text-white font-bold">Sr. Engineer @ DragonFly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 pt-10 border-t border-slate-900">
+                    <p class="mono text-xs uppercase tracking-tighter text-slate-500 mb-8">Trusted by industry leaders</p>
+                    <div class="flex flex-wrap gap-12">
+                        <img alt='Amazon' src='/amazon.jpg' width='200px' height='80px' style='max-height: 80px; margin-top: 60px'/>
+                        <img alt='Availity' src='/availity.png' width='200px' height='80px' style='max-height: 80px; margin-top: 60px'/>
+                        <img alt='Everbank' src='/everbank.png' width='250px' height='80px' style='max-height: 80px; margin-top: 60px'/>
+                        <img alt='U.S. Air Force' src='/airforce.png' width='200px'/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-slate-900/50 py-24 border-y border-slate-900">
+                <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-4">Engineering Depth</h3>
+                        <p class="text-slate-400">14 years of TypeScript and 10 years of React/Node. I build for scale, not just for the next sprint. I've survived the evolution from ColdFusion to Cloud-native.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-4">Leadership & Scale</h3>
+                        <p class="text-slate-400">Former Dev Manager at Amazon. I've led migrations for systems handling billions of outbound messages, cutting costs and latency.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-4">Creative Communication</h3>
+                        <p class="text-slate-400">Published author and playwright. I provide superior documentation and speak "Business" as fluently as "Code."</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="max-w-6xl mx-auto px-6 py-32">
+                <h2 class="text-3xl font-bold text-white mb-16">Career History</h2>
+                <div class="space-y-16">
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">2024 — PRESENT</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Senior Engineer @ DragonFly Athletics</h3>
+                            <p class="text-slate-400 mt-2">Architecting e-commerce platforms and modernizing CI/CD pipelines. Extensive use of AWS Lambdas and Playwright for automated resilience.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">2021 — 2024</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Development Manager @ Amazon</h3>
+                            <p class="text-slate-400 mt-2">Led the migration of massive legacy stacks to React/TypeScript. Managed teams responsible for global outbound messaging scale.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">2016 — 2021</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Developer III @ Availity</h3>
+                            <p class="text-slate-400 mt-2">Performed fullstack development for all medical eligibility services on Availity's proprietary portal.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">2012 — 2016</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">IT Manager @ EverBank</h3>
+                            <p class="text-slate-400 mt-2">Led a team that supported all marketing functions on the public website.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">2010 — 2012</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Managing Partner @ Insoft USA</h3>
+                            <p class="text-slate-400 mt-2">Led the US side of an offshore development company.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">2007 — 2010</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Director of Technology @ MECLABS</h3>
+                            <p class="text-slate-400 mt-2">Led all technology operations for a web optimization consultancy.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">2004 — 2007</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Director of Application Delivery @ Vurv Technology</h3>
+                            <p class="text-slate-400 mt-2">Led 60 developers organized in 6 different teams, responsible for the delivery of new client solutions.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">2001 — 2004</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Application Developer @ Nemours</h3>
+                            <p class="text-slate-400 mt-2">Managed all public-facing web content.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">1997 — 2001</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Owner @ Self-Employed</h3>
+                            <p class="text-slate-400 mt-2">I built numerous websites for clients. I created a web-based, publicly-playable game for trading "shares" of athletes in real-time. I built a boxing simulation. I wrote automated currency-trading software. I got my fingers into all sorts of exotically-flavored pies.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-4 group">
+                        <div class="mono text-slate-500 text-sm">1992 — 1997</div>
+                        <div class="md:col-span-3">
+                            <h3 class="text-white text-2xl font-bold group-hover:text-emerald-400 transition">Air Traffic Control Radar Technician @ U.S. Air Force</h3>
+                            <p class="text-slate-400 mt-2">I was a certified electronic technician, maintaining many of the same radars used at civilian airports.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="creative" class="max-w-6xl mx-auto px-6 py-32 border-t border-slate-900">
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-white mb-4">Strategic Creativity</h2>
+                    <p class="text-slate-400 max-w-2xl">
+                        Engineering is about more than logic—it's about communication and narrative.
+                        My creative pursuits sharpen my ability to document complex systems and lead teams with clarity.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <article class="bg-slate-900/40 p-6 rounded-xl border border-slate-800 hover:border-emerald-500/50 transition group">
+                        <div class="mb-4 text-emerald-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2">Published Author</h3>
+                        <p class="text-sm text-slate-400 mb-4 italic">"A Dusk Forever Waning"</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Writing speculative fiction requires the same attention to detail and world-building as architecting a distributed system.
+                        </p>
+                    </article>
+
+                    <article class="bg-slate-900/40 p-6 rounded-xl border border-slate-800 hover:border-emerald-500/50 transition">
+                        <div class="mb-4 text-emerald-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2">Content Creator</h3>
+                        <p class="text-sm text-slate-400 mb-4 italic">TimeSkimmer (YouTube)</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Producing chronological history vignettes. This project showcases my ability to synthesize massive datasets into engaging, visual narratives.
+                        </p>
+                    </article>
+
+                    <article class="bg-slate-900/40 p-6 rounded-xl border border-slate-800 hover:border-emerald-500/50 transition">
+                        <div class="mb-4 text-emerald-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2">Tech Evangelist</h3>
+                        <p class="text-sm text-slate-400 mb-4 italic">https://dev.to/bytebodger</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            A frequent tech blogger bridging the gap between developers and stakeholders through clear, opinionated technical writing.
+                        </p>
+                    </article>
+
+                    <article class="bg-slate-900/40 p-6 rounded-xl border border-slate-800 hover:border-emerald-500/50 transition">
+                        <div class="mb-4 text-emerald-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.828 2.828a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2">Visual & Dramatic Arts</h3>
+                        <p class="text-sm text-slate-400 mb-4 italic">Painter & Playwright</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Experience in theater and painting informs my UI/UX intuition and my approach to collaborative, ensemble-based leadership.
+                        </p>
+                    </article>
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-slate-950 py-12 border-t border-slate-900">
+            <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                <p>&copy; <span id="year"></span> Adam Davis. Built with Tailwind & Passion.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="https://github.com/bytebodger" class="hover:text-white transition">GitHub</a>
+                    <a href="https://www.linkedin.com/in/bytebodger" class="hover:text-white transition">LinkedIn</a>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear().toString();
+    </script>
 </html>
